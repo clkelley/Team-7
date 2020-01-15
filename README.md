@@ -1,4 +1,4 @@
-# Team-7
+# Cork
 
 
 ## Project Synopsis
