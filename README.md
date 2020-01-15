@@ -1,4 +1,4 @@
-# Cork
+# Cork ![Logo](/images/logo.png)
 
 
 ## Project Synopsis
@@ -13,9 +13,14 @@ Member | Skills | Personal Traits | Desired Growth | Weaknesses
 <img src="/images/clara.png" height="100"/> Clara | User Testing, AI, CAD, Manufacturing, Mechatronics | Excited about physical/digital | User Interface Design | Three weekends off campus this quarter
 <img src="/images/faraz.png" height="100"/> Faraz | Machine Learning, Artificial Intelligence, Computer Vision/ NLP | Like to work in batches | Applications of NLP and Computer Vision in Real World | Sporadic business
 
-#Reach us on email
+# Reach us on email
 trishani@stanford.edu
+
 renaw@stanford.edu
+
 semir@stanford.edu
+
 faraz13@stanford.edu
+
 clkelley@stanford.edu
+
