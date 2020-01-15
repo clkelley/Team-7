@@ -1,4 +1,4 @@
-# Cork ![Logo](/images/logo.png)
+# Cork <img src="/images/cork.png" width="50px"/>
 
 
 ## Project Synopsis
