@@ -2,7 +2,8 @@
 
 
 ## Project Synopsis
-Sous Chef is an app that works with you to make the most of your kitchen inventory. By allowing you to scan in receipts, Sous Chef allows you to easily find new recipes using ingredients you already have, meaning less time running to the store to buy a missing ingredient and more time discovering new and exciting foods. 
+
+Cork is an app that works with you to find your new favorite wines. Cork allows you to simply take a picture of wines you already like and from those suggests new wines for you to try; saving you the time and money of trying hundreds of wines to 
 
 Member | Skills | Personal Traits | Desired Growth | Weaknesses
  --- | --- | --- | --- | ---
