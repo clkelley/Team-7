@@ -1,7 +1,7 @@
 # Team-7
 Talal Rishani
 
-Member | Skills | Personal Traits | Desired Growth | Weaknesses
+Member | Skills | Personal Traits | Desired Growth | 
 --- | --- | --- | --- | ---
 Talal | AI, Deep Learning | Disciplined, big picture | Programming, LaTeX | Programming
 Rena | Aesthetics and layout, building prototypes, AutoCAD | Disciplined | LaTeX, Planning Skills | Painting, Programming, Interpersonal communication
