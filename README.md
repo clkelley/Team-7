@@ -1,5 +1,8 @@
 # Team-7
-Talal Rishani
+
+
+## Project Synopsis
+Sous Chef is an app that works with you to make the most of your kitchen inventory. By allowing you to scan in receipts, Sous Chef allows you to easily find new recipes using ingredients you already have, meaning less time running to the store to buy a missing ingredient and more time discovering new and exciting foods. 
 
 Member | Skills | Personal Traits | Desired Growth | Weaknesses
  --- | --- | --- | --- | ---
