@@ -3,7 +3,8 @@
 
 ## Project Synopsis
 
-Cork is an app that works with you to find your new favorite wines. Cork allows you to simply take a picture of the wines you already like, and from those, suggests new wines for you to try; saving you the time and money of trying hundreds of wines.
+Cork is an app that helps you find friends wherever you are. Cork uses your interests to help you find like-minded people around you and organizes events you will all enjoy together.
+
 
 Member | Skills | Personal Traits | Desired Growth | Weaknesses
  --- | --- | --- | --- | ---
