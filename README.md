@@ -1,9 +1,9 @@
-# Cork <img src="/images/cork.png" width="50px"/>
+# Rendezvous <img src="/images/roundabout.png" width="50px"/>
 
 
 ## Project Synopsis
 
-Cork is an app that helps you find friends wherever you are. Cork uses your interests to help you find like-minded people around you and organizes events you will all enjoy together.
+Rendezvous is an app that helps you find friends wherever you are. Rendezvous uses your interests to help you find like-minded people around you and organizes events you will all enjoy together.
 
 
 Member | Skills | Personal Traits | Desired Growth | Weaknesses
