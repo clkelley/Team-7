@@ -9,7 +9,11 @@ import {
 } from "react-router-dom";
 import { AppBar, Card, CardActionArea, CardActions, CardContent, CardMedia,
   Drawer, Tabs, Tab, Toolbar, Button, Typography, IconButton, Grid } from '@material-ui/core';
-import { MenuIcon } from '@material-ui/icons/Menu';
+import { MenuIcon, SearchIcon } from '@material-ui/icons/Menu';
+
+import SearchBar from './Components/SearchBar'
+
+
 /*https://stackoverflow.com/questions/41638688/material-uis-tabs-integration-with-react-router-4*/
 /*https://reacttraining.com/react-router/web/guides/quick-start*/
 /*https://medium.com/dailyjs/how-to-create-a-navigation-bar-with-react-router-styled-components-and-infrastructure-components-e24bee8d31bb*/
@@ -17,8 +21,15 @@ function Home() {
   return <h2>Home</h2>;
 }
 
-function About() {
-  return <h2>About</h2>;
+function Explore() {
+  return <div> 
+  			<h1> Explore </h1>
+  			<SearchBar />
+  		</div>;
+}
+
+function MyEvents() {
+	return <h2>My Events</h2>;
 }
 
 function Users() {
@@ -67,7 +78,7 @@ function App() {
     <Router>
     <div className="App">
       <AppBar>
-        <Toolbar>
+        <Toolbar className="toolbar">
           {/*<IconButton edge="start" color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton>*/}
@@ -77,11 +88,12 @@ function App() {
           <Route
             path="/"
             render={({location}) => (
-              <Fragment>
+              <Fragment className="navOptions">
                 <Tabs value={location.pathname}>
-                  <Tab label="Item One" value="/" component={Link} to='/'/>
-                  <Tab label="Item Two" value="/myevents" component={Link} to='/myevents' />
-                  <Tab label="Item Three" value="/settings" component={Link} to='/settings' />
+                  <Tab label="Recommended" value="/" component={Link} to='/'/>
+                  <Tab label="Explore" value="/explore" component={Link} to='/explore' />
+                  <Tab label="My Events" value="/myevents" component={Link} to='/myevents' />
+                  <Tab label="Users" value="/settings" component={Link} to='/settings' />
                 </Tabs>
 
               </Fragment>
@@ -96,8 +108,21 @@ function App() {
           Rendezvous
       </Typography>
       <Switch>
+      	<Route path="/explore">
+          <Explore />
+          <h2>Happening on Saturday, February 15th</h2>
+          <Grid container spacing={3}>
+            <BasicCard />
+            <BasicCard />
+          </Grid>
+          <h2>Food and Drinks</h2>
+          <Grid container spacing={3}>
+            <BasicCard />
+            <BasicCard />
+          </Grid>
+        </Route>
         <Route path="/myevents">
-          <About />
+          <MyEvents />
         </Route>
         <Route path="/settings">
           <Users />
