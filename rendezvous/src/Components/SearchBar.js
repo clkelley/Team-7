@@ -1,7 +1,6 @@
 import React from 'react';
 import './SearchBar.css';
 import FilterCategory from './FilterCategory';
-
 import Grid from '@material-ui/core/Grid';
 import { MenuIcon, SearchIcon } from '@material-ui/icons/Menu';
 import {Chip} from '@material-ui/core';
@@ -11,7 +10,7 @@ class SearchBar extends React.Component {
     super(props);
     this.state = {
       searchTerm: "",
-      matches: []
+      matches: [""]
     };
     
     this.handleInput = event => this.handleSearch(event);
@@ -23,16 +22,17 @@ class SearchBar extends React.Component {
  }
  
  search(event) {
- 
+ 	
  }
 
   render() {
   	
     return (
-    	<Grid container spacing={1}>
+    	<Grid container spacing={3}>
       		<Grid item xs={5}><input className="inputBar" onChange={this.handleInput} placeholder="Explore Events"></input></Grid>
       		<Grid item ><button onclick={this.searchEvents} className="searchButton">Search</button></Grid>
       		<Grid item xs={12}><FilterCategory className="filterCategory" /></Grid>
+      		<div> {this.state.matches} </div>
     	</Grid> 
     );
   }

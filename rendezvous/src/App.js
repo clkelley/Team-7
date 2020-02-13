@@ -13,67 +13,29 @@ import { MenuIcon, SearchIcon } from '@material-ui/icons/Menu';
 
 
 import SearchBar from './Components/SearchBar'
-import ProfilePage from './Components/ProfilePage'
 import EventCard from './Components/EventCard'
 
 /*https://stackoverflow.com/questions/41638688/material-uis-tabs-integration-with-react-router-4*/
 /*https://reacttraining.com/react-router/web/guides/quick-start*/
 /*https://medium.com/dailyjs/how-to-create-a-navigation-bar-with-react-router-styled-components-and-infrastructure-components-e24bee8d31bb*/
 function Home() {
-  return <h2>Home</h2>;
+  return <h1>Home</h1>;
 }
 
 function Explore() {
   return <div>
-  			<h1> Explore </h1>
   			<SearchBar />
   		</div>;
 }
 
 function MyEvents() {
-	return <h2>My Events</h2>;
+	return <h1>My Events</h1>;
 }
 
 function Users() {
   return <div>
-          <h2>Users</h2>
-          <ProfilePage />
+          <h1>Users</h1>
          </div>;
-}
-
-function BasicCard(){
-  return (
-    <Grid item xs={6}>
-    <Card>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          alt="Contemplative Reptile"
-          height="140"
-          image="https://material-ui.com/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Lizard
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions>
-    </Card>
-    </Grid>
-  );
 }
 
 function App() {
@@ -85,20 +47,19 @@ function App() {
           {/*<IconButton edge="start" color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton>*/}
-          <Typography variant="h6">
+          <h1>
             Rendezvous
-          </Typography>
+          </h1>
           <Route
             path="/"
             render={({location}) => (
-              <Fragment className="navOptions">
-                <Tabs value={location.pathname}>
+              <Fragment>
+                <Tabs value={location.pathname} className="tabs" indicatorColor="white">
                   <Tab label="Recommended" value="/" component={Link} to='/'/>
                   <Tab label="Explore" value="/explore" component={Link} to='/explore' />
                   <Tab label="My Events" value="/myevents" component={Link} to='/myevents' />
                   <Tab label="Users" value="/settings" component={Link} to='/settings' />
                 </Tabs>
-
               </Fragment>
             )}
           />
@@ -112,6 +73,7 @@ function App() {
       </Typography>
       <Switch>
       	<Route path="/explore">
+      		<Grid className="bigGrid" spacing={3}>
           <Explore />
           <h2>Happening on Saturday, February 15th</h2>
           <Grid container spacing={3}>
@@ -123,19 +85,22 @@ function App() {
             <EventCard />
             <EventCard />
           </Grid>
+          </Grid>
         </Route>
         <Route path="/myevents">
-          <MyEvents />
+          <Grid className="bigGrid"><MyEvents /></Grid>
         </Route>
         <Route path="/settings">
-          <Users />
+          <Grid className="bigGrid"><Users /></Grid>
         </Route>
         <Route path="/">
+          <Grid className="bigGrid">
           <Home />
           <Grid container spacing={3}>
             <EventCard />
             <EventCard />
             <EventCard />
+          </Grid>
           </Grid>
         </Route>
       </Switch>
