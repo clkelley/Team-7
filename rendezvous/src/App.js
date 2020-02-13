@@ -11,7 +11,9 @@ import { AppBar, Card, CardActionArea, CardActions, CardContent, CardMedia,
   Drawer, Tabs, Tab, Toolbar, Button, Typography, IconButton, Grid } from '@material-ui/core';
 import { MenuIcon, SearchIcon } from '@material-ui/icons/Menu';
 
+
 import SearchBar from './Components/SearchBar'
+import EventCard from './Components/EventCard'
 
 
 /*https://stackoverflow.com/questions/41638688/material-uis-tabs-integration-with-react-router-4*/
@@ -72,8 +74,6 @@ function BasicCard(){
 }
 
 function App() {
-
-
   return (
     <Router>
     <div className="App">
@@ -112,13 +112,13 @@ function App() {
           <Explore />
           <h2>Happening on Saturday, February 15th</h2>
           <Grid container spacing={3}>
-            <BasicCard />
-            <BasicCard />
+            <EventCard />
+            <EventCard />
           </Grid>
           <h2>Food and Drinks</h2>
           <Grid container spacing={3}>
-            <BasicCard />
-            <BasicCard />
+            <EventCard />
+            <EventCard />
           </Grid>
         </Route>
         <Route path="/myevents">
@@ -130,9 +130,9 @@ function App() {
         <Route path="/">
           <Home />
           <Grid container spacing={3}>
-            <BasicCard />
-            <BasicCard />
-            <BasicCard />
+            <EventCard />
+            <EventCard />
+            <EventCard />
           </Grid>
         </Route>
       </Switch>

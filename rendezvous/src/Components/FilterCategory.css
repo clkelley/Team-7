@@ -1,5 +1,4 @@
-.filter {
-	border-style: solid;
-	border: 1px;
-	border-color: #adb7ca;
+.filterCategories {
+	position: absolute;
+	left: 30px;
 }
