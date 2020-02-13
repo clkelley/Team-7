@@ -4,6 +4,7 @@ import FilterCategory from './FilterCategory';
 import FilterSelectionPopup from './FilterSelectionPopup';
 import Grid from '@material-ui/core/Grid';
 import { MenuIcon, SearchIcon } from '@material-ui/icons/Menu';
+import {Chip} from '@material-ui/core';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -32,7 +33,6 @@ class SearchBar extends React.Component {
       		<Grid item xs={5}><input className="inputBar" onChange={this.handleInput} placeholder="Explore Events"></input></Grid>
       		<Grid item ><button onclick={this.searchEvents} className="searchButton">Search</button></Grid>
       		<Grid item xs={12}><FilterCategory className="filterCategory" /></Grid>
-      		<FilterSelectionPopup />
     	</Grid> 
     );
   }
