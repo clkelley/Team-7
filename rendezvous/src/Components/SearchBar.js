@@ -1,7 +1,7 @@
 import React from 'react';
 import './SearchBar.css';
 import FilterCategory from './FilterCategory';
-import FilterSelectionPopup from './FilterSelectionPopup';
+
 import Grid from '@material-ui/core/Grid';
 import { MenuIcon, SearchIcon } from '@material-ui/icons/Menu';
 import {Chip} from '@material-ui/core';
