@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|Karla');
+
 .App {
   text-align: center;
 }
@@ -22,6 +24,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  font-family: 'Comfortaa', cursive;
 }
 
 .App-link {
@@ -39,10 +42,12 @@
 
 .toolbar {
 	background-color: #6ea0ff;
+  font-family: 'Karla', sans-serif;
 }
 
 h1 {
 	color: #666666;
+  font-family: 'Karla', sans-serif;
 }
 
 .navOptions {
@@ -52,4 +57,5 @@ h1 {
 
 h2 {
 	color: #666666;
+  font-family: 'Comfortaa', cursive;
 }
