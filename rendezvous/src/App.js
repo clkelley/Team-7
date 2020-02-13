@@ -12,7 +12,7 @@ import { AppBar, Card, CardActionArea, CardActions, CardContent, CardMedia,
 import { MenuIcon, SearchIcon } from '@material-ui/icons/Menu';
 
 import SearchBar from './Components/SearchBar'
-
+import ProfilePage from './Components/ProfilePage'
 
 /*https://stackoverflow.com/questions/41638688/material-uis-tabs-integration-with-react-router-4*/
 /*https://reacttraining.com/react-router/web/guides/quick-start*/
@@ -22,7 +22,7 @@ function Home() {
 }
 
 function Explore() {
-  return <div> 
+  return <div>
   			<h1> Explore </h1>
   			<SearchBar />
   		</div>;
@@ -33,7 +33,10 @@ function MyEvents() {
 }
 
 function Users() {
-  return <h2>Users</h2>;
+  return <div>
+          <h2>Users</h2>
+          <ProfilePage />
+         </div>;
 }
 
 function BasicCard(){
