@@ -11,9 +11,9 @@ class EventCard extends React.Component {
       eventId:""
     };
   }
-  
+
   render() {
-  	
+
     return (
       <Grid item xs={6}>
     	<Card>
@@ -27,11 +27,10 @@ class EventCard extends React.Component {
         	/>
         	<CardContent>
           		<Typography gutterBottom variant="h5" component="h2">
-           		 Lizard
+           		 {this.props.category}
           		</Typography>
           		<Typography variant="body2" color="textSecondary" component="p">
-            		Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            		across all continents except Antarctica
+            		{this.props.location}
           		</Typography>
         	</CardContent>
       	</CardActionArea>
