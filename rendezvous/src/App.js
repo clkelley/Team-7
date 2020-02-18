@@ -13,6 +13,7 @@ import { MenuIcon, SearchIcon } from '@material-ui/icons/Menu';
 
 
 import SearchBar from './Components/SearchBar'
+import ExplorePage from './Components/ExplorePage'
 import EventCard from './Components/EventCard'
 
 /*https://stackoverflow.com/questions/41638688/material-uis-tabs-integration-with-react-router-4*/
@@ -24,7 +25,7 @@ function Home() {
 
 function Explore() {
   return <div>
-  			<SearchBar />
+  			<ExplorePage/>
   		</div>;
 }
 

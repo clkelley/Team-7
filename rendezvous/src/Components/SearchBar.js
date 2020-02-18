@@ -3,7 +3,8 @@ import './SearchBar.css';
 import FilterCategory from './FilterCategory';
 import Grid from '@material-ui/core/Grid';
 import { MenuIcon, SearchIcon } from '@material-ui/icons/Menu';
-import {Chip} from '@material-ui/core';import Firebase from 'firebase'
+import {Chip} from '@material-ui/core';
+import Firebase from 'firebase'
 import { db } from '../firebase';
 
 class SearchBar extends React.Component {
@@ -19,6 +20,7 @@ class SearchBar extends React.Component {
   }
 
   handleSearch(event) {
+    this.search(event)
   	this.setState({ searchTerm: event.target.value });
  }
 
@@ -28,7 +30,7 @@ class SearchBar extends React.Component {
    .get()
    .then(querySnapshot => {
      const data = querySnapshot.docs.map(doc => doc.data());
-     this.setState({matches: data})
+     this.setState({matches: querySnapshot.docs}, this.props.callback(querySnapshot.docs))
    })
  }
 
@@ -38,7 +40,7 @@ class SearchBar extends React.Component {
       		<Grid item xs={5}><input className="inputBar" onChange={this.handleInput} placeholder="Explore Events"></input></Grid>
       		<Grid item ><button onclick={this.searchEvents} className="searchButton">Search</button></Grid>
       		<Grid item xs={12}><FilterCategory className="filterCategory" /></Grid>
-          <div> {JSON.stringify(this.state.matches)} </div>
+
     	</Grid>
     );
   }
