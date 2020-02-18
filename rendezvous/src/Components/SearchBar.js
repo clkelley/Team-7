@@ -20,7 +20,6 @@ class SearchBar extends React.Component {
   }
 
   handleSearch(event) {
-    this.search(event)
   	this.setState({ searchTerm: event.target.value });
  }
 
@@ -41,7 +40,7 @@ class SearchBar extends React.Component {
     return (
     	<Grid container spacing={1}>
       		<Grid item xs={5}><input className="inputBar" onChange={this.handleInput} placeholder="Explore Events"></input></Grid>
-      		<Grid item ><button onclick={this.searchEvents} className="searchButton">Search</button></Grid>
+      		<Grid item ><button onClick={this.searchEvents} className="searchButton">Search</button></Grid>
       		<Grid item xs={12}><FilterCategory className="filterCategory" /></Grid>
 
     	</Grid>
