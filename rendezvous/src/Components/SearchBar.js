@@ -36,12 +36,12 @@ class SearchBar extends React.Component {
  }
 
   render() {
-  
+
     return (
     	<Grid container spacing={2} className="searchGrid">
     		<Grid item xs={1}><img className="logo" src={logo}></img></Grid>
       		<Grid item xs={6}><input className="inputBar" onChange={this.handleInput} placeholder="Explore Events"></input></Grid>
-      		<Grid item xs={3}><button onclick={this.searchEvents} className="searchButton">Search</button></Grid>
+      		<Grid item xs={3}><button onClick={this.searchEvents} className="searchButton">Search</button></Grid>
       		<Grid item xs={12}><FilterCategory className="filterCategory" /></Grid>
     	</Grid>
     );

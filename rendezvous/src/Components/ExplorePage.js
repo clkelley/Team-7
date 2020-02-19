@@ -31,7 +31,7 @@ class ExplorePage extends React.Component {
 render() {
     const events = [];
     for(let i =0; i < this.state.matches.length; i++){
-      events.push(<EventCard/>)
+      events.push(<EventCard key={i}/>)
     }
 
     return (
