@@ -15,7 +15,7 @@ import mainLogo from '../media/rendezvous_logo_white.png';
 import SearchBar from './SearchBar'
 import ExplorePage from './ExplorePage'
 import EventCard from './EventCard'
-
+import EventPage from './EventPage'
 
 function Home() {
   return <h1>Home</h1>;
@@ -44,7 +44,7 @@ function ExploreContent() {
 }
 
 function MyEvents() {
-  return <h1>My Events</h1>;
+  return <EventPage />;
 }
 
 function Users() {
