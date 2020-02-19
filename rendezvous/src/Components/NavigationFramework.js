@@ -109,7 +109,7 @@ class NavigationFramework extends React.Component {
         </Drawer>
         <Switch>
         	<Route path="/explore">
-        		<Grid className="bigGrid" spacing={3}>
+        		<Grid className="bigGrid">
             <Explore />
             <ExploreContent />
             </Grid>
@@ -148,7 +148,7 @@ class NavigationFramework extends React.Component {
               path="/"
               render={({location}) => (
                 <Fragment>
-                  <Tabs value={location.pathname} className="tabs" indicatorColor="white">
+                  <Tabs value={location.pathname} className="tabs" indicatorColor="primary">
                     <Tab label="Recommended" value="/" component={Link} to='/'/>
                     <Tab label="Explore" value="/explore" component={Link} to='/explore' />
                     <Tab label="My Events" value="/myevents" component={Link} to='/myevents' />
@@ -167,7 +167,7 @@ class NavigationFramework extends React.Component {
         </Typography>
         <Switch>
         	<Route path="/explore">
-        		<Grid className="bigGrid" spacing={3}>
+        		<Grid className="bigGrid">
             <Explore />
             <ExploreContent />
             </Grid>

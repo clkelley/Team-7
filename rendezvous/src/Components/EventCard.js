@@ -5,6 +5,8 @@ import { Card, CardActionArea, CardActions, CardContent, CardMedia,
 import stockPhoto1 from '../media/eventPhotos/wine_tasting.jpg';
 import stockPhoto2 from '../media/eventPhotos/beer_tasting.jpg';
 import stockPhoto3 from '../media/eventPhotos/food_festival.jpg';
+import Firebase from 'firebase'
+import { db } from '../firebase';
 
 class EventCard extends React.Component {
   constructor(props) {
@@ -17,7 +19,11 @@ class EventCard extends React.Component {
       shortDescription: "Taste a variety of local wines straight from the barrel with a scenic view",
     };
   }
-  
+
+	fetchFromDatabase(eventId){
+		console.log("fetched");
+	}
+
   render() {
     return (
       <Grid item xs={4}>
