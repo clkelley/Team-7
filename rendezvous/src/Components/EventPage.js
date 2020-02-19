@@ -16,14 +16,40 @@ class EventPage extends React.Component {
 
   constructor(props) {
     super(props);
+		const eventId = parseInt(props.match.params.eventId);
+		console.log(eventId);
+		this.state = {
+			date: "loading...",
+			eventName: "loading...",
+			shortDescription: "loading...",
+			photo: require('../media/eventPhotos/wine_tasting.jpg'),
+		};
+		this.fetchFromDatabase(eventId);
+
+		// this.state = {
+    //   date: this.fetchFromDatabase(eventId),
+    //   eventName: this.fetchFromDatabase(eventId),
+    //   shortDescription: this.fetchFromDatabase(eventId),
+    //   photo: require('../media/eventPhotos/wine_tasting.jpg'),
+    // };
 
   }
+
+	fetchFromDatabase(eventId){
+		console.log("fetch from database eventid" + eventId);
+		db.collection("event_data").where("eventId", "==", eventId).get()
+		.then(querySnapshot => {
+     		var data = querySnapshot.docs.map(doc => doc.data());
+     		this.setState({date: data[0]['date']});
+     		this.setState({shortDescription: data[0]['short_description']});
+     		this.setState({eventName: data[0]['event_name']});
+   		});
+	}
 
   render() {
 		//carousel
 		//text
 		//icon Button
-
     return (
 		<div>
 		<Carousel showThumbs={false} dynamicHeight='100'>
@@ -36,26 +62,23 @@ class EventPage extends React.Component {
 									<p className="legend">Legend 2</p>
 							</div>
 			</Carousel>
-			<Grid container spacing={1}>
+			<Grid container spacing={1} style={{ padding: 20}}>
 				<Grid xs={8}>
 				<Grid container direction="row">
 				<h1>
-					Test Concert
+					{this.state.eventName || "Loading..."}
 				</h1>
 				<IconButton>
 					<Bookmark />
 				</IconButton>
 
 				</Grid>
-				<h2>
-					Khalid ft. Quinn XCII
-				</h2>
 				<h3>
-					This is a short description of your event: Each ticket includes admission to our craft beer sampling area, where you’ll receive tasting samples from some of the best craft breweries in the country. Every year features old favorites and new finds, and this year is bigger and better than ever, with 80+ beers available.
+					{this.state.shortDescription || "Loading..."}
 				</h3>
 				</Grid>
 				<Grid xs={4} justify="center">
-				<h1>2.17.20</h1>
+				<h1>{this.state.date || "Loading..."}</h1>
 				<Button variant="contained" color="primary">
 					Buy Tickets
 				</Button>

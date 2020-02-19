@@ -7,6 +7,12 @@ import stockPhoto2 from '../media/eventPhotos/beer_tasting.jpg';
 import stockPhoto3 from '../media/eventPhotos/food_festival.jpg';
 import Firebase from 'firebase'
 import { db } from '../firebase';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 class EventCard extends React.Component {
   constructor(props) {
@@ -40,9 +46,9 @@ class EventCard extends React.Component {
 
   render() {
     return (
-      <Grid item xs={4}>
+      <Grid item xs={12} sm={4}>
     	<Card>
-      		<CardActionArea>
+      		<CardActionArea component={Link} to={"/events/"+this.props.eventId}>
        		<CardMedia
           		component="img"
           		height="140"
@@ -53,15 +59,10 @@ class EventCard extends React.Component {
            		 {this.state.eventName}
           		</h2>
           		<p className="shortDescription">
-            		{this.state.shortDescription} <b className="eventDate">• {this.state.date}</b> 
+            		{this.state.shortDescription} <b className="eventDate">• {this.state.date}</b>
           		</p>
         	</CardContent>
       	</CardActionArea>
-      	<CardActions>
-        	<Button size="small" color="primary">
-          		Learn More
-        	</Button>
-      	</CardActions>
     	</Card>
     </Grid>
     );
