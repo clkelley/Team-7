@@ -15,6 +15,7 @@ import { MenuIcon, SearchIcon } from '@material-ui/icons/Menu';
 import SearchBar from './Components/SearchBar'
 import ExplorePage from './Components/ExplorePage'
 import EventCard from './Components/EventCard'
+import Faraz from './Components/Faraz'
 
 /*https://stackoverflow.com/questions/41638688/material-uis-tabs-integration-with-react-router-4*/
 /*https://reacttraining.com/react-router/web/guides/quick-start*/
@@ -35,7 +36,7 @@ function MyEvents() {
 
 function Users() {
   return <div>
-          <h1>Users</h1>
+          <Faraz/>
          </div>;
 }
 
