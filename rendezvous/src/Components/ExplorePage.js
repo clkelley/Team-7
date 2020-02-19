@@ -31,7 +31,6 @@ class ExplorePage extends React.Component {
 render() {
     const events = [];
     for(let i =0; i < this.state.matches.length; i++){
-      // console.log(this.state.matches[i])
       events.push(<EventCard category = {this.state.matches[i]['category']} location = {this.state.matches[i]['location']}/>)
     }
 

@@ -7,10 +7,10 @@
 	border: 2px;
 	border-color: #adb7ca;
 	border-style: solid;
-	position: absolute;
-	left: 20px;
 	border-radius: 5px;
 	padding-left: 10px;
+	position: absolute;
+	left: 50px;
 }
 
 ::placeholder {
@@ -25,10 +25,26 @@
 	color: #adb7ca;
 	border:2px;
 	border-style: solid;
-	margin-left: 10px;
+	position: relative;
+	left: -200px;
 } 
+
+.searchButton:hover {
+	cursor: pointer;
+}
 
 .filterCategory {
 	position: absolute;
 	left: 20px;
+}
+
+.logo {
+	width: 40px;
+	height: 35px;
+	position: absolute;
+	left: 0px;
+}
+
+.searchGrid {
+	position: absolute;
 }
