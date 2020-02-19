@@ -29,11 +29,11 @@ class EventCard extends React.Component {
      		if (eventId === 2) this.setState({photo: require('../media/eventPhotos/beer_tasting.jpg')});
      		else if (eventId === 3) this.setState({photo: require('../media/eventPhotos/yoga.jpg')});
    			else if (eventId === 4) this.setState({photo: require('../media/eventPhotos/food_festival.jpg')});
-   			else if (eventId === 5) this.setState({photo: require('../media/eventPhotos/food_festival.jpg')});
-   			else if (eventId === 6) this.setState({photo: require('../media/eventPhotos/food_festival.jpg')});
-   			else if (eventId === 7) this.setState({photo: require('../media/eventPhotos/food_festival.jpg')});
-   			else if (eventId === 8) this.setState({photo: require('../media/eventPhotos/food_festival.jpg')});
-   			else if (eventId === 9) this.setState({photo: require('../media/eventPhotos/food_festival.jpg')});
+   			else if (eventId === 5) this.setState({photo: require('../media/eventPhotos/comedy.jpg')});
+   			else if (eventId === 6) this.setState({photo: require('../media/eventPhotos/concert.jpg')});
+   			else if (eventId === 7) this.setState({photo: require('../media/eventPhotos/hike.jpg')});
+   			else if (eventId === 8) this.setState({photo: require('../media/eventPhotos/food.jpg')});
+   			else if (eventId === 9) this.setState({photo: require('../media/eventPhotos/cruise.jpg')});
    			else if (eventId === 1) this.setState({photo: require('../media/eventPhotos/wine_tasting.jpg')});
    		});
 	}

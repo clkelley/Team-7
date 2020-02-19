@@ -1,4 +1,9 @@
-.filterCategories {
-	position: absolute;
-	left: 30px;
+.filterCategories2 {
+	position: relative;
+	top: 10px;
+	
+}
+
+.dateChip:hover {
+	curser: pointer;
 }
