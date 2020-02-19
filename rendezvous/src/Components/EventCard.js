@@ -11,17 +11,23 @@ import { db } from '../firebase';
 class EventCard extends React.Component {
   constructor(props) {
     super(props);
-    let dateN = (this.props.eventId==="1" ? "1/1/20" : "1/2/20");
     this.state = {
-      eventId:"",
-      date: dateN,
-      eventName: "Wine Tasting",
-      shortDescription: "Taste a variety of local wines straight from the barrel with a scenic view",
+      date: this.fetchFromDatabase(this.props.eventId),
+      eventName: this.fetchFromDatabase(this.props.eventId),
+      shortDescription: this.fetchFromDatabase(this.props.eventId),
+      photo: require('../media/eventPhotos/wine_tasting.jpg'),
     };
   }
 
 	fetchFromDatabase(eventId){
-		console.log("fetched");
+		console.log(eventId);
+		db.collection("event_data").where("eventId", "==", eventId).get()
+		.then(querySnapshot => {
+     		var data = querySnapshot.docs.map(doc => doc.data());
+     		this.setState({date: data[0]['date']});
+     		this.setState({shortDescription: data[0]['short_description']});
+     		this.setState({eventName: data[0]['event_name']});
+   		});
 	}
 
   render() {
@@ -32,14 +38,14 @@ class EventCard extends React.Component {
        		<CardMedia
           		component="img"
           		height="140"
-          		src={stockPhoto1}
+          		src={this.state.photo}
         	/>
         	<CardContent>
           		<h2 className="eventTitle">
            		 {this.state.eventName}
           		</h2>
           		<p className="shortDescription">
-            		{this.state.shortDescription} <b className="eventDate">• {this.state.date}</b> {this.props.eventId}
+            		{this.state.shortDescription} <b className="eventDate">• {this.state.date}</b> 
           		</p>
         	</CardContent>
       	</CardActionArea>

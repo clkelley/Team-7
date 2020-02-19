@@ -29,16 +29,23 @@ function Explore() {
 
 function ExploreContent() {
   return <div className="exploreContent">
-    <h2>Happening on Saturday, February 15th</h2>
+    	<h2>Happening on Saturday, February 15th</h2>
           <Grid container spacing={3} >
-            <EventCard eventId="1"/>
-            <EventCard eventId="2"/>
-            <EventCard eventId="3"/>
+            <EventCard eventId={1}/>
+            <EventCard eventId={2}/>
+            <EventCard eventId={3}/>
           </Grid>
           <h2>Food and Drinks</h2>
           <Grid container spacing={3}>
-            <EventCard />
-            <EventCard />
+            <EventCard eventId={1}/>
+            <EventCard eventId={2}/>
+            <EventCard eventId={3}/>
+          </Grid>
+          <h2>Free Events</h2>
+          <Grid container spacing={3}>
+            <EventCard eventId={1}/>
+            <EventCard eventId={2}/>
+            <EventCard eventId={3}/>
           </Grid>
   </div>;
 }
@@ -124,9 +131,9 @@ class NavigationFramework extends React.Component {
             <Grid className="bigGrid">
             <Home />
             <Grid container spacing={3}>
-              <EventCard />
-              <EventCard />
-              <EventCard />
+            	<EventCard eventId={1}/>
+              	<EventCard eventId={2}/>
+              	<EventCard eventId={3}/>
             </Grid>
             </Grid>
           </Route>
@@ -182,9 +189,9 @@ class NavigationFramework extends React.Component {
             <Grid className="bigGrid">
             <Home />
             <Grid container spacing={3}>
-              <EventCard />
-              <EventCard />
-              <EventCard />
+              <EventCard eventId={1}/>
+              <EventCard eventId={2}/>
+              <EventCard eventId={3}/>
             </Grid>
             </Grid>
           </Route>
