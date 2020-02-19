@@ -51,7 +51,14 @@ function ExploreContent() {
 }
 
 function MyEvents() {
-  return <EventPage />;
+  return <div>
+          <h1>Your Upcoming Events</h1>
+          <Grid container spacing={3} >
+            <EventCard eventId={1}/>
+            <EventCard eventId={2}/>
+            <EventCard eventId={3}/>
+          </Grid>
+          </div>
 }
 
 function Users() {
@@ -85,7 +92,28 @@ class NavigationFramework extends React.Component {
     this.setState({[side]: open });
   };
 
+  eventCardClicked(eventID){
+
+  }
+
+  checkPathnameValue(location) {
+      const { pathname } = location;
+      switch (pathname) {
+        case '/':
+        case '/explore':
+        case '/myevents':
+        case '/settings':
+        break;
+      default:
+      return false;
+      }
+      return pathname;
+  }
+
   render() {
+
+
+
     if(this.state.width < this.state.height && this.state.width < 800){
       return (
         <Router>
@@ -121,6 +149,8 @@ class NavigationFramework extends React.Component {
             <ExploreContent />
             </Grid>
           </Route>
+          <Route path="/events/:eventId" component={EventPage}>
+          </Route>
           <Route path="/myevents">
             <Grid className="bigGrid"><MyEvents /></Grid>
           </Route>
@@ -131,7 +161,7 @@ class NavigationFramework extends React.Component {
             <Grid className="bigGrid">
             <Home />
             <Grid container spacing={3}>
-            	<EventCard eventId={1}/>
+                <EventCard eventId={1}/>
               	<EventCard eventId={2}/>
               	<EventCard eventId={3}/>
             </Grid>
@@ -142,6 +172,7 @@ class NavigationFramework extends React.Component {
         </Router>
       );
     }
+
     return (
       <Router>
       <div className="App">
@@ -155,7 +186,7 @@ class NavigationFramework extends React.Component {
               path="/"
               render={({location}) => (
                 <Fragment>
-                  <Tabs value={location.pathname} className="tabs" indicatorColor="primary">
+                  <Tabs value={this.checkPathnameValue(location.pathname)} className="tabs" indicatorColor="primary">
                     <Tab label="Recommended" value="/" component={Link} to='/'/>
                     <Tab label="Explore" value="/explore" component={Link} to='/explore' />
                     <Tab label="My Events" value="/myevents" component={Link} to='/myevents' />
@@ -179,6 +210,8 @@ class NavigationFramework extends React.Component {
             <ExploreContent />
             </Grid>
           </Route>
+          <Route path="/events/:eventId" component={EventPage}>
+          </Route>
           <Route path="/myevents">
             <Grid className="bigGrid"><MyEvents /></Grid>
           </Route>
@@ -189,7 +222,7 @@ class NavigationFramework extends React.Component {
             <Grid className="bigGrid">
             <Home />
             <Grid container spacing={3}>
-              <EventCard eventId={1}/>
+              <EventCard eventId={1} />
               <EventCard eventId={2}/>
               <EventCard eventId={3}/>
             </Grid>
