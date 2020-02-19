@@ -34,9 +34,9 @@ function ExploreContent() {
 	return <div className="exploreContent">
 		<h2>Happening on Saturday, February 15th</h2>
           <Grid container spacing={3} >
-            <EventCard />
-            <EventCard />
-            <EventCard />
+            <EventCard eventId="1"/>
+            <EventCard eventId="2"/>
+            <EventCard eventId="3"/>
           </Grid>
           <h2>Food and Drinks</h2>
           <Grid container spacing={3}>
