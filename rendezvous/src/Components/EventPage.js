@@ -22,7 +22,7 @@ class EventPage extends React.Component {
 			date: "loading...",
 			eventName: "loading...",
 			shortDescription: "loading...",
-			photo: require('../media/eventPhotos/wine_tasting.jpg'),
+			photo: "",
 		};
 		this.fetchFromDatabase(eventId);
 
@@ -43,25 +43,40 @@ class EventPage extends React.Component {
      		this.setState({date: data[0]['date']});
      		this.setState({shortDescription: data[0]['short_description']});
      		this.setState({eventName: data[0]['event_name']});
+				if (eventId === 2) this.setState({photo: require('../media/eventPhotos/beer_tasting.jpg')});
+				else if (eventId === 3) this.setState({photo: require('../media/eventPhotos/yoga.jpg')});
+				else if (eventId === 4) this.setState({photo: require('../media/eventPhotos/food_festival.jpg')});
+				else if (eventId === 5) this.setState({photo: require('../media/eventPhotos/comedy.jpg')});
+				else if (eventId === 6) this.setState({photo: require('../media/eventPhotos/concert.jpg')});
+				else if (eventId === 7) this.setState({photo: require('../media/eventPhotos/hike.jpg')});
+				else if (eventId === 8) this.setState({photo: require('../media/eventPhotos/food.jpg')});
+				else if (eventId === 9) this.setState({photo: require('../media/eventPhotos/cruise.jpg')});
+				else if (eventId === 1) this.setState({photo: require('../media/eventPhotos/wine_tasting.jpg')});
    		});
+
 	}
 
   render() {
 		//carousel
 		//text
 		//icon Button
+		console.log("photo:"+this.state.photo);
+
+		let top_image;
+		if(this.state.photo != null){
+			top_image = <img src={this.state.photo} style={{height:300, width:'100%', objectFit: 'cover'}}/>
+		} else {
+			top_image = <div></div>
+		}
     return (
 		<div>
-		<Carousel showThumbs={false} dynamicHeight='100'>
+		{/*<Carousel showThumbs={false} dynamicHeight='100'>
 							<div>
-									<img src={headerPhoto} style={{height:300, objectFit: 'cover'}}/>
+									<img src={this.state.photo} style={{height:300, objectFit: 'cover'}}/>
 									<p className="legend">Legend 1</p>
 							</div>
-							<div>
-									<img src={headerPhoto2} style={{height:300, objectFit: 'cover'}}/>
-									<p className="legend">Legend 2</p>
-							</div>
-			</Carousel>
+			</Carousel>*/}
+			{top_image}
 			<Grid container spacing={1} style={{ padding: 20}}>
 				<Grid xs={8}>
 				<Grid container direction="row">
