@@ -34,6 +34,7 @@ class FilterCategory extends React.Component {
       </Grid>
       <Grid container spacing={2} className="filterCategories2" xs={12} >
         <Chip variant="outlined" label="2/22" className="filter" onDelete={handleDelete}></Chip>
+        <Chip variant="outlined" label="2/23" className="filter" onDelete={handleDelete}></Chip>
         <Chip variant="outlined" label="Palo Alto, Ca" className="filter" onDelete={handleDelete}></Chip>
       </Grid>
       </Grid>
