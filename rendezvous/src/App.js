@@ -10,6 +10,8 @@ import {
 import { AppBar, Card, CardActionArea, CardActions, CardContent, CardMedia,
   Drawer, Tabs, Tab, Toolbar, Button, Typography, IconButton, Grid } from '@material-ui/core';
 import { MenuIcon, SearchIcon } from '@material-ui/icons/Menu';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
+
 
 
 import SearchBar from './Components/SearchBar'
@@ -21,6 +23,20 @@ import NavigationFramework from './Components/NavigationFramework'
 /*https://stackoverflow.com/questions/41638688/material-uis-tabs-integration-with-react-router-4*/
 /*https://reacttraining.com/react-router/web/guides/quick-start*/
 /*https://medium.com/dailyjs/how-to-create-a-navigation-bar-with-react-router-styled-components-and-infrastructure-components-e24bee8d31bb*/
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#6ea0ff',
+    },
+    secondary: {
+      main: '#6ea0ff',
+    },
+  },
+  
+});
+
+
 function Home() {
   return <h1>Home</h1>;
 }
@@ -43,7 +59,9 @@ function Users() {
 
 function App() {
   return (
-    <NavigationFramework />
+    <MuiThemeProvider theme={theme}>
+      <NavigationFramework />
+    </MuiThemeProvider>
   );
 }
 

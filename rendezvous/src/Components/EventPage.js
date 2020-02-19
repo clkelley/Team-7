@@ -9,6 +9,8 @@ import Firebase from 'firebase'
 import { db } from '../firebase';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
+import { BookmarkBorder, Bookmark, Room } from '@material-ui/icons'
+
 
 class EventPage extends React.Component {
 
@@ -36,15 +38,37 @@ class EventPage extends React.Component {
 			</Carousel>
 			<Grid container spacing={1}>
 				<Grid xs={8}>
+				<Grid container direction="row">
 				<h1>
 					Test Concert
 				</h1>
-				<h2>
-					Test Concert
-				</h2>
+				<IconButton>
+					<Bookmark />
+				</IconButton>
+
 				</Grid>
-				<Grid xs={4}>
+				<h2>
+					Khalid ft. Quinn XCII
+				</h2>
+				<h3>
+					This is a short description of your event: Each ticket includes admission to our craft beer sampling area, where you’ll receive tasting samples from some of the best craft breweries in the country. Every year features old favorites and new finds, and this year is bigger and better than ever, with 80+ beers available.
+				</h3>
+				</Grid>
+				<Grid xs={4} justify="center">
 				<h1>2.17.20</h1>
+				<Button variant="contained" color="primary">
+					Buy Tickets
+				</Button>
+				<h1>$12-$20</h1>
+				<Grid container direction="row" justify="center" alignItems="center">
+				<IconButton>
+					<Room />
+				</IconButton>
+				<h2>
+					San Francisco
+				</h2>
+
+				</Grid>
 				</Grid>
 			</Grid>
 		</div>);
