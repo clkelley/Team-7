@@ -1,4 +1,4 @@
-/* Font copied in place by React Studio. Please check that your license for this font file permits embedding on a website. */
+.Faraz/* Font copied in place by React Studio. Please check that your license for this font file permits embedding on a website. */
 @font-face {
   font-family: 'Arial-BoldMT';
   src: url('fonts/Arial Bold.ttf');
@@ -8,7 +8,7 @@
   font-family: 'Arial-BoldMT', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", sans-serif;
 }
 
-.App { /* Base font style */
+.Faraz { /* Base font style */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", sans-serif;
   font-size: 15.2px;
   -webkit-font-smoothing: antialiased;
@@ -17,49 +17,49 @@
   background-color: #f6f6f6;
 }
 
-.App .baseFont * { /* Base font style override for UI framework components */
+.Faraz .baseFont * { /* Base font style override for UI framework components */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", sans-serif;
   font-size: 15.2px;
 }
 
-.App .appBg {
+.Faraz .appBg {
   background-color: #f6f6f6;
 }
 
-.App .cardBg {
+.Faraz .cardBg {
   background-color: white;
 }
 
-.App .baseTextBg { /* Base text color as background */
+.Faraz .baseTextBg { /* Base text color as background */
   background-color: rgba(0, 0, 0, 0.8500);
 }
 
-.App .secondaryTextColor {
+.Faraz .secondaryTextColor {
   color: rgba(0, 0, 0, 0.5000);
 }
 
-.App .secondaryTextBg {
+.Faraz .secondaryTextBg {
   background-color: rgba(0, 0, 0, 0.5000);
 }
 
-.App .primaryTextColor {
+.Faraz .primaryTextColor {
   color: #bee9ee;
 }
 
-.App .primaryBg {
+.Faraz .primaryBg {
   background-color: #bee9ee;
 }
 
-.App .highlightTextColor {
+.Faraz .highlightTextColor {
   color: #0093d5;
 }
 
-.App .highlightBg {
+.Faraz .highlightBg {
   background-color: #0093d5;
 }
 
 @media (display-mode: standalone) {
-  .App {
+  .Faraz {
     user-select: none;
   }
 }
@@ -117,18 +117,18 @@
 
 /* System font classes */
 
-.App .systemFontRegular {
+.Faraz .systemFontRegular {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", sans-serif;
 }
-.App .systemFontBold {
+.Faraz .systemFontBold {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", sans-serif;
   font-weight: 600;
 }
-.App .systemFontItalic {
+.Faraz .systemFontItalic {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", sans-serif;
   font-style: italic;
 }
-.App .systemFontBoldItalic {
+.Faraz .systemFontBoldItalic {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", sans-serif;
   font-weight: 600;
   font-style: italic;
@@ -136,23 +136,23 @@
 
 /* App-wide text styles specified in React Studio */
 
-.App .actionFont {
+.Faraz .actionFont {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", sans-serif;
   font-size: 14.2px;
   font-weight: 400;
 }
-.App .actionFont * {
+.Faraz .actionFont * {
   font-size: 14.2px;
 }
-.App .headlineFont {
+.Faraz .headlineFont {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", sans-serif;
   font-size: 19.0px;
   font-weight: 600;
 }
-.App .headlineFont * {
+.Faraz .headlineFont * {
   font-size: 19.0px;
 }
-.App .navBar {
+.Faraz .navBar {
   background-color: #bee9ee;
   color: black;
   position: fixed;
@@ -165,52 +165,52 @@
   font-size: 18px;
 }
 
-.App .navBar a {
+.Faraz .navBar a {
   color: black;
 }
 
-.App .navBar .title {
+.Faraz .navBar .title {
   position: absolute;
   width: 100%;
   text-align: center;
   padding: 4px;
 }
 
-.App .navBar .backBtn {
+.Faraz .navBar .backBtn {
   position: absolute;
   padding: 4px;
   margin-left: 14px;
   cursor: pointer;
 }
 
-.App .navBar > div {
+.Faraz .navBar > div {
   margin-top: 7px;
 }
 
 @media (min-width: 568px) {
-  .App .navBar {
+  .Faraz .navBar {
     height: 50px;
     min-height: 50px;
   }
-  .App .navBar > div {
+  .Faraz .navBar > div {
     margin-top: 7px;
   }
 }
 @media (min-width: 768px) {
-  .App .navBar {
+  .Faraz .navBar {
     height: 75px;
     min-height: 75px;
   }
-  .App .navBar > div {
+  .Faraz .navBar > div {
     margin-top: 19px;
   }
 }
 @media (min-width: 1024px) {
-  .App .navBar {
+  .Faraz .navBar {
     height: 75px;
     min-height: 75px;
   }
-  .App .navBar > div {
+  .Faraz .navBar > div {
     margin-top: 19px;
   }
 }
@@ -235,7 +235,7 @@
   }
 }
 
-.AppScreen {
+.FarazScreen {
   padding-left: 0;
   padding-right: 0;
   position: absolute;
@@ -244,7 +244,7 @@
   pointer-events: auto;
 }
 
-.App .background {
+.Faraz .background {
   position: fixed;
   left: 0;
   top: 0;
@@ -253,22 +253,22 @@
   pointer-events: none;
 }
 
-.App .layoutFlow {
+.Faraz .layoutFlow {
   position: relative;
   width: 100%;
   pointer-events: none;
 }
-.App .layoutFlow:before {  /* Prevent margin collapse */
+.Faraz .layoutFlow:before {  /* Prevent margin collapse */
   content: "";
   display: table;
   clear: both;
 }
-.App .layoutFlow .flowRow {
+.Faraz .layoutFlow .flowRow {
   position: relative;
   width: 100%;
 }
 
-.App .screenFgContainer {
+.Faraz .screenFgContainer {
   /* Items in the foreground group within a screen are placed with fixed positioning */
   position: fixed;
   left: 0;
@@ -277,7 +277,7 @@
   height: 100%;
   pointer-events: none;
 }
-.App .foreground {
+.Faraz .foreground {
   position: absolute;
   left: 0;
   top: 0;
@@ -286,37 +286,37 @@
   pointer-events: none;
 }
 
-.App ul {
+.Faraz ul {
   margin: 0;
   padding: 0;
 }
-.App li {
+.Faraz li {
   margin: 0;
   padding: 0;
   list-style-type: none;
   position: relative;
 }
-.App .hasNestedComps {
+.Faraz .hasNestedComps {
   position: relative;
 }
-.App .hasNestedComps:after {
+.Faraz .hasNestedComps:after {
   content: "";
   display: table;
   clear: both;
 }
-.App .hasNestedComps .background {
+.Faraz .hasNestedComps .background {
   position: absolute;
 }
-.App .hasNestedComps .layoutFlow {
+.Faraz .hasNestedComps .layoutFlow {
   position: relative;
 }
-.App .bottomAlignedContent {
+.Faraz .bottomAlignedContent {
   position: absolute;
   bottom: 0;
   width: 100%;
 }
 
-.App .blockInputOverlay {
+.Faraz .blockInputOverlay {
   position: fixed;
   width: 100%;
   height: 100%;
@@ -328,12 +328,12 @@
   z-index: 99999999;
 }
 
-.App .marker {
+.Faraz .marker {
   width: 0px;
   height: 0px;
 }
 
-.App .drawer {
+.Faraz .drawer {
   position: fixed;
   top: 0px;
   left: 0px;
@@ -341,28 +341,28 @@
   height: 100%;
 }
 
-.App .drawerOpen {
+.Faraz .drawerOpen {
   transform: translateX(0%);
   transition: 0.3s;
 }
 
-.App .drawerClosedLeft {
+.Faraz .drawerClosedLeft {
   transform: translateX(-100%);
   transition: 0.3s;
 }
 
-.App .drawerClosedRight {
+.Faraz .drawerClosedRight {
   transform: translateX(100%);
   transition: 0.3s;
 }
 
-.App .drawerContent {
+.Faraz .drawerContent {
   position: fixed;
   height: 100%;
   overflow: hidden;
 }
 
-.App .drawerContent > * {
+.Faraz .drawerContent > * {
   height: 100%;
 }
 
@@ -393,11 +393,11 @@
     width: 744px;
     margin-left: -36px;
   }
-  .StartScreen > .layoutFlow > .elButton > * { 
+  .StartScreen > .layoutFlow > .elButton > * {
   width: 744px;
   height: 616px;
   }
-  
+
 
 
   .StartScreen > .screenFgContainer > .foreground > .elRectangle {
@@ -436,14 +436,14 @@
     margin-right: -9px;
     width: calc(100.0% - -15px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTest_concert1 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTest_concert1 > * {
     width: 100%;
   height: 430px;
   }
-  
-  .flowRow_Screen2_elTest_concert1_707178 { 
+
+  .flowRow_Screen2_elTest_concert1_707178 {
   }
-  
+
 @media (min-width: 568px) {
   .Screen2 > .layoutFlow > .flowRow > .elTest_concert1 {
     position: absolute;
@@ -452,14 +452,14 @@
     margin-right: -9px;
     width: calc(100.0% - -15px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTest_concert1 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTest_concert1 > * {
     width: 100%;
   height: 430px;
   }
-  
-  .flowRow_Screen2_elTest_concert1_707178 { 
+
+  .flowRow_Screen2_elTest_concert1_707178 {
   }
-  
+
 }
 @media (min-width: 768px) {
   .Screen2 > .layoutFlow > .flowRow > .elTest_concert1 {
@@ -469,14 +469,14 @@
     margin-right: -9px;
     width: calc(100.0% - -15px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTest_concert1 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTest_concert1 > * {
     width: 100%;
   height: 427px;
   }
-  
-  .flowRow_Screen2_elTest_concert1_707178 { 
+
+  .flowRow_Screen2_elTest_concert1_707178 {
   }
-  
+
 }
 @media (min-width: 1024px) {
   .Screen2 > .layoutFlow > .flowRow > .elTest_concert1 {
@@ -486,14 +486,14 @@
     margin-right: -9px;
     width: calc(100.0% - -15px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTest_concert1 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTest_concert1 > * {
     width: 100%;
   height: 427px;
   }
-  
-  .flowRow_Screen2_elTest_concert1_707178 { 
+
+  .flowRow_Screen2_elTest_concert1_707178 {
   }
-  
+
 }
 
 
@@ -505,11 +505,11 @@
     margin-right: 0px;
     width: calc(100.0% - -32px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elConcert2 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elConcert2 > * {
     width: 100%;
   height: 428px;
   }
-  
+
 @media (min-width: 568px) {
   .Screen2 > .layoutFlow > .flowRow > .elConcert2 {
     position: absolute;
@@ -518,11 +518,11 @@
     margin-right: 0px;
     width: calc(100.0% - -32px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elConcert2 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elConcert2 > * {
     width: 100%;
   height: 428px;
   }
-  
+
 }
 @media (min-width: 768px) {
   .Screen2 > .layoutFlow > .flowRow > .elConcert2 {
@@ -532,11 +532,11 @@
     margin-right: 0px;
     width: calc(100.0% - -32px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elConcert2 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elConcert2 > * {
     width: 100%;
   height: 426px;
   }
-  
+
 }
 @media (min-width: 1024px) {
   .Screen2 > .layoutFlow > .flowRow > .elConcert2 {
@@ -546,11 +546,11 @@
     margin-right: 0px;
     width: calc(100.0% - -32px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elConcert2 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elConcert2 > * {
     width: 100%;
   height: 426px;
   }
-  
+
 }
 
 
@@ -561,12 +561,12 @@
     top: 587px;
     width: 100%;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTextBlock6 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTextBlock6 > * {
   margin-left: auto;
   width: 263px;
   margin-right: calc(10.0% + -146px);
   }
-  
+
 @media (min-width: 568px) {
   .Screen2 > .layoutFlow > .flowRow > .elTextBlock6 {
     overflow: hidden;
@@ -574,12 +574,12 @@
     top: 587px;
     width: 100%;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTextBlock6 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTextBlock6 > * {
   margin-left: auto;
   width: 263px;
   margin-right: calc(10.0% + -146px);
   }
-  
+
 }
 @media (min-width: 768px) {
   .Screen2 > .layoutFlow > .flowRow > .elTextBlock6 {
@@ -588,12 +588,12 @@
     top: 583px;
     width: 100%;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTextBlock6 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTextBlock6 > * {
   margin-left: auto;
   width: 262px;
   margin-right: calc(10.0% + -145px);
   }
-  
+
 }
 @media (min-width: 1024px) {
   .Screen2 > .layoutFlow > .flowRow > .elTextBlock6 {
@@ -602,12 +602,12 @@
     top: 583px;
     width: 100%;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTextBlock6 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTextBlock6 > * {
   margin-left: auto;
   width: 262px;
   margin-right: calc(10.0% + -145px);
   }
-  
+
 }
 
 .Screen2 .elBuyTickets button {
@@ -630,13 +630,13 @@
     top: 660px;
     width: 100%;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elBuyTickets > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elBuyTickets > * {
   margin-left: auto;
   width: 145px;
   margin-right: calc(10.0% + -28px);
   height: 102px;
   }
-  
+
 @media (min-width: 568px) {
   .Screen2 > .layoutFlow > .flowRow > .elBuyTickets {
     line-height: 102px;
@@ -644,13 +644,13 @@
     top: 660px;
     width: 100%;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elBuyTickets > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elBuyTickets > * {
   margin-left: auto;
   width: 145px;
   margin-right: calc(10.0% + -28px);
   height: 102px;
   }
-  
+
 }
 @media (min-width: 768px) {
   .Screen2 > .layoutFlow > .flowRow > .elBuyTickets {
@@ -659,13 +659,13 @@
     top: 656px;
     width: 100%;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elBuyTickets > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elBuyTickets > * {
   margin-left: auto;
   width: 144px;
   margin-right: calc(10.0% + -28px);
   height: 101px;
   }
-  
+
 }
 @media (min-width: 1024px) {
   .Screen2 > .layoutFlow > .flowRow > .elBuyTickets {
@@ -674,13 +674,13 @@
     top: 656px;
     width: 100%;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elBuyTickets > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elBuyTickets > * {
   margin-left: auto;
   width: 144px;
   margin-right: calc(10.0% + -28px);
   height: 101px;
   }
-  
+
 }
 
 .Screen2 .elButtonCopy6 button {
@@ -702,11 +702,11 @@
     width: 95px;
     margin-left: calc(50.0% + 5px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy6 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy6 > * {
   width: 95px;
   height: 62px;
   }
-  
+
 @media (min-width: 568px) {
   .Screen2 > .layoutFlow > .flowRow > .elButtonCopy6 {
     position: absolute;
@@ -714,11 +714,11 @@
     width: 95px;
     margin-left: calc(50.0% + 5px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy6 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy6 > * {
   width: 95px;
   height: 62px;
   }
-  
+
 }
 @media (min-width: 768px) {
   .Screen2 > .layoutFlow > .flowRow > .elButtonCopy6 {
@@ -727,11 +727,11 @@
     width: 94px;
     margin-left: calc(50.0% + 5px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy6 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy6 > * {
   width: 94px;
   height: 62px;
   }
-  
+
 }
 @media (min-width: 1024px) {
   .Screen2 > .layoutFlow > .flowRow > .elButtonCopy6 {
@@ -740,11 +740,11 @@
     width: 94px;
     margin-left: calc(50.0% + 5px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy6 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy6 > * {
   width: 94px;
   height: 62px;
   }
-  
+
 }
 
 .Screen2 .elV3rdImage button {
@@ -766,11 +766,11 @@
     width: 95px;
     margin-left: calc(45.0% + 5px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elV3rdImage > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elV3rdImage > * {
   width: 95px;
   height: 62px;
   }
-  
+
 @media (min-width: 568px) {
   .Screen2 > .layoutFlow > .flowRow > .elV3rdImage {
     position: absolute;
@@ -778,11 +778,11 @@
     width: 95px;
     margin-left: calc(45.0% + 5px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elV3rdImage > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elV3rdImage > * {
   width: 95px;
   height: 62px;
   }
-  
+
 }
 @media (min-width: 768px) {
   .Screen2 > .layoutFlow > .flowRow > .elV3rdImage {
@@ -791,11 +791,11 @@
     width: 94px;
     margin-left: calc(45.0% + 5px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elV3rdImage > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elV3rdImage > * {
   width: 94px;
   height: 62px;
   }
-  
+
 }
 @media (min-width: 1024px) {
   .Screen2 > .layoutFlow > .flowRow > .elV3rdImage {
@@ -804,11 +804,11 @@
     width: 94px;
     margin-left: calc(45.0% + 5px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elV3rdImage > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elV3rdImage > * {
   width: 94px;
   height: 62px;
   }
-  
+
 }
 
 .Screen2 .elV4thButton button {
@@ -830,11 +830,11 @@
     width: 95px;
     margin-left: calc(55.0% + 5px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elV4thButton > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elV4thButton > * {
   width: 95px;
   height: 62px;
   }
-  
+
 @media (min-width: 568px) {
   .Screen2 > .layoutFlow > .flowRow > .elV4thButton {
     position: absolute;
@@ -842,11 +842,11 @@
     width: 95px;
     margin-left: calc(55.0% + 5px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elV4thButton > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elV4thButton > * {
   width: 95px;
   height: 62px;
   }
-  
+
 }
 @media (min-width: 768px) {
   .Screen2 > .layoutFlow > .flowRow > .elV4thButton {
@@ -855,11 +855,11 @@
     width: 94px;
     margin-left: calc(55.0% + 5px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elV4thButton > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elV4thButton > * {
   width: 94px;
   height: 62px;
   }
-  
+
 }
 @media (min-width: 1024px) {
   .Screen2 > .layoutFlow > .flowRow > .elV4thButton {
@@ -868,11 +868,11 @@
     width: 94px;
     margin-left: calc(55.0% + 5px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elV4thButton > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elV4thButton > * {
   width: 94px;
   height: 62px;
   }
-  
+
 }
 
 
@@ -883,12 +883,12 @@
     top: 856px;
     width: 100%;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTextBlock7 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTextBlock7 > * {
   margin-left: auto;
   width: 422px;
   margin-right: -69px;
   }
-  
+
 @media (min-width: 568px) {
   .Screen2 > .layoutFlow > .flowRow > .elTextBlock7 {
     overflow: hidden;
@@ -896,12 +896,12 @@
     top: 856px;
     width: 100%;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTextBlock7 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTextBlock7 > * {
   margin-left: auto;
   width: 422px;
   margin-right: -69px;
   }
-  
+
 }
 @media (min-width: 768px) {
   .Screen2 > .layoutFlow > .flowRow > .elTextBlock7 {
@@ -910,12 +910,12 @@
     top: 850px;
     width: 100%;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTextBlock7 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTextBlock7 > * {
   margin-left: auto;
   width: 420px;
   margin-right: -69px;
   }
-  
+
 }
 @media (min-width: 1024px) {
   .Screen2 > .layoutFlow > .flowRow > .elTextBlock7 {
@@ -924,12 +924,12 @@
     top: 850px;
     width: 100%;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTextBlock7 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTextBlock7 > * {
   margin-left: auto;
   width: 420px;
   margin-right: -69px;
   }
-  
+
 }
 
 
@@ -940,11 +940,11 @@
     width: 2px;
     margin-left: 994px;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elRectangle2 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elRectangle2 > * {
   width: 2px;
   height: 1px;
   }
-  
+
 @media (min-width: 568px) {
   .Screen2 > .layoutFlow > .flowRow > .elRectangle2 {
     position: absolute;
@@ -952,11 +952,11 @@
     width: 2px;
     margin-left: 994px;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elRectangle2 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elRectangle2 > * {
   width: 2px;
   height: 1px;
   }
-  
+
 }
 @media (min-width: 768px) {
   .Screen2 > .layoutFlow > .flowRow > .elRectangle2 {
@@ -965,11 +965,11 @@
     width: 2px;
     margin-left: 988px;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elRectangle2 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elRectangle2 > * {
   width: 2px;
   height: 1px;
   }
-  
+
 }
 @media (min-width: 1024px) {
   .Screen2 > .layoutFlow > .flowRow > .elRectangle2 {
@@ -978,11 +978,11 @@
     width: 2px;
     margin-left: 988px;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elRectangle2 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elRectangle2 > * {
   width: 2px;
   height: 1px;
   }
-  
+
 }
 
 
@@ -993,11 +993,11 @@
     width: 1px;
     margin-left: 697px;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elRectangle > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elRectangle > * {
   width: 1px;
   height: 3px;
   }
-  
+
 @media (min-width: 568px) {
   .Screen2 > .layoutFlow > .flowRow > .elRectangle {
     position: absolute;
@@ -1005,11 +1005,11 @@
     width: 1px;
     margin-left: 697px;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elRectangle > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elRectangle > * {
   width: 1px;
   height: 3px;
   }
-  
+
 }
 @media (min-width: 768px) {
   .Screen2 > .layoutFlow > .flowRow > .elRectangle {
@@ -1018,11 +1018,11 @@
     width: 1px;
     margin-left: 692px;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elRectangle > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elRectangle > * {
   width: 1px;
   height: 3px;
   }
-  
+
 }
 @media (min-width: 1024px) {
   .Screen2 > .layoutFlow > .flowRow > .elRectangle {
@@ -1031,11 +1031,11 @@
     width: 1px;
     margin-left: 692px;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elRectangle > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elRectangle > * {
   width: 1px;
   height: 2px;
   }
-  
+
 }
 
 .Screen2 .elV1stButton button {
@@ -1057,11 +1057,11 @@
     width: 95px;
     margin-left: calc(40.0% + 5px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elV1stButton > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elV1stButton > * {
   width: 95px;
   height: 62px;
   }
-  
+
 @media (min-width: 568px) {
   .Screen2 > .layoutFlow > .flowRow > .elV1stButton {
     position: absolute;
@@ -1069,11 +1069,11 @@
     width: 95px;
     margin-left: calc(40.0% + 5px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elV1stButton > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elV1stButton > * {
   width: 95px;
   height: 62px;
   }
-  
+
 }
 @media (min-width: 768px) {
   .Screen2 > .layoutFlow > .flowRow > .elV1stButton {
@@ -1082,11 +1082,11 @@
     width: 94px;
     margin-left: calc(40.0% + 5px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elV1stButton > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elV1stButton > * {
   width: 94px;
   height: 62px;
   }
-  
+
 }
 @media (min-width: 1024px) {
   .Screen2 > .layoutFlow > .flowRow > .elV1stButton {
@@ -1095,11 +1095,11 @@
     width: 94px;
     margin-left: calc(40.0% + 5px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elV1stButton > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elV1stButton > * {
   width: 94px;
   height: 62px;
   }
-  
+
 }
 
 
@@ -1111,10 +1111,10 @@
     width: 0px;
     margin-left: 190px;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTextBlock5 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTextBlock5 > * {
   width: 0px;
   }
-  
+
 @media (min-width: 568px) {
   .Screen2 > .layoutFlow > .flowRow > .elTextBlock5 {
     overflow: hidden;
@@ -1123,10 +1123,10 @@
     width: 0px;
     margin-left: 190px;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTextBlock5 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTextBlock5 > * {
   width: 0px;
   }
-  
+
 }
 @media (min-width: 768px) {
   .Screen2 > .layoutFlow > .flowRow > .elTextBlock5 {
@@ -1136,10 +1136,10 @@
     width: 0px;
     margin-left: 188px;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTextBlock5 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTextBlock5 > * {
   width: 0px;
   }
-  
+
 }
 @media (min-width: 1024px) {
   .Screen2 > .layoutFlow > .flowRow > .elTextBlock5 {
@@ -1149,10 +1149,10 @@
     width: 0px;
     margin-left: 188px;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTextBlock5 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTextBlock5 > * {
   width: 0px;
   }
-  
+
 }
 
 
@@ -1164,10 +1164,10 @@
     width: 641px;
     margin-left: calc(10.0% + -55px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTextBlock4 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTextBlock4 > * {
   width: 641px;
   }
-  
+
 @media (min-width: 568px) {
   .Screen2 > .layoutFlow > .flowRow > .elTextBlock4 {
     overflow: hidden;
@@ -1176,10 +1176,10 @@
     width: 641px;
     margin-left: calc(10.0% + -55px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTextBlock4 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTextBlock4 > * {
   width: 641px;
   }
-  
+
 }
 @media (min-width: 768px) {
   .Screen2 > .layoutFlow > .flowRow > .elTextBlock4 {
@@ -1189,10 +1189,10 @@
     width: 637px;
     margin-left: calc(10.0% + -54px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTextBlock4 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTextBlock4 > * {
   width: 637px;
   }
-  
+
 }
 @media (min-width: 1024px) {
   .Screen2 > .layoutFlow > .flowRow > .elTextBlock4 {
@@ -1202,10 +1202,10 @@
     width: 637px;
     margin-left: calc(10.0% + -54px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTextBlock4 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTextBlock4 > * {
   width: 637px;
   }
-  
+
 }
 
 
@@ -1217,10 +1217,10 @@
     width: 0px;
     margin-left: 270px;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTextBlock3 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTextBlock3 > * {
   width: 0px;
   }
-  
+
 @media (min-width: 568px) {
   .Screen2 > .layoutFlow > .flowRow > .elTextBlock3 {
     overflow: hidden;
@@ -1229,10 +1229,10 @@
     width: 0px;
     margin-left: 270px;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTextBlock3 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTextBlock3 > * {
   width: 0px;
   }
-  
+
 }
 @media (min-width: 768px) {
   .Screen2 > .layoutFlow > .flowRow > .elTextBlock3 {
@@ -1242,10 +1242,10 @@
     width: 0px;
     margin-left: 268px;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTextBlock3 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTextBlock3 > * {
   width: 0px;
   }
-  
+
 }
 @media (min-width: 1024px) {
   .Screen2 > .layoutFlow > .flowRow > .elTextBlock3 {
@@ -1255,10 +1255,10 @@
     width: 0px;
     margin-left: 268px;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTextBlock3 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTextBlock3 > * {
   width: 0px;
   }
-  
+
 }
 
 
@@ -1270,10 +1270,10 @@
     width: 454px;
     margin-left: calc(10.0% + 86px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTextBlock2 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTextBlock2 > * {
   width: 454px;
   }
-  
+
 @media (min-width: 568px) {
   .Screen2 > .layoutFlow > .flowRow > .elTextBlock2 {
     overflow: hidden;
@@ -1282,10 +1282,10 @@
     width: 454px;
     margin-left: calc(10.0% + 86px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTextBlock2 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTextBlock2 > * {
   width: 454px;
   }
-  
+
 }
 @media (min-width: 768px) {
   .Screen2 > .layoutFlow > .flowRow > .elTextBlock2 {
@@ -1295,10 +1295,10 @@
     width: 452px;
     margin-left: calc(10.0% + 85px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTextBlock2 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTextBlock2 > * {
   width: 452px;
   }
-  
+
 }
 @media (min-width: 1024px) {
   .Screen2 > .layoutFlow > .flowRow > .elTextBlock2 {
@@ -1308,10 +1308,10 @@
     width: 452px;
     margin-left: calc(10.0% + 85px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTextBlock2 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTextBlock2 > * {
   width: 452px;
   }
-  
+
 }
 
 
@@ -1323,10 +1323,10 @@
     width: 688px;
     margin-left: calc(10.0% + -64px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTextBlock > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTextBlock > * {
   width: 688px;
   }
-  
+
 @media (min-width: 568px) {
   .Screen2 > .layoutFlow > .flowRow > .elTextBlock {
     overflow: hidden;
@@ -1335,10 +1335,10 @@
     width: 688px;
     margin-left: calc(10.0% + -64px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTextBlock > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTextBlock > * {
   width: 688px;
   }
-  
+
 }
 @media (min-width: 768px) {
   .Screen2 > .layoutFlow > .flowRow > .elTextBlock {
@@ -1348,10 +1348,10 @@
     width: 684px;
     margin-left: calc(10.0% + -63px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTextBlock > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTextBlock > * {
   width: 684px;
   }
-  
+
 }
 @media (min-width: 1024px) {
   .Screen2 > .layoutFlow > .flowRow > .elTextBlock {
@@ -1361,10 +1361,10 @@
     width: 684px;
     margin-left: calc(10.0% + -63px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elTextBlock > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elTextBlock > * {
   width: 684px;
   }
-  
+
 }
 
 .Screen2 .elButtonCopy button {
@@ -1387,11 +1387,11 @@
     width: 151px;
     margin-left: -19px;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy > * {
   width: 151px;
   height: 137px;
   }
-  
+
 @media (min-width: 568px) {
   .Screen2 > .layoutFlow > .flowRow > .elButtonCopy {
     line-height: 137px;
@@ -1400,11 +1400,11 @@
     width: 151px;
     margin-left: -19px;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy > * {
   width: 151px;
   height: 137px;
   }
-  
+
 }
 @media (min-width: 768px) {
   .Screen2 > .layoutFlow > .flowRow > .elButtonCopy {
@@ -1414,11 +1414,11 @@
     width: 151px;
     margin-left: -19px;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy > * {
   width: 151px;
   height: 136px;
   }
-  
+
 }
 @media (min-width: 1024px) {
   .Screen2 > .layoutFlow > .flowRow > .elButtonCopy {
@@ -1428,11 +1428,11 @@
     width: 151px;
     margin-left: -19px;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy > * {
   width: 151px;
   height: 136px;
   }
-  
+
 }
 
 .Screen2 .elButton2 button {
@@ -1454,11 +1454,11 @@
     width: 233px;
     margin-left: calc(20.0% + 205px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elButton2 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elButton2 > * {
   width: 233px;
   height: 133px;
   }
-  
+
 @media (min-width: 568px) {
   .Screen2 > .layoutFlow > .flowRow > .elButton2 {
     position: absolute;
@@ -1466,11 +1466,11 @@
     width: 233px;
     margin-left: calc(20.0% + 205px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elButton2 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elButton2 > * {
   width: 233px;
   height: 133px;
   }
-  
+
 }
 @media (min-width: 768px) {
   .Screen2 > .layoutFlow > .flowRow > .elButton2 {
@@ -1479,11 +1479,11 @@
     width: 231px;
     margin-left: calc(20.0% + 204px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elButton2 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elButton2 > * {
   width: 231px;
   height: 132px;
   }
-  
+
 }
 @media (min-width: 1024px) {
   .Screen2 > .layoutFlow > .flowRow > .elButton2 {
@@ -1492,11 +1492,11 @@
     width: 231px;
     margin-left: calc(20.0% + 204px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elButton2 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elButton2 > * {
   width: 231px;
   height: 132px;
   }
-  
+
 }
 
 .Screen2 .elButton button {
@@ -1518,11 +1518,11 @@
     width: 233px;
     margin-left: calc(20.0% + 206px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elButton > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elButton > * {
   width: 233px;
   height: 131px;
   }
-  
+
 @media (min-width: 568px) {
   .Screen2 > .layoutFlow > .flowRow > .elButton {
     position: absolute;
@@ -1530,11 +1530,11 @@
     width: 233px;
     margin-left: calc(20.0% + 206px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elButton > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elButton > * {
   width: 233px;
   height: 131px;
   }
-  
+
 }
 @media (min-width: 768px) {
   .Screen2 > .layoutFlow > .flowRow > .elButton {
@@ -1543,11 +1543,11 @@
     width: 232px;
     margin-left: calc(20.0% + 205px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elButton > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elButton > * {
   width: 232px;
   height: 130px;
   }
-  
+
 }
 @media (min-width: 1024px) {
   .Screen2 > .layoutFlow > .flowRow > .elButton {
@@ -1556,11 +1556,11 @@
     width: 232px;
     margin-left: calc(20.0% + 205px);
   }
-  .Screen2 > .layoutFlow > .flowRow > .elButton > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elButton > * {
   width: 232px;
   height: 130px;
   }
-  
+
 }
 
 .Screen2 .elButtonCopy2 button {
@@ -1582,13 +1582,13 @@
     top: 110px;
     width: 100%;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy2 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy2 > * {
   margin-left: auto;
   width: 151px;
   margin-right: -16px;
   height: 137px;
   }
-  
+
 @media (min-width: 568px) {
   .Screen2 > .layoutFlow > .flowRow > .elButtonCopy2 {
     line-height: 137px;
@@ -1596,13 +1596,13 @@
     top: 110px;
     width: 100%;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy2 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy2 > * {
   margin-left: auto;
   width: 151px;
   margin-right: -16px;
   height: 137px;
   }
-  
+
 }
 @media (min-width: 768px) {
   .Screen2 > .layoutFlow > .flowRow > .elButtonCopy2 {
@@ -1611,13 +1611,13 @@
     top: 110px;
     width: 100%;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy2 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy2 > * {
   margin-left: auto;
   width: 151px;
   margin-right: -16px;
   height: 136px;
   }
-  
+
 }
 @media (min-width: 1024px) {
   .Screen2 > .layoutFlow > .flowRow > .elButtonCopy2 {
@@ -1626,13 +1626,13 @@
     top: 110px;
     width: 100%;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy2 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy2 > * {
   margin-left: auto;
   width: 151px;
   margin-right: -16px;
   height: 136px;
   }
-  
+
 }
 
 .Screen2 .elButton4 button {
@@ -1653,26 +1653,26 @@
     margin-top: 846px;
     width: 100%;
   }
-  .Screen2 > .layoutFlow > .elButton4 > * { 
+  .Screen2 > .layoutFlow > .elButton4 > * {
   margin-left: auto;
   width: 176px;
   margin-right: 304px;
   height: 75px;
   }
-  
+
 @media (min-width: 568px) {
   .Screen2 > .layoutFlow > .elButton4 {
     position: relative;
     margin-top: 846px;
     width: 100%;
   }
-  .Screen2 > .layoutFlow > .elButton4 > * { 
+  .Screen2 > .layoutFlow > .elButton4 > * {
   margin-left: auto;
   width: 176px;
   margin-right: 304px;
   height: 75px;
   }
-  
+
 }
 @media (min-width: 768px) {
   .Screen2 > .layoutFlow > .elButton4 {
@@ -1680,13 +1680,13 @@
     margin-top: 842px;
     width: 100%;
   }
-  .Screen2 > .layoutFlow > .elButton4 > * { 
+  .Screen2 > .layoutFlow > .elButton4 > * {
   margin-left: auto;
   width: 175px;
   margin-right: 302px;
   height: 75px;
   }
-  
+
 }
 @media (min-width: 1024px) {
   .Screen2 > .layoutFlow > .elButton4 {
@@ -1694,13 +1694,13 @@
     margin-top: 842px;
     width: 100%;
   }
-  .Screen2 > .layoutFlow > .elButton4 > * { 
+  .Screen2 > .layoutFlow > .elButton4 > * {
   margin-left: auto;
   width: 175px;
   margin-right: 302px;
   height: 74px;
   }
-  
+
 }
 
 .Screen2 .elButtonCopy3 button {
@@ -1722,16 +1722,16 @@
     margin-top: -884px;
     width: 100%;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy3 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy3 > * {
   margin-left: auto;
   width: 98px;
   margin-right: 6px;
   height: 76px;
   }
-  
-  .flowRow_Screen2_elButtonCopy3_948814 { 
+
+  .flowRow_Screen2_elButtonCopy3_948814 {
   }
-  
+
 @media (min-width: 568px) {
   .Screen2 > .layoutFlow > .flowRow > .elButtonCopy3 {
     line-height: 76px;
@@ -1739,16 +1739,16 @@
     margin-top: -884px;
     width: 100%;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy3 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy3 > * {
   margin-left: auto;
   width: 98px;
   margin-right: 6px;
   height: 76px;
   }
-  
-  .flowRow_Screen2_elButtonCopy3_948814 { 
+
+  .flowRow_Screen2_elButtonCopy3_948814 {
   }
-  
+
 }
 @media (min-width: 768px) {
   .Screen2 > .layoutFlow > .flowRow > .elButtonCopy3 {
@@ -1757,16 +1757,16 @@
     margin-top: -879px;
     width: 100%;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy3 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy3 > * {
   margin-left: auto;
   width: 97px;
   margin-right: 6px;
   height: 75px;
   }
-  
-  .flowRow_Screen2_elButtonCopy3_948814 { 
+
+  .flowRow_Screen2_elButtonCopy3_948814 {
   }
-  
+
 }
 @media (min-width: 1024px) {
   .Screen2 > .layoutFlow > .flowRow > .elButtonCopy3 {
@@ -1775,15 +1775,14 @@
     margin-top: -879px;
     width: 100%;
   }
-  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy3 > * { 
+  .Screen2 > .layoutFlow > .flowRow > .elButtonCopy3 > * {
   margin-left: auto;
   width: 97px;
   margin-right: 6px;
   height: 75px;
   }
-  
-  .flowRow_Screen2_elButtonCopy3_948814 { 
-  }
-  
-}
 
+  .flowRow_Screen2_elButtonCopy3_948814 {
+  }
+
+}

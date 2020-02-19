@@ -21,7 +21,6 @@ class SearchBar extends React.Component {
   }
 
   handleSearch(event) {
-    this.search(event)
   	this.setState({ searchTerm: event.target.value });
  }
 
@@ -31,7 +30,10 @@ class SearchBar extends React.Component {
    .get()
    .then(querySnapshot => {
      const data = querySnapshot.docs.map(doc => doc.data());
-     this.setState({matches: querySnapshot.docs}, this.props.callback(querySnapshot.docs))
+     this.setState({matches: data}, this.props.callback(data))
+     console.log(data)
+     console.log(this.state.matches)
+     console.log(data[0]['category'])
    })
  }
 

@@ -15,123 +15,163 @@ export default class DataSheet_localizationSheet extends DataSheetBase {
     
     item = {};
     this.items.push(item);
-    item['key'] = "start_textblock_318160";
+    item['key'] = "screen2_textblock_558831";
+    item['en'] = "hello";
+    
+    item = {};
+    this.items.push(item);
+    item['key'] = "screen2_textblock2_290596";
     item['en'] = " ";
     
     item = {};
     this.items.push(item);
-    item['key'] = "start_textblock_726822";
-    item['en'] = "Rendezvous";
-    
-    item = {};
-    this.items.push(item);
-    item['key'] = "start_textblock2_69962";
+    item['key'] = "screen2_textblock3_890104";
     item['en'] = " ";
     
     item = {};
     this.items.push(item);
-    item['key'] = "start_textblock2_760871";
+    item['key'] = "screen2_textblock4_187320";
     item['en'] = " ";
     
     item = {};
     this.items.push(item);
-    item['key'] = "start_textblock_498469";
+    item['key'] = "screen2_textblock_907085";
     item['en'] = " ";
     
     item = {};
     this.items.push(item);
-    item['key'] = "start_button_16377";
-    item['en'] = "New button";
+    item['key'] = "screen2_textblock_139104";
+    item['en'] = "Test Concert\n";
     
     item = {};
     this.items.push(item);
-    item['key'] = "start_textblock_541738";
+    item['key'] = "screen2_textblock5_664145";
+    item['en'] = "\tWith your favorite artist";
+    
+    item = {};
+    this.items.push(item);
+    item['key'] = "screen2_textblock6_147446";
+    item['en'] = "Each ticket includes admission to our craft beer sampling area, where you’ll receive tasting samples from some of the best craft breweries in the country. Every year features old favorites and new finds, and this year is bigger and better than ever, with 80+ beers available. \n";
+    
+    item = {};
+    this.items.push(item);
+    item['key'] = "start_textblock7_77637";
+    item['en'] = "This is a test\n";
+    
+    item = {};
+    this.items.push(item);
+    item['key'] = "screen2_textblock_25509";
+    item['en'] = "Test Concert\n";
+    
+    item = {};
+    this.items.push(item);
+    item['key'] = "screen2_textblock2_602587";
+    item['en'] = "Khalid ft Quinn XCII";
+    
+    item = {};
+    this.items.push(item);
+    item['key'] = "screen2_textblock3_419439";
     item['en'] = " ";
     
     item = {};
     this.items.push(item);
-    item['key'] = "start_button_952248";
-    item['en'] = "New button";
+    item['key'] = "screen2_textblock4_529195";
+    item['en'] = "This is a short description of your event: Each ticket includes admission to our craft beer sampling area, where you’ll receive tasting samples from some of the best craft breweries in the country. Every year features old favorites and new finds, and this year is bigger and better than ever, with 80+ beers available. \n";
     
     item = {};
     this.items.push(item);
-    item['key'] = "start_button_556642";
-    item['en'] = "New button";
-    
-    item = {};
-    this.items.push(item);
-    item['key'] = "start_textblock_705789";
+    item['key'] = "screen2_textblock5_707567";
     item['en'] = " ";
     
     item = {};
     this.items.push(item);
-    item['key'] = "start_button_710441";
+    item['key'] = "screen2_checkbox_707221";
+    item['en'] = "Favorite\n";
+    
+    item = {};
+    this.items.push(item);
+    item['key'] = "screen2_button_616582";
     item['en'] = "New button";
     
     item = {};
     this.items.push(item);
-    item['key'] = "comp1_recommended_109198";
+    item['key'] = "screen2_buttoncopy_951116";
     item['en'] = "New button";
     
     item = {};
     this.items.push(item);
-    item['key'] = "start_button_913060";
+    item['key'] = "screen2_buttoncopy2_1006986";
     item['en'] = "New button";
     
     item = {};
     this.items.push(item);
-    item['key'] = "start_textblock_703058";
-    item['en'] = "Recommended";
-    
-    item = {};
-    this.items.push(item);
-    item['key'] = "start_textblock2_498949";
-    item['en'] = "Explore";
-    
-    item = {};
-    this.items.push(item);
-    item['key'] = "start_button_289822";
+    item['key'] = "screen2_button_477171";
     item['en'] = "New button";
     
     item = {};
     this.items.push(item);
-    item['key'] = "start_textblock3_689332";
-    item['en'] = " ";
-    
-    item = {};
-    this.items.push(item);
-    item['key'] = "start_textblock_385998";
-    item['en'] = "My Events";
-    
-    item = {};
-    this.items.push(item);
-    item['key'] = "start_textblock_978444";
-    item['en'] = "trishani";
-    
-    item = {};
-    this.items.push(item);
-    item['key'] = "start_button_310432";
+    item['key'] = "screen2_button2_299164";
     item['en'] = "New button";
     
     item = {};
     this.items.push(item);
-    item['key'] = "start_textblock_231961";
-    item['en'] = "My questionnaire";
-    
-    item = {};
-    this.items.push(item);
-    item['key'] = "start_textblock2_475093";
-    item['en'] = "Ryan\n30-35\nMale\nKansas City, MO";
-    
-    item = {};
-    this.items.push(item);
-    item['key'] = "start_textblock3_430445";
-    item['en'] = "Five facts about me:\n\n- Charming\n\n- Good listener\n\n- Adventerous\n\n- I like long walk on the beach\n\n- From Canada";
-    
-    item = {};
-    this.items.push(item);
-    item['key'] = "start_button_101533";
+    item['key'] = "screen2_button2_475595";
     item['en'] = "New button";
+    
+    item = {};
+    this.items.push(item);
+    item['key'] = "screen2_button_789902";
+    item['en'] = "New button";
+    
+    item = {};
+    this.items.push(item);
+    item['key'] = "screen2_button_439264";
+    item['en'] = "New button";
+    
+    item = {};
+    this.items.push(item);
+    item['key'] = "screen2_button2_67980";
+    item['en'] = "New button";
+    
+    item = {};
+    this.items.push(item);
+    item['key'] = "start_button_99130";
+    item['en'] = "New button";
+    
+    item = {};
+    this.items.push(item);
+    item['key'] = "screen2_button3_549643";
+    item['en'] = "New button";
+    
+    item = {};
+    this.items.push(item);
+    item['key'] = "screen2_button3_789000";
+    item['en'] = "New button";
+    
+    item = {};
+    this.items.push(item);
+    item['key'] = "screen2_textblock6_479716";
+    item['en'] = "2.17.20\n\n\n$12-$20";
+    
+    item = {};
+    this.items.push(item);
+    item['key'] = "screen2_button3_1028705";
+    item['en'] = "Buy Tickets";
+    
+    item = {};
+    this.items.push(item);
+    item['key'] = "screen2_button4_1038569";
+    item['en'] = "New button";
+    
+    item = {};
+    this.items.push(item);
+    item['key'] = "screen2_textblock7_244897";
+    item['en'] = "San Francisco";
+    
+    item = {};
+    this.items.push(item);
+    item['key'] = "screen2_textblockcopy_946991";
+    item['en'] = "This is a short description of your event: Each ticket includes admission to our craft beer sampling area, where you’ll receive tasting samples from some of the best craft breweries in the country. Every year features old favorites and new finds, and this year is bigger and better than ever, with 80+ beers available. \n";
   }
 
   getStringsByLanguage = () => {

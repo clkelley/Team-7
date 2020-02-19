@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './Faraz.css';
 
 // UI framework component imports
 import Button from 'muicss/lib/react/button';
@@ -12,7 +12,7 @@ export default class StartScreen extends Component {
 
   constructor(props) {
     super(props);
-    
+
     this.state = {
     };
   }
@@ -32,10 +32,10 @@ export default class StartScreen extends Component {
   onClick_elButton = (ev) => {
     // Go to screen 'Screen 2'
     this.props.appActions.goToScreen('screen2', { transitionId: 'fadeIn' });
-  
+
   }
-  
-  
+
+
   render() {
     let layoutFlowStyle = {};
     let baseStyle = {};
@@ -46,7 +46,7 @@ export default class StartScreen extends Component {
       layoutFlowStyle.height = '100vh';
       layoutFlowStyle.overflow = 'hidden';
     }
-    
+
     const style_elButton = {
       display: 'block',
       color: 'white',
@@ -54,11 +54,11 @@ export default class StartScreen extends Component {
       cursor: 'pointer',
       pointerEvents: 'auto',
      };
-    
+
     const style_elRectangle = {
       background: 'rgba(0, 0, 0, 1.000)',
      };
-    
+
     const style_elRectangle2 = {
       background: 'rgba(0, 0, 0, 1.000)',
      };
@@ -66,7 +66,7 @@ export default class StartScreen extends Component {
       color: 'rgba(0, 0, 0, 0.8500)',
       textAlign: 'left',
      };
-    
+
     return (
       <Container fluid={true} className="AppScreen StartScreen" style={baseStyle}>
         <div className="layoutFlow" style={layoutFlowStyle}>
@@ -76,7 +76,7 @@ export default class StartScreen extends Component {
             </Button>
           </div>
         </div>
-        
+
         <div className="screenFgContainer">
           <div className="foreground">
             <div className="elRectangle" style={style_elRectangle} />
@@ -89,5 +89,5 @@ export default class StartScreen extends Component {
       </Container>
     )
   }
-  
+
 }
