@@ -29,22 +29,22 @@ function Explore() {
 
 function ExploreContent() {
   return <div className="exploreContent">
-    	<h2>Happening on Saturday, February 15th</h2>
+    	<h2>Happening on Saturday, February 22nd</h2>
           <Grid container spacing={3} >
-            <EventCard eventId={1}/>
-            <EventCard eventId={2}/>
-            <EventCard eventId={3}/>
+            <EventCard eventId={9}/>
+            <EventCard eventId={8}/>
+            <EventCard eventId={6}/>
           </Grid>
           <h2>Food and Drinks</h2>
           <Grid container spacing={3}>
             <EventCard eventId={1}/>
+            <EventCard eventId={4}/>
             <EventCard eventId={2}/>
-            <EventCard eventId={3}/>
           </Grid>
           <h2>Free Events</h2>
           <Grid container spacing={3}>
-            <EventCard eventId={1}/>
-            <EventCard eventId={2}/>
+            <EventCard eventId={7}/>
+            <EventCard eventId={5}/>
             <EventCard eventId={3}/>
           </Grid>
   </div>;
@@ -161,9 +161,15 @@ class NavigationFramework extends React.Component {
             <Grid className="bigGrid">
             <Home />
             <Grid container spacing={3}>
-                <EventCard eventId={1}/>
-              	<EventCard eventId={2}/>
-              	<EventCard eventId={3}/>
+            	<EventCard eventId={1}/>
+              <EventCard eventId={6}/>
+              <EventCard eventId={3}/>
+              <EventCard eventId={4}/>
+              <EventCard eventId={5}/>
+              <EventCard eventId={2}/>
+              <EventCard eventId={7}/>
+              <EventCard eventId={8}/>
+              <EventCard eventId={9}/>
             </Grid>
             </Grid>
           </Route>
@@ -222,9 +228,15 @@ class NavigationFramework extends React.Component {
             <Grid className="bigGrid">
             <Home />
             <Grid container spacing={3}>
-              <EventCard eventId={1} />
+              <EventCard eventId={1}/>
+              <EventCard eventId={9}/>
+              <EventCard eventId={7}/>
+              <EventCard eventId={8}/>
               <EventCard eventId={2}/>
+              <EventCard eventId={6}/>
               <EventCard eventId={3}/>
+              <EventCard eventId={4}/>
+              <EventCard eventId={5}/>
             </Grid>
             </Grid>
           </Route>
