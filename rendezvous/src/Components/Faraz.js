@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import LocalizedStrings from 'react-localization';
-import './App.css';
+import './Faraz.css';
 import StartScreen from './StartScreen.js';
 import Screen2 from './Screen2.js';
 import DataSheet_localizationSheet from './DataSheet_localizationSheet.js';
 
 
-export default class App extends Component {
+export default class Faraz extends Component {
   constructor(props) {
     super(props);
 
@@ -189,7 +189,7 @@ export default class App extends Component {
     }
 
     return (
-      <div className="App">
+      <div className="Faraz">
         {prevScreenEl}
         {screenEl}
       </div>
