@@ -10,6 +10,7 @@ import {
 import { AppBar, Card, CardActionArea, CardActions, CardContent, CardMedia,
   Drawer, Tabs, Tab, Toolbar, Button, Typography, IconButton, Grid } from '@material-ui/core';
 import { MenuIcon, SearchIcon } from '@material-ui/icons/Menu';
+import mainLogo from './media/rendezvous_logo_white.png';
 
 
 import SearchBar from './Components/SearchBar'
@@ -24,9 +25,25 @@ function Home() {
 }
 
 function Explore() {
-  return <div>
-  			<ExplorePage/>
+  return <div className="explorePage">
+  			<ExplorePage />
   		</div>;
+}
+
+function ExploreContent() {
+	return <div className="exploreContent">
+		<h2>Happening on Saturday, February 15th</h2>
+          <Grid container spacing={3} >
+            <EventCard />
+            <EventCard />
+            <EventCard />
+          </Grid>
+          <h2>Food and Drinks</h2>
+          <Grid container spacing={3}>
+            <EventCard />
+            <EventCard />
+          </Grid>
+	</div>;
 }
 
 function MyEvents() {
@@ -48,9 +65,8 @@ function App() {
           {/*<IconButton edge="start" color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton>*/}
-          <h1>
-            Rendezvous
-          </h1>
+          <img src={mainLogo} className="mainLogo">
+          </img>
           <Route
             path="/"
             render={({location}) => (
@@ -59,7 +75,7 @@ function App() {
                   <Tab label="Recommended" value="/" component={Link} to='/'/>
                   <Tab label="Explore" value="/explore" component={Link} to='/explore' />
                   <Tab label="My Events" value="/myevents" component={Link} to='/myevents' />
-                  <Tab label="Users" value="/settings" component={Link} to='/settings' />
+                  <Tab label="Settings" value="/settings" component={Link} to='/settings' />
                 </Tabs>
               </Fragment>
             )}
@@ -76,16 +92,7 @@ function App() {
       	<Route path="/explore">
       		<Grid className="bigGrid" spacing={3}>
           <Explore />
-          <h2>Happening on Saturday, February 15th</h2>
-          <Grid container spacing={3}>
-            <EventCard />
-            <EventCard />
-          </Grid>
-          <h2>Food and Drinks</h2>
-          <Grid container spacing={3}>
-            <EventCard />
-            <EventCard />
-          </Grid>
+          <ExploreContent />
           </Grid>
         </Route>
         <Route path="/myevents">

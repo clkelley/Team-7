@@ -6,6 +6,7 @@ import { MenuIcon, SearchIcon } from '@material-ui/icons/Menu';
 import {Chip} from '@material-ui/core';
 import Firebase from 'firebase'
 import { db } from '../firebase';
+import logo from '../media/icon_transparent.png';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -35,12 +36,13 @@ class SearchBar extends React.Component {
  }
 
   render() {
+  
     return (
-    	<Grid container spacing={1}>
-      		<Grid item xs={5}><input className="inputBar" onChange={this.handleInput} placeholder="Explore Events"></input></Grid>
-      		<Grid item ><button onclick={this.searchEvents} className="searchButton">Search</button></Grid>
+    	<Grid container spacing={2} className="searchGrid">
+    		<Grid item xs={1}><img className="logo" src={logo}></img></Grid>
+      		<Grid item xs={6}><input className="inputBar" onChange={this.handleInput} placeholder="Explore Events"></input></Grid>
+      		<Grid item xs={3}><button onclick={this.searchEvents} className="searchButton">Search</button></Grid>
       		<Grid item xs={12}><FilterCategory className="filterCategory" /></Grid>
-
     	</Grid>
     );
   }
