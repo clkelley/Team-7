@@ -13,7 +13,7 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-} 
+}
 
 .App-header {
   background-color: #6ea0ff;
@@ -96,7 +96,7 @@ p {
 
 .mainLogo {
 	width: 220px;
-	height: 50px;
+	height: auto;
 }
 
 .exploreContent {
