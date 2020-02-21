@@ -22,17 +22,17 @@ class FilterCategory extends React.Component {
   	const handleDelete = () => {
     console.info('You clicked the delete icon.');
   	};
-  	
+
     return (
-      <Grid >
-      <Grid container spacing={2} className="filterCategories" xs={12} >
+      <Grid container spacing={1} direction="column">
+      <Grid container item xs={12} spacing={2} className="filterCategories">
         <Chip variant="outlined" label="Dates" className="dateChip"></Chip>
         <Chip variant="outlined" label="Location" className="dateChip"></Chip>
         <Chip variant="outlined" label="Time" className="dateChip"></Chip>
         <Chip variant="outlined" label="Category" className="dateChip"></Chip>
         <Chip variant="outlined" label="Cost" className="dateChip"></Chip>
       </Grid>
-      <Grid container spacing={2} className="filterCategories2" xs={12} >
+      <Grid container item xs={12} spacing={2} className="filterCategories2">
         <Chip variant="outlined" label="2/22" className="filter" onDelete={handleDelete}></Chip>
         <Chip variant="outlined" label="2/23" className="filter" onDelete={handleDelete}></Chip>
         <Chip variant="outlined" label="Palo Alto, Ca" className="filter" onDelete={handleDelete}></Chip>

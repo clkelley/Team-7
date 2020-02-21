@@ -1,7 +1,7 @@
 import React from 'react';
 import './SearchBar.css';
 import FilterCategory from './FilterCategory';
-import Grid from '@material-ui/core/Grid';
+import { Grid, Button } from '@material-ui/core';
 import { MenuIcon, SearchIcon } from '@material-ui/icons/Menu';
 import {Chip} from '@material-ui/core';
 import Firebase from 'firebase'
@@ -38,14 +38,17 @@ class SearchBar extends React.Component {
  }
 
   render() {
-
+      //className="filterCategory"
     return (
-    	<Grid container spacing={2} className="searchGrid">
-    		<Grid item xs={1}><img className="logo" src={logo}></img></Grid>
-      		<Grid item xs={6}><input className="inputBar" onChange={this.handleInput} placeholder="Explore Events"></input></Grid>
-      		<Grid item xs={3}><button onClick={this.searchEvents} className="searchButton">Search</button></Grid>
-      		<Grid item xs={12}><FilterCategory className="filterCategory" /></Grid>
+    	<Grid container spacing={1} direction="column">
+          <Grid container item xs={12} spacing={2} className="searchGrid" direction="row">
+    		    <Grid item xs={1}><img className="logo" src={logo}></img></Grid>
+      		  <Grid item xs={8}><input className="inputBar" onChange={this.handleInput} placeholder="Explore Events"></input></Grid>
+      		  <Grid item xs={3}><Button onClick={this.searchEvents} color="primary" variant="contained" className="searchButton">Search</Button></Grid>
+          </Grid>
+          <Grid item xs={12}><FilterCategory  /></Grid>
     	</Grid>
+
     );
   }
 }

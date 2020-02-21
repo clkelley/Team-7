@@ -1,6 +1,6 @@
 .inputBar {
 	content: text;
-	width: 40%;
+	width: 100%;
 	min-width: 50px;
 	height: 30px;
 	font-size: 18px;
@@ -9,7 +9,6 @@
 	border-style: solid;
 	border-radius: 5px;
 	padding-left: 10px;
-	position: absolute;
 	left: 50px;
 }
 
@@ -25,26 +24,22 @@
 	color: #adb7ca;
 	border:2px;
 	border-style: solid;
-	position: relative;
-	left: -200px;
-} 
+
+}
 
 .searchButton:hover {
 	cursor: pointer;
 }
 
 .filterCategory {
-	position: absolute;
-	left: 20px;
 }
 
 .logo {
 	width: 40px;
 	height: 35px;
-	position: absolute;
-	left: 0px;
 }
 
 .searchGrid {
-	position: absolute;
+	align-items: "center";
+	justify: "flex-start";
 }

@@ -66,6 +66,42 @@ function Users() {
           <h1>Users</h1>
          </div>;
 }
+function checkPathnameValue(location) {
+    const { pathname } = location;
+    switch (pathname) {
+      case '/':
+      case '/explore':
+      case '/myevents':
+      case '/settings':
+      break;
+    default:
+    return false;
+    }
+    return pathname;
+}
+
+
+
+function DesktopAppBar(){
+  return <AppBar>
+    <Toolbar className="toolbar">
+      <img src={mainLogo} className="mainLogo" />
+      <Route
+        path="/"
+        render={({location}) => (
+          <Fragment>
+            <Tabs value={checkPathnameValue(location.pathname)} className="tabs" indicatorColor="primary">
+              <Tab label="Recommended" value="/" component={Link} to='/'/>
+              <Tab label="Explore" value="/explore" component={Link} to='/explore' />
+              <Tab label="My Events" value="/myevents" component={Link} to='/myevents' />
+              <Tab label="Settings" value="/settings" component={Link} to='/settings' />
+            </Tabs>
+          </Fragment>
+        )}
+      />
+    </Toolbar>
+  </AppBar>;
+}
 
 class NavigationFramework extends React.Component {
   constructor(props) {
@@ -96,119 +132,50 @@ class NavigationFramework extends React.Component {
 
   }
 
-  checkPathnameValue(location) {
-      const { pathname } = location;
-      switch (pathname) {
-        case '/':
-        case '/explore':
-        case '/myevents':
-        case '/settings':
-        break;
-      default:
-      return false;
-      }
-      return pathname;
+  MobileAppBar(){
+    return <div>
+    <AppBar>
+      <Toolbar className="toolbar">
+        <IconButton onClick={this.toggleDrawer('left', true)}>
+          <Menu style={{ color:'#ffffff' }}/>
+        </IconButton>
+        <img src={mainLogo} className="mainLogo" />
+      </Toolbar>
+    </AppBar>
+    <Drawer open={this.state.left} onClose={this.toggleDrawer('left', false)}>
+    <List>
+      <ListItem button component={Link} to='/'>
+        <ListItemText primary="Recommended"/>
+      </ListItem>
+      <ListItem button component={Link} to='/explore'>
+        <ListItemText primary="Explore"/>
+      </ListItem>
+      <ListItem button component={Link} to='/myevents'>
+        <ListItemText primary="My Events"/>
+      </ListItem>
+      <ListItem button component={Link} to='/settings'>
+        <ListItemText primary="Settings"/>
+      </ListItem>
+    </List>
+    </Drawer>
+    </div>
   }
 
+
   render() {
+    let topbar;
 
-
-
-    if(this.state.width < this.state.height && this.state.width < 800){
-      return (
-        <Router>
-        <div className="App">
-        <AppBar>
-          <Toolbar className="toolbar">
-            <IconButton onClick={this.toggleDrawer('left', true)}>
-              <Menu style={{ color:'#ffffff' }}/>
-            </IconButton>
-            <img src={mainLogo} className="mainLogo" />
-          </Toolbar>
-        </AppBar>
-        <Drawer open={this.state.left} onClose={this.toggleDrawer('left', false)}>
-        <List>
-          <ListItem button component={Link} to='/'>
-            <ListItemText primary="Recommended"/>
-          </ListItem>
-          <ListItem button component={Link} to='/explore'>
-            <ListItemText primary="Explore"/>
-          </ListItem>
-          <ListItem button component={Link} to='/myevents'>
-            <ListItemText primary="My Events"/>
-          </ListItem>
-          <ListItem button component={Link} to='/settings'>
-            <ListItemText primary="Settings"/>
-          </ListItem>
-        </List>
-        </Drawer>
-        <Switch>
-        	<Route path="/explore">
-        		<Grid className="bigGrid">
-            <Explore />
-            <ExploreContent />
-            </Grid>
-          </Route>
-          <Route path="/events/:eventId" component={EventPage}>
-          </Route>
-          <Route path="/myevents">
-            <Grid className="bigGrid"><MyEvents /></Grid>
-          </Route>
-          <Route path="/settings">
-            <Grid className="bigGrid"><Users /></Grid>
-          </Route>
-          <Route path="/">
-            <Grid className="bigGrid">
-            <Home />
-            <Grid container spacing={3}>
-            	<EventCard eventId={1}/>
-              <EventCard eventId={6}/>
-              <EventCard eventId={3}/>
-              <EventCard eventId={4}/>
-              <EventCard eventId={5}/>
-              <EventCard eventId={2}/>
-              <EventCard eventId={7}/>
-              <EventCard eventId={8}/>
-              <EventCard eventId={9}/>
-            </Grid>
-            </Grid>
-          </Route>
-        </Switch>
-        </div>
-        </Router>
-      );
+    if(this.state.width < this.state.height && this.state.width < 1000){
+      topbar = this.MobileAppBar();
+    } else {
+      topbar = <DesktopAppBar />
     }
 
     return (
       <Router>
       <div className="App">
-        <AppBar>
-          <Toolbar className="toolbar">
-            {/*<IconButton edge="start" color="inherit" aria-label="menu">
-              <MenuIcon />
-            </IconButton>*/}
-            <img src={mainLogo} className="mainLogo" />
-            <Route
-              path="/"
-              render={({location}) => (
-                <Fragment>
-                  <Tabs value={this.checkPathnameValue(location.pathname)} className="tabs" indicatorColor="primary">
-                    <Tab label="Recommended" value="/" component={Link} to='/'/>
-                    <Tab label="Explore" value="/explore" component={Link} to='/explore' />
-                    <Tab label="My Events" value="/myevents" component={Link} to='/myevents' />
-                    <Tab label="Settings" value="/settings" component={Link} to='/settings' />
-                  </Tabs>
-                </Fragment>
-              )}
-            />
-
-            {/*<Button color="inherit">Login</Button>*/}
-          </Toolbar>
-        </AppBar>
+        {topbar}
         <div>
-        <Typography variant="h3">
-            Rendezvous
-        </Typography>
         <Switch>
         	<Route path="/explore">
         		<Grid className="bigGrid">

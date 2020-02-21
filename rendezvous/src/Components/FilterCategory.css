@@ -1,9 +1,9 @@
 .filterCategories2 {
 	position: relative;
 	top: 10px;
-	
+
 }
 
 .dateChip:hover {
-	curser: pointer;
+	cursor: pointer;
 }
