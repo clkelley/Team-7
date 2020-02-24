@@ -17,6 +17,7 @@ import ExplorePage from './ExplorePage'
 import EventCard from './EventCard'
 import EventPage from './EventPage'
 import LoginPage from './LoginPage'
+import DisplayEvents from './DisplayEvents'
 
 function Home() {
   return <h1>Recommended for You</h1>;
@@ -181,17 +182,7 @@ class NavigationFramework extends React.Component {
         	<Route path="/explore">
         		<Grid className="bigGrid">
             <Explore />
-            <Grid container spacing={3} className="testing">
-              <EventCard eventId={1}/>
-              <EventCard eventId={9}/>
-              <EventCard eventId={7}/>
-              <EventCard eventId={8}/>
-              <EventCard eventId={2}/>
-              <EventCard eventId={6}/>
-              <EventCard eventId={3}/>
-              <EventCard eventId={4}/>
-              <EventCard eventId={5}/>
-            </Grid>
+            <DisplayEvents eventIds={[1,2,3]} />
             </Grid>
           </Route>
           <Route path="/events/:eventId" component={EventPage}>
