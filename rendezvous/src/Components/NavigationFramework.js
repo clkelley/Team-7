@@ -16,6 +16,7 @@ import SearchBar from './SearchBar'
 import ExplorePage from './ExplorePage'
 import EventCard from './EventCard'
 import EventPage from './EventPage'
+import LoginPage from './LoginPage'
 
 function Home() {
   return <h1>Recommended for You</h1>;
@@ -199,7 +200,7 @@ class NavigationFramework extends React.Component {
             <Grid className="bigGrid"><MyEvents /></Grid>
           </Route>
           <Route path="/settings">
-            <Grid className="bigGrid"><Users /></Grid>
+            <Grid className="bigGrid"><LoginPage /></Grid>
           </Route>
           <Route path="/">
             <Grid className="bigGrid">
