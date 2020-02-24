@@ -16,7 +16,7 @@ import SearchBar from './SearchBar'
 import ExplorePage from './ExplorePage'
 import EventCard from './EventCard'
 import EventPage from './EventPage'
-import Profile from './Profile'
+import Profile from './ProfilePage'
 
 function Home() {
   return <h1>Recommended for You</h1>;

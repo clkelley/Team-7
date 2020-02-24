@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
+import LocalizedStrings from 'react-localization';
 import './Profile.css';
 import img_elRyan from './images/StartScreen_elRyan_639361.jpg';
 import img_elLine from './images/StartScreen_elLine.png';
 import btn_icon_82944 from './images/btn_icon_82944.png';
 import img_elLogo from './images/StartScreen_elLogo_711498.jpg';
+import UploadPhotoPop2Screen from './UploadPhotoPop2Screen.js';
+import UploadPhotoPopScreen from './UploadPhotoPopScreen.js';
+import DataSheet_localizationSheet from './DataSheet_localizationSheet.js';
 
 // UI framework component imports
 import Container from 'muicss/lib/react/container';
 
-export default class StartScreen extends Component {
+export default class ProfileStartScreen extends Component {
 
   // Properties used by this component:
   // appActions, deviceInfo
