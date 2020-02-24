@@ -16,6 +16,7 @@ import SearchBar from './SearchBar'
 import ExplorePage from './ExplorePage'
 import EventCard from './EventCard'
 import EventPage from './EventPage'
+import Profile from './Profile'
 
 function Home() {
   return <h1>Recommended for You</h1>;
@@ -94,6 +95,7 @@ function DesktopAppBar(){
               <Tab label="Recommended" value="/" component={Link} to='/'/>
               <Tab label="Explore" value="/explore" component={Link} to='/explore' />
               <Tab label="My Events" value="/myevents" component={Link} to='/myevents' />
+              <Tab label="My Profile" value="/profile" component={Link} to='/profile' />
               <Tab label="Settings" value="/settings" component={Link} to='/settings' />
             </Tabs>
           </Fragment>
@@ -153,6 +155,9 @@ class NavigationFramework extends React.Component {
       <ListItem button component={Link} to='/myevents'>
         <ListItemText primary="My Events"/>
       </ListItem>
+      <ListItem button component={Link} to='/profile'>
+        <ListItemText primary="Profile"/>
+      </ListItem>
       <ListItem button component={Link} to='/settings'>
         <ListItemText primary="Settings"/>
       </ListItem>
@@ -198,6 +203,7 @@ class NavigationFramework extends React.Component {
           <Route path="/myevents">
             <Grid className="bigGrid"><MyEvents /></Grid>
           </Route>
+          <Route path="/profile" component={Profile}>
           <Route path="/settings">
             <Grid className="bigGrid"><Users /></Grid>
           </Route>

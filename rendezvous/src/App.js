@@ -19,6 +19,7 @@ import ExplorePage from './Components/ExplorePage'
 import EventCard from './Components/EventCard'
 import Faraz from './Components/Faraz'
 import NavigationFramework from './Components/NavigationFramework'
+import Profile from './Components/Profile'
 
 /*https://stackoverflow.com/questions/41638688/material-uis-tabs-integration-with-react-router-4*/
 /*https://reacttraining.com/react-router/web/guides/quick-start*/
@@ -54,7 +55,8 @@ function MyEvents() {
 function Users() {
   return <div>
           <Faraz/>
-         </div>;
+	</div>;
+
 }
 
 function App() {
