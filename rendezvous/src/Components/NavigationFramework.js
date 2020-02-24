@@ -73,6 +73,7 @@ function checkPathnameValue(location) {
       case '/':
       case '/explore':
       case '/myevents':
+      case '/profile':
       case '/settings':
       break;
     default:
@@ -95,7 +96,7 @@ function DesktopAppBar(){
               <Tab label="Recommended" value="/" component={Link} to='/'/>
               <Tab label="Explore" value="/explore" component={Link} to='/explore' />
               <Tab label="My Events" value="/myevents" component={Link} to='/myevents' />
-              <Tab label="My Profile" value="/profile" component={Link} to='/profile' />
+              <Tab label="Profile" value="/profile" component={Link} to='/profile' />
               <Tab label="Settings" value="/settings" component={Link} to='/settings' />
             </Tabs>
           </Fragment>
@@ -204,6 +205,7 @@ class NavigationFramework extends React.Component {
             <Grid className="bigGrid"><MyEvents /></Grid>
           </Route>
           <Route path="/profile" component={Profile}>
+          </Route>
           <Route path="/settings">
             <Grid className="bigGrid"><Users /></Grid>
           </Route>
