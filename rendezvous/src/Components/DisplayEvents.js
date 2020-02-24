@@ -17,15 +17,15 @@ class DisplayEvents extends React.Component {
   	let eventArray = this.props.eventIds;
 	let displayCards = eventArray.map(function(eventId) {
   		return (
-  			<EventCard eventId={eventId} />
+  			<EventCard eventId={eventId} key={eventId}/>
   		);
   	});
 
 
   	return(
-  		<div>
+  		<Grid container spacing={3}>
   		{displayCards}
-  		</div>
+  		</Grid>
   	);
   }
 }

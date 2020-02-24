@@ -24,7 +24,7 @@ class SearchBar extends React.Component {
   	this.setState({ searchTerm: event.target.value });
  }
 
- search(event) {
+  search(event) {
    db.collection("event_search")
    .where("category", "==", "u" )
    .get()
