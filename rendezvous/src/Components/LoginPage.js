@@ -23,7 +23,7 @@ handleSubmit(event) {
 		console.log(this.state.email)
 		Firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
 		.then(() => {
-				return window.location.href='/explore';
+				return window.location.href='/myevents';
 		})
 		.catch(function(error) {
 			var errorCode = error.code;

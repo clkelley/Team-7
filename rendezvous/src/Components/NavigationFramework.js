@@ -19,10 +19,9 @@ import EventPage from './EventPage'
 import Profile from './ProfilePage'
 import LoginPage from './LoginPage'
 import DisplayEvents from './DisplayEvents'
+import MyEvents from './MyEvents'
+import Recommended from './Recommended'
 
-function Home() {
-  return <h1>Recommended for You</h1>;
-}
 
 function Explore() {
   return <div className="explorePage">
@@ -53,15 +52,10 @@ function ExploreContent() {
   </div>;
 }
 
-function MyEvents() {
-  return <div>
-          <h1>Your Upcoming Events</h1>
-          <Grid container spacing={3} >
-            <EventCard eventId={1}/>
-            <EventCard eventId={2}/>
-            <EventCard eventId={3}/>
-          </Grid>
-          </div>
+function myEvents() {
+  return <div className="myEventsPage">
+        <MyEvents />
+      </div>;
 }
 
 function Users() {
@@ -203,8 +197,7 @@ class NavigationFramework extends React.Component {
           </Route>
           <Route path="/">
             <Grid className="bigGrid">
-            <Home />
-            <ExploreContent />
+            <Recommended />
             </Grid>
           </Route>
         </Switch>

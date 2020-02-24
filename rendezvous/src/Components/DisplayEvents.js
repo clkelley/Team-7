@@ -9,10 +9,10 @@ class DisplayEvents extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      
+
     };
   }
-  
+
   render() {
   	let eventArray = this.props.eventIds;
 	let displayCards = eventArray.map(function(eventId) {
@@ -20,8 +20,8 @@ class DisplayEvents extends React.Component {
   			<EventCard eventId={eventId} />
   		);
   	});
-  	
-  
+
+
   	return(
   		<div>
   		{displayCards}
