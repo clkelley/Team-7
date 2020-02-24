@@ -10,19 +10,33 @@ class FilterCategory extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: false
+      dates: false,
+      location: false,
+      time: false,
+      category: false,
+      cost: false
     };
   }
 
   render() {
-  	
+  	const handleDelete = () => {
+    console.info('You clicked the delete icon.');
+  	};
+
     return (
-      <Grid container spacing={2} className="filterCategories">
-        <Chip variant="outlined" label="Dates"></Chip>
-        <Chip variant="outlined" label="Location"></Chip>
-        <Chip variant="outlined" label="Time"></Chip>
-        <Chip variant="outlined" label="Category"></Chip>
-        <Chip variant="outlined" label="Cost"></Chip>
+      <Grid container spacing={1} direction="column">
+      <Grid container item xs={12} spacing={2} className="filterCategories">
+        <Chip variant="outlined" label="Dates" className="dateChip"></Chip>
+        <Chip variant="outlined" label="Location" className="dateChip"></Chip>
+        <Chip variant="outlined" label="Time" className="dateChip"></Chip>
+        <Chip variant="outlined" label="Category" className="dateChip"></Chip>
+        <Chip variant="outlined" label="Cost" className="dateChip"></Chip>
+      </Grid>
+      <Grid container item xs={12} spacing={2} className="filterCategories2">
+        <Chip variant="outlined" label="2/22" className="filter" onDelete={handleDelete}></Chip>
+        <Chip variant="outlined" label="2/23" className="filter" onDelete={handleDelete}></Chip>
+        <Chip variant="outlined" label="Palo Alto, Ca" className="filter" onDelete={handleDelete}></Chip>
+      </Grid>
       </Grid>
     );
   }

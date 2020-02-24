@@ -10,181 +10,60 @@ import {
 import { AppBar, Card, CardActionArea, CardActions, CardContent, CardMedia,
   Drawer, Tabs, Tab, Toolbar, Button, Typography, IconButton, Grid } from '@material-ui/core';
 import { MenuIcon, SearchIcon } from '@material-ui/icons/Menu';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
+
 
 
 import SearchBar from './Components/SearchBar'
-import ProfilePage from './Components/ProfilePage'
+import ExplorePage from './Components/ExplorePage'
 import EventCard from './Components/EventCard'
+import Faraz from './Components/Faraz'
+import NavigationFramework from './Components/NavigationFramework'
+import LoginPage from './Components/LoginPage'
 
 /*https://stackoverflow.com/questions/41638688/material-uis-tabs-integration-with-react-router-4*/
 /*https://reacttraining.com/react-router/web/guides/quick-start*/
 /*https://medium.com/dailyjs/how-to-create-a-navigation-bar-with-react-router-styled-components-and-infrastructure-components-e24bee8d31bb*/
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#6ea0ff',
+    },
+    secondary: {
+      main: '#6ea0ff',
+    },
+  },
+
+});
+
+
 function Home() {
-  return <h2>Home</h2>;
+  return <h1>Home</h1>;
 }
 
 function Explore() {
   return <div>
-  			<h1> Explore </h1>
-  			<SearchBar />
+  			<ExplorePage/>
   		</div>;
 }
 
 function MyEvents() {
-	return <h2>My Events</h2>;
+	return <h1>My Events</h1>;
 }
 
 function Users() {
   return <div>
-          <h2>Users</h2>
-          <ProfilePage />
+          <Faraz/>
          </div>;
-}
-
-function BasicCard(){
-  return (
-    <Grid item xs={6}>
-    <Card>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          alt="Contemplative Reptile"
-          height="140"
-          image="https://material-ui.com/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Lizard
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions>
-    </Card>
-    </Grid>
-  );
 }
 
 function App() {
   return (
-    <Router>
-    <div className="App">
-      <AppBar>
-        <Toolbar className="toolbar">
-          {/*<IconButton edge="start" color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>*/}
-          <Typography variant="h6">
-            Rendezvous
-          </Typography>
-          <Route
-            path="/"
-            render={({location}) => (
-              <Fragment className="navOptions">
-                <Tabs value={location.pathname}>
-                  <Tab label="Recommended" value="/" component={Link} to='/'/>
-                  <Tab label="Explore" value="/explore" component={Link} to='/explore' />
-                  <Tab label="My Events" value="/myevents" component={Link} to='/myevents' />
-                  <Tab label="Users" value="/settings" component={Link} to='/settings' />
-                </Tabs>
-
-              </Fragment>
-            )}
-          />
-
-          {/*<Button color="inherit">Login</Button>*/}
-        </Toolbar>
-      </AppBar>
-      <div>
-      <Typography variant="h3">
-          Rendezvous
-      </Typography>
-      <Switch>
-      	<Route path="/explore">
-          <Explore />
-          <h2>Happening on Saturday, February 15th</h2>
-          <Grid container spacing={3}>
-            <EventCard />
-            <EventCard />
-          </Grid>
-          <h2>Food and Drinks</h2>
-          <Grid container spacing={3}>
-            <EventCard />
-            <EventCard />
-          </Grid>
-        </Route>
-        <Route path="/myevents">
-          <MyEvents />
-        </Route>
-        <Route path="/settings">
-          <Users />
-        </Route>
-        <Route path="/">
-          <Home />
-          <Grid container spacing={3}>
-            <EventCard />
-            <EventCard />
-            <EventCard />
-          </Grid>
-        </Route>
-      </Switch>
-      </div>
-    </div>
-    </Router>
+    <MuiThemeProvider theme={theme}>
+      <NavigationFramework />
+    </MuiThemeProvider>
   );
-  {/*<header className="App-header">
-    <img src={logo} className="App-logo" alt="logo" />
-    <p>
-      Welcome to Rendezvous!
-    </p>
-    <a
-      className="App-link"
-      href="https://reactjs.org"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      Learn React
-    </a>
-  </header>*/}
-  {/*}<Router>
-    <div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/users">Users</Link>
-          </li>
-        </ul>
-      </nav>
-      <Switch>
-        <Route path="/about">
-          <About />
-        </Route>
-        <Route path="/users">
-          <Users />
-        </Route>
-        <Route path="/">
-          <Home />
-        </Route>
-      </Switch>
-      </div>
-  </Router>*/}
 }
 
 export default App;
