@@ -4,6 +4,13 @@ import { Card, CardActionArea, CardActions, CardContent, CardMedia,
 				 Button, Typography, IconButton, Grid } from '@material-ui/core';
 import { BookmarkBorder, Bookmark, Room } from '@material-ui/icons'
 import Firebase from 'firebase'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+} from "react-router-dom";
 
 
 class Profile extends React.Component {
@@ -67,6 +74,9 @@ class Profile extends React.Component {
 				<Button variant="contained" color="primary" onClick={this.handleLogout}>
 					Log Out
 				</Button>
+				<Button variant="contained" color="primary">
+					Edit Profile
+				</Button>
 				</CardContent>
 				</Card>
 				<div style={{padding: 30}}/>
@@ -93,7 +103,9 @@ class Profile extends React.Component {
 				</h3>
 				</div>
 				<div style={{padding: 50}}/>
-				<Button>My Questionnaire</Button>
+				<Button variant="contained" color="primary" component={Link} to="/questionnaire" >
+					My Questionnaire
+				</Button>
 				</CardContent>
 				</Card>
 			</Grid>

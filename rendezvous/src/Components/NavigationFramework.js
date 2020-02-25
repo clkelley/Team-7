@@ -24,6 +24,7 @@ import SignUpPage from './SignUpPage'
 import Firebase from 'firebase'
 import MyEvents from './MyEvents'
 import Recommended from './Recommended'
+import QuestionnairePage from './QuestionnairePage'
 
 
 function Explore() {
@@ -243,6 +244,11 @@ class NavigationFramework extends React.Component {
           </Route>
           <Route path="/profile">
             {this.state.loggedIn ? <Profile /> : <Redirect to='/login' /> }
+          </Route>
+          <Route path="/questionnaire">
+            <Grid className="bigGrid">
+            {this.state.loggedIn ? <QuestionnairePage /> : <Redirect to='/login' /> }
+            </Grid>
           </Route>
           <Route path="/">
             <Grid className="bigGrid">
