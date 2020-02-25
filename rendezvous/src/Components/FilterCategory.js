@@ -4,15 +4,21 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import Grid from '@material-ui/core/Grid';
 import {Chip, Popover, List, ListItem, Checkbox, ListItemIcon, ListItemText} from '@material-ui/core';
+import FilterPopoverContent from './FilterPopoverContent';
 
 
 class FilterCategory extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      filters: {Dates: [], Location: [], Time: [], Category: [], Cost: []},
+      dateFilters: [],
+      catFilters: [],
+      locFilters: [],
+      timeFilters: [],
+      costFilters: [],
       anchor: null,
       popup_open: false,
+      curFil: null,
       
     };
     
@@ -21,7 +27,7 @@ class FilterCategory extends React.Component {
   }
   
   openPopup2(event) {
-  	this.setState({anchor : event.currentTarget, popup_open:true});
+  	this.setState({anchor : event.currentTarget, popup_open:true, curFil:event.currentTarget.id});
   }
   
   closePopup2 (event) {
@@ -37,30 +43,19 @@ class FilterCategory extends React.Component {
     return (
       <Grid container spacing={1} direction="column">
       <Grid container item xs={12} spacing={2} className="filterCategories">
-        <Chip variant="outlined" label="Dates" className="dateChip" onClick={this.openPopup}></Chip>
-        <Chip variant="outlined" label="Location" className="dateChip" onClick={this.openPopup}></Chip>
-        <Chip variant="outlined" label="Time" className="dateChip" onClick={this.openPopup}></Chip>
-        <Chip variant="outlined" label="Category" className="dateChip" onClick={this.openPopup}></Chip>
-        <Chip variant="outlined" label="Cost" className="dateChip" onClick={this.openPopup}></Chip>
+        <Chip variant="outlined" label="Dates" className="dateChip" onClick={this.openPopup} id="dateChip"></Chip>
+        <Chip variant="outlined" label="Location" className="dateChip" onClick={this.openPopup} id="locChip"></Chip>
+        <Chip variant="outlined" label="Time" className="dateChip" onClick={this.openPopup} id="timeChip"></Chip>
+        <Chip variant="outlined" label="Category" className="dateChip" onClick={this.openPopup} id="catChip"></Chip>
+        <Chip variant="outlined" label="Cost" className="dateChip" onClick={this.openPopup} id="costChip"></Chip>
       </Grid>
       <Popover anchorEl={this.state.anchor} onClose={this.closePopup} open={this.state.popup_open} anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'left',
-        }}>
-      	<List> 
-      		<ListItem> 
-      			<ListItemIcon><Checkbox /> </ ListItemIcon> <ListItemText> first element </ListItemText>
-      		</ListItem>
-      		<ListItem> 
-      			<ListItemIcon><Checkbox /> </ ListItemIcon> <ListItemText> second element </ListItemText> 
-      		</ListItem> 
-      		<ListItem> 
-      			<ListItemIcon><Checkbox /> </ ListItemIcon> <ListItemText> third element </ListItemText> 
-      		</ListItem> 
-      		<ListItem> 
-      			<ListItemIcon><Checkbox /> </ ListItemIcon> <ListItemText> fourth element </ListItemText> 
-      		</ListItem> 
-      	</List>
+        }} width="100px">
+        <div id="popoverContent">
+        	<FilterPopoverContent elem={this.state.curFil} />
+        </div>
       </ Popover>
       <Grid container item xs={12} spacing={2} className="filterCategories2">
         <Chip variant="outlined" label="2/22" className="filter" onDelete={handleDelete}></Chip>
