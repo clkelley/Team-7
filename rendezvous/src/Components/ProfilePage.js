@@ -3,6 +3,7 @@ import '../App.css';
 import { Card, CardActionArea, CardActions, CardContent, CardMedia,
 				 Button, Typography, IconButton, Grid } from '@material-ui/core';
 import { BookmarkBorder, Bookmark, Room } from '@material-ui/icons'
+import Firebase from 'firebase'
 
 
 class Profile extends React.Component {
@@ -10,7 +11,7 @@ class Profile extends React.Component {
   constructor(props) {
 	super(props);
 		this.state = {
-			photo: require('./images/StartScreen_elRyan_639361.jpg'),	
+			photo: require('./images/StartScreen_elRyan_639361.jpg'),
 			name: "Ryan Gosling",
 			fact1: "I like long walks on the beach.",
 			fact2: "I love to cook.",
@@ -18,12 +19,24 @@ class Profile extends React.Component {
 			fact4: "I wish I knew how to surf.",
 			fact5: "I'm an only child.",
 			ageGroup: "30-35",
-			gender: "Male", 
+			gender: "Male",
 			hometown: "London, Canada"
 		};
 
 
   }
+
+	handleLogout(){
+		Firebase.auth().signOut()
+		.then(() => {
+				return window.location.href='/login';
+		})
+		.catch(function(error) {
+			var errorCode = error.code;
+			var errorMessage = error.message;
+			console.log(error.message)
+		});
+	}
 
 
   render() {
@@ -31,7 +44,7 @@ class Profile extends React.Component {
 		<div>
 			<Grid container spacing={1} style={{ padding: 100}}>
 
-				<Card style={{padding: 30}}> 
+				<Card style={{padding: 30}}>
 				<h1>
 					{this.state.name || "Loading..."}
 				</h1>
@@ -41,18 +54,21 @@ class Profile extends React.Component {
           			width="300"
 				src={this.state.photo}
         			/>
-				<CardContent> 
+				<CardContent>
 				<h2>
 					{this.state.ageGroup || "Loading..."}
 				</h2>
 				<h2>
 					{this.state.gender || "Loading..."}
-				</h2>	
+				</h2>
 				<h3>
 					{this.state.hometown || "Loading..."}
 				</h3>
+				<Button variant="contained" color="primary" onClick={this.handleLogout}>
+					Log Out
+				</Button>
 				</CardContent>
-				</Card>	
+				</Card>
 				<div style={{padding: 30}}/>
 				<Card style={{padding: 30}}>
 				<CardContent>

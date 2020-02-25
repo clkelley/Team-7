@@ -3,7 +3,19 @@ import './EventCard.css';
 import '../App.css';
 import './LoginPage.css'
 
-import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+// import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import Firebase from 'firebase'
 
 class LoginPage extends React.Component {
@@ -14,27 +26,26 @@ class LoginPage extends React.Component {
 		this.state = {
 			email: "",
 			password: "",
+      errorMessage:"test",
 		}
   }
 
 handleSubmit(event) {
-		console.log('hmmm')
-		console.log(this.state.password)
-		console.log(this.state.email)
-		Firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+    event.preventDefault();
+    const { email, password } = event.target.elements;
+		Firebase.auth().signInWithEmailAndPassword(email.value, password.value)
 		.then(() => {
-				return window.location.href='/explore';
+				return window.location.href='/';
 		})
 		.catch(function(error) {
 			var errorCode = error.code;
 			var errorMessage = error.message;
 			console.log(error.message)
 		});
-
 	}
 
   render() {
-    return (
+    /*return (
 			<div>
 			<input
 				name="email"
@@ -54,7 +65,59 @@ handleSubmit(event) {
 							Login
 			</button>
 	    </div>
-	);
+	);*/
+  return (
+    <Container component="main" maxWidth="xs">
+      <Typography component="h1" variant="h5">
+        Sign In
+      </Typography>
+      <form noValidate onSubmit={this.handleSubmit}>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <TextField
+              variant="outlined"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              variant="outlined"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+            />
+          </Grid>
+        </Grid>
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="primary"
+        >
+          Sign In
+        </Button>
+        <Grid container justify="flex-end">
+          <Grid item>
+            <Link href="/signup" variant="body2">
+              Don't have an account yet? Sign up
+            </Link>
+          </Grid>
+        </Grid>
+      </form>
+      <Typography component="h4" color="error">
+        {this.state.errorMessage}
+      </Typography>
+      </Container>
+  )
   }
 }
 
