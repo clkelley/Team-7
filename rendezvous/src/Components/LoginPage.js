@@ -35,7 +35,7 @@ handleSubmit(event) {
     const { email, password } = event.target.elements;
 		Firebase.auth().signInWithEmailAndPassword(email.value, password.value)
 		.then(() => {
-				return window.location.href='/';
+				return window.location.href='/myevents';
 		})
 		.catch(function(error) {
 			var errorCode = error.code;

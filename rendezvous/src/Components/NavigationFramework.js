@@ -22,10 +22,9 @@ import LoginPage from './LoginPage'
 import DisplayEvents from './DisplayEvents'
 import SignUpPage from './SignUpPage'
 import Firebase from 'firebase'
+import MyEvents from './MyEvents'
+import Recommended from './Recommended'
 
-function Home() {
-  return <h1>Recommended for You</h1>;
-}
 
 function Explore() {
   return <div className="explorePage">
@@ -36,35 +35,18 @@ function Explore() {
 function ExploreContent() {
   return <div className="exploreContent">
     	<h2>Happening on Saturday, February 22nd</h2>
-          <Grid container spacing={3} >
-            <EventCard eventId={9}/>
-            <EventCard eventId={8}/>
-            <EventCard eventId={6}/>
-          </Grid>
+          <DisplayEvents eventIds={[9,6,8]} />
           <h2>Food and Drinks</h2>
-          <Grid container spacing={3}>
-            <EventCard eventId={1}/>
-            <EventCard eventId={4}/>
-            <EventCard eventId={2}/>
-          </Grid>
+          <DisplayEvents eventIds={[1,4,2]} />
           <h2>Free Events</h2>
-          <Grid container spacing={3}>
-            <EventCard eventId={7}/>
-            <EventCard eventId={5}/>
-            <EventCard eventId={3}/>
-          </Grid>
+          <DisplayEvents eventIds={[7,5,3]} />
   </div>;
 }
 
-function MyEvents() {
-  return <div>
-          <h1>Your Upcoming Events</h1>
-          <Grid container spacing={3} >
-            <EventCard eventId={1}/>
-            <EventCard eventId={2}/>
-            <EventCard eventId={3}/>
-          </Grid>
-          </div>
+function myEvents() {
+  return <div className="myEventsPage">
+        <MyEvents />
+      </div>;
 }
 
 function Users() {
@@ -159,7 +141,7 @@ class NavigationFramework extends React.Component {
             render={({location}) => (
                 <Fragment>
                     <Tabs value={checkPathnameValue(location.pathname)} className="tabs" indicatorColor="primary">
-                    <Tab label="Explore" value="/explore" component={Link} to='/'/>
+                    <Tab label="Explore" value="/explore" component={Link} to='/explore'/>
                     <Tab label="Log In" value="/login" component={Link} to='/login' />
                     </Tabs>
                 </Fragment>
@@ -245,7 +227,7 @@ class NavigationFramework extends React.Component {
         	<Route path="/explore">
         		<Grid className="bigGrid">
             <Explore />
-            <DisplayEvents eventIds={[1,2,3]} />
+            <DisplayEvents eventIds={[1,2,3, 4, 5, 6, 7, 8, 9]} />
             </Grid>
           </Route>
           <Route path="/events/:eventId" component={EventPage}>
@@ -264,8 +246,7 @@ class NavigationFramework extends React.Component {
           </Route>
           <Route path="/">
             <Grid className="bigGrid">
-            <Home />
-            <ExploreContent />
+            <Recommended />
             </Grid>
           </Route>
         </Switch>
