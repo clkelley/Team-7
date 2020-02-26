@@ -75,8 +75,8 @@ class Profile extends React.Component {
 				</h1>
 				<CardMedia
           			component="img"
-          			height="300"
-          			width="300"
+          			height="200px"
+          			width="400px"
 				src={this.state.photo}
         			/>
 				<CardContent>
