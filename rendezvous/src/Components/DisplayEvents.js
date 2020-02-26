@@ -9,23 +9,23 @@ class DisplayEvents extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      
+
     };
   }
-  
+
   render() {
   	let eventArray = this.props.eventIds;
 	let displayCards = eventArray.map(function(eventId) {
   		return (
-  			<EventCard eventId={eventId} />
+  			<EventCard eventId={eventId} key={eventId}/>
   		);
   	});
-  	
-  
+
+
   	return(
-  		<div>
+  		<Grid container spacing={3}>
   		{displayCards}
-  		</div>
+  		</Grid>
   	);
   }
 }
