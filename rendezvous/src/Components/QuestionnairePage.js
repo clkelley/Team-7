@@ -72,6 +72,9 @@ class QuestionnairePage extends React.Component {
 		errorMessage: "test",
 		responses: {}
 	}
+
+	console.log("constructor props?");
+	console.log(props);
 	}
 
 	componentDidMount(){
@@ -123,9 +126,13 @@ class QuestionnairePage extends React.Component {
 
 
 
-	 updateFirebase(){
+	 updateFirebase = () => {
 	     var doc_ref = db.collection("user_questionaire").doc(this.state.userId);
-	     doc_ref.set(this.state.responses, {merge:true});/*.then( function(doc){
+	     doc_ref.set(this.state.responses, {merge:true}).then(() => {
+				 console.log("props?");
+				 console.log(this.props);
+				 this.props.history.push("/profile");
+			 });/*.then( function(doc){
 	       if(doc.exists){
 	         this.setState({matches: doc.data()})
 	         this.setState({recommended_events: doc.data()['recommended_events']})
@@ -140,8 +147,10 @@ class QuestionnairePage extends React.Component {
 	 }
 
 	 handleSubmit = () => {
+		 console.log("about to send responses:")
+		 console.log(this.state.responses);
 		 this.updateFirebase();
-		 window.location.href='/profile';
+
 	 }
 
 

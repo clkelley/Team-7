@@ -27,7 +27,7 @@ class SignUpPage extends React.Component {
 		}
   }
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     this.setState({errorMessage:""});
 		console.log('hmmm')
     event.preventDefault();
@@ -39,8 +39,9 @@ class SignUpPage extends React.Component {
 		.catch(function(error) {
 			var errorCode = error.code;
 			var errorMessage = error.message;
+      this.setState({errorMessage:error.message});
 			console.log(error.message)
-		});
+		}.bind(this));
 
 	}
 
