@@ -156,10 +156,28 @@ class QuestionnairePage extends React.Component {
 
 	 }
 
+	 validateForm = () =>{
+		 //check questionnaire against responses
+		 let questionkeys = new Set([...Object.keys(this.state.questionnaire)]);
+		 let responsekeys = new Set([...Object.keys(this.state.responses)]);
+		 let differenceSet = new Set([...questionkeys].filter(x => !responsekeys.has(x)));
+		 console.log(differenceSet);
+		 if(differenceSet.size > 0){
+		 	this.setState({errorMessage:"Your form is not complete. Please answer all questions to submit."})
+		 	return false;
+	 	 }
+		 return true;
+		 	//return true;
+	 }
+
 	 handleSubmit = () => {
-		 console.log("about to send responses:")
-		 console.log(this.state.responses);
-		 this.updateFirebase();
+		 if(this.validateForm()){
+		 		console.log("about to send responses:")
+		 		console.log(this.state.responses);
+		 		this.updateFirebase();
+	 	 } else {
+
+		 }
 
 	 }
 
