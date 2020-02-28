@@ -9,14 +9,27 @@ import { db } from '../firebase';
 
 
 const SingleQuestionRange = (props) => {
-	let radioButtons = []
+	let radioButtons = [];
 	// console.log("received props: ")
 	// console.log(props);
 	//props.questionKey is for database
 	//props.questionProperties is for display
+	//if there are empty options then should be left-right
+	let labelLocation = "bottom";
 	for (var propertyKey in props.questionProperties){
 		if(propertyKey != "QuestionText"){
-	 	radioButtons.push(<FormControlLabel value={propertyKey} key={propertyKey} control={<Radio />} label={props.questionProperties[propertyKey]} labelPlacement="bottom" />);
+			if(props.questionProperties[3] === ""){
+				if(propertyKey == 1){
+					labelLocation = "start";
+				} else if (propertyKey == 5){
+					labelLocation = "end";
+				} else {
+					labelLocation = "bottom";
+				}
+			} else {
+				labelLocation = "bottom";
+			}
+	 		radioButtons.push(<FormControlLabel value={propertyKey} key={propertyKey} control={<Radio />} label={props.questionProperties[propertyKey]} labelPlacement={labelLocation} />);
 		}
 	}
 
@@ -31,9 +44,6 @@ const SingleQuestionRange = (props) => {
 <FormControlLabel value={5} control={<Radio />} label={props.right} labelPlacement="bottom" />
 */
 	return <Grid item xs={12}><Card>
-					<Typography>
-						{props.questionKey}
-					</Typography>
 					<Typography>
 						{questionText}
 					</Typography>
@@ -156,12 +166,29 @@ class QuestionnairePage extends React.Component {
 
   render() {
 		let questionCards = <div>Loading</div>;
+
 		if(this.state && this.state.questionnaire){
-			questionCards = []
-			for (var questionKey in this.state.questionnaire){
-				questionCards.push(<SingleQuestionRange handleChange={this.handleChange} questionKey={questionKey} key={questionKey} questionProperties={this.state.questionnaire[questionKey]}/>
-				);
-			}
+			questionCards = [];
+			let questionnaireInOrder = [];
+			questionnaireInOrder = [...Object.keys(this.state.questionnaire)];
+			questionnaireInOrder.sort((a , b) => {
+				console.log(parseInt(a.slice(8)));
+				return parseInt(a.slice(8)) - parseInt(b.slice(8));
+			});
+			console.log(questionnaireInOrder);
+			console.log(this.state.questionnaire["Question1"]);
+			// for (var questionKey in questionnaireInOrder){
+			// 	console.log("got questionkey");
+			// 	console.log(questionKey);
+			// 	questionCards.push(<SingleQuestionRange handleChange={this.handleChange} questionKey={questionKey} key={questionKey} questionProperties={this.state.questionnaire[questionKey]}/>
+			// 	);
+			// }
+			questionCards = questionnaireInOrder.map((questionKey) => {
+				return <SingleQuestionRange handleChange={this.handleChange}
+														 questionKey={questionKey}
+														 key={questionKey}
+														 questionProperties={this.state.questionnaire[questionKey]}/>
+			});
 			// questionCards = this.state.questionnaire.map(function(question) {
 	  	// 	return (
 	  	// 		<EventCard eventId={eventId} key={eventId}/>
