@@ -92,7 +92,7 @@ class Profile extends React.Component {
 				<Button variant="contained" color="primary" onClick={this.handleLogout}>
 					Log Out
 				</Button>
-				<Button variant="contained" color="primary">
+				<Button variant="contained" color="primary" component={Link} to="/editprofile">
 					Edit Profile
 				</Button>
 				</CardContent>
@@ -121,7 +121,7 @@ class Profile extends React.Component {
 				</h3>
 				</div>
 				<div style={{padding: 50}}/>
-				<Button variant="contained" color="primary" component={Link} to="/questionnaire" >
+				<Button variant="contained" color="primary" component={Link} to="/editprofile" >
 					My Questionnaire
 				</Button>
 				</CardContent>
