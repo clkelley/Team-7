@@ -12,6 +12,7 @@ import { Carousel } from 'react-responsive-carousel';
 import { BookmarkBorder, Bookmark, Room } from '@material-ui/icons'
 
 
+
 class EventPage extends React.Component {
 
   constructor(props) {
@@ -23,8 +24,11 @@ class EventPage extends React.Component {
 			eventName: "loading...",
 			shortDescription: "loading...",
 			photo: "",
+			eventId: eventId,
+			userRegistered: false,
 		};
 		this.fetchFromDatabase(eventId);
+
 
 		// this.state = {
     //   date: this.fetchFromDatabase(eventId),
@@ -34,6 +38,46 @@ class EventPage extends React.Component {
     // };
 
   }
+
+	componentDidMount(){
+		Firebase.auth().onAuthStateChanged(function(user) {
+			if (user) {
+        console.log(user)
+				this.setState({ userId: user.uid });
+				console.log("found user")
+				console.log(user.uid);
+				this.fetchUserRegistered()
+			} else {
+				this.setState({ userId: null });
+			}
+
+			if (this.state.loading) {
+				this.setState({ loading: false });
+			}
+    }.bind(this));
+	}
+
+	fetchUserRegistered = (eventId) => {
+		var doc_ref_user = db.collection("user_events").doc(this.state.userId);
+		doc_ref_user.get().then(function(doc){
+			if(doc.exists){
+				let registeredForEvent = doc.get("going_events").includes(this.state.eventId);
+				this.setState({userRegistered: registeredForEvent});
+				console.log(doc.data());
+			} else {
+				console.log("user events doc didn't exist") // NEED TO FIX THIS UP
+			}
+
+		}.bind(this)).catch(function(error) {
+			console.log("Error getting document:", error);
+		});
+		}
+
+
+
+	// 	going_events: Firebase.firestore.FieldValue.arrayUnion(this.state.eventId);
+	// }, {merge:true});
+
 
 	fetchFromDatabase(eventId){
 		console.log("fetch from database eventid" + eventId);
@@ -54,6 +98,50 @@ class EventPage extends React.Component {
 				else if (eventId === 1) this.setState({photo: require('../media/eventPhotos/wine_tasting.jpg')});
    		});
 
+	}
+
+
+	onClickButton = () => {
+		if(this.state.userRegistered){
+			this.unregisterForEvent()
+		} else {
+			this.registerForEvent()
+		}
+	}
+
+	registerForEvent = () => {
+		//update user events
+
+		var doc_ref_user = db.collection("user_events").doc(this.state.userId);
+		doc_ref_user.set({
+    	going_events: Firebase.firestore.FieldValue.arrayUnion(this.state.eventId)
+		}, {merge:true});
+	//update event visitors
+		var doc_ref_event = db.collection("event_visitors").doc(String(this.state.eventId));
+		let userIdMap = {}
+		userIdMap[this.state.userId] = true;
+		doc_ref_event.set(userIdMap
+		, {merge:true});
+		//doc_ref_user.set(this.state.responses, {merge:true}).then(() => {
+			// console.log("props?");
+			// console.log(this.props);
+			// this.props.history.push("/profile");
+		//});
+	}
+
+	unregisterForEvent = () => {
+		//update user events
+
+		var doc_ref_user = db.collection("user_events").doc(this.state.userId);
+		doc_ref_user.update({
+		going_events: Firebase.firestore.FieldValue.arrayRemove(this.state.eventId)
+	});
+	//update event visitors
+	var doc_ref_event = db.collection("event_visitors").doc(String(this.state.eventId));
+	let userIdMap = {}
+	userIdMap[this.state.userId] = false
+
+	doc_ref_user.update(userIdMap);
 	}
 
   render() {
@@ -94,8 +182,8 @@ class EventPage extends React.Component {
 				</Grid>
 				<Grid xs={4} justify="center">
 				<h1>{this.state.date || "Loading..."}</h1>
-				<Button variant="contained" color="primary">
-					Buy Tickets
+				<Button variant="contained" color="primary" onClick={this.onClickButton}>
+					{this.state.userRegistered ? "Cancel Tickets" : "Buy Tickets"}
 				</Button>
 				<h1>$12-$20</h1>
 				<Grid container direction="row" justify="center" alignItems="center">

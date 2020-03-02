@@ -59,7 +59,7 @@ class RecommendedPage extends React.Component {
     doc_ref.get().then( function(doc){
       if(doc.exists){
         this.setState({matches: doc.data()})
-        this.setState({recommended_events: doc.data()['recommended_events']})
+        this.setState({recommended_events: doc.data().get('recommended_events')})
         console.log(doc.data())
       } else {
         console.log("doc didn't exist") // NEED TO FIX THIS UP
