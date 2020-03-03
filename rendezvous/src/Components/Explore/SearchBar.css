@@ -1,0 +1,45 @@
+.inputBar {
+	content: text;
+	width: 100%;
+	min-width: 50px;
+	height: 30px;
+	font-size: 18px;
+	border: 2px;
+	border-color: #adb7ca;
+	border-style: solid;
+	border-radius: 5px;
+	padding-left: 10px;
+	left: 50px;
+}
+
+::placeholder {
+	color: #adb7ca;
+}
+
+.searchButton {
+	height: 36px;
+	border-radius: 5px;
+	font-size: 20px;
+	border-color: #adb7ca;
+	color: #adb7ca;
+	border:2px;
+	border-style: solid;
+
+}
+
+.searchButton:hover {
+	cursor: pointer;
+}
+
+.filterCategory {
+}
+
+.logo {
+	width: 40px;
+	height: 35px;
+}
+
+.searchGrid {
+	align-items: "center";
+	justify: "flex-start";
+}
