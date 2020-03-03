@@ -59,8 +59,8 @@ function Users() {
 function checkPathnameValue(location) {
     const { pathname } = location;
     switch (pathname) {
+      case '/recommended':
       case '/':
-      case '/explore':
       case '/myevents':
       case '/profile':
       break;
@@ -124,8 +124,8 @@ class NavigationFramework extends React.Component {
             render={({location}) => (
               <Fragment>
                 <Tabs value={checkPathnameValue(location.pathname)} className="tabs" indicatorColor="primary">
-                  <Tab label="Recommended" value="/" component={Link} to='/'/>
-                  <Tab label="Explore" value="/explore" component={Link} to='/explore' />
+                  <Tab label="Recommended" value="/recommended" component={Link} to='/recommended'/>
+                  <Tab label="Explore" value="/" component={Link} to='/' />
                   <Tab label="My Events" value="/myevents" component={Link} to='/myevents' />
                   <Tab label="Profile" value="/profile" component={Link} to='/profile' />
                 </Tabs>
@@ -143,7 +143,7 @@ class NavigationFramework extends React.Component {
             render={({location}) => (
                 <Fragment>
                     <Tabs value={checkPathnameValue(location.pathname)} className="tabs" indicatorColor="primary">
-                    <Tab label="Explore" value="/explore" component={Link} to='/explore'/>
+                    <Tab label="Explore" value="/" component={Link} to='/'/>
                     <Tab label="Log In" value="/login" component={Link} to='/login' />
                     </Tabs>
                 </Fragment>
@@ -168,10 +168,10 @@ class NavigationFramework extends React.Component {
     </AppBar>
     <Drawer open={this.state.left} onClose={this.toggleDrawer('left', false)}>
     <List>
-      <ListItem button component={Link} to='/'>
+      <ListItem button component={Link} to='/recommended'>
         <ListItemText primary="Recommended"/>
       </ListItem>
-      <ListItem button component={Link} to='/explore'>
+      <ListItem button component={Link} to='/'>
         <ListItemText primary="Explore"/>
       </ListItem>
       <ListItem button component={Link} to='/myevents'>
@@ -195,7 +195,7 @@ class NavigationFramework extends React.Component {
       </AppBar>
       <Drawer open={this.state.left} onClose={this.toggleDrawer('left', false)}>
       <List>
-        <ListItem button component={Link} to='/explore'>
+        <ListItem button component={Link} to='/'>
           <ListItemText primary="Explore"/>
         </ListItem>
         <ListItem button component={Link} to='/login'>
@@ -226,12 +226,7 @@ class NavigationFramework extends React.Component {
         {topbar}
         <div>
         <Switch>
-        	<Route path="/explore">
-        		<Grid className="bigGrid">
-            <Explore />
-            <DisplayEvents eventIds={[1,2,3, 4, 5, 6, 7, 8, 9]} />
-            </Grid>
-          </Route>
+
           <Route path="/events/:eventId" component={EventPage}>
           </Route>
           <Route path="/signup">
@@ -248,15 +243,21 @@ class NavigationFramework extends React.Component {
           </Route>
 	<Route path="/editprofile">
             <EditProfile />
-          </Route>		
+          </Route>
           <Route path="/questionnaire" render={(props) =>
             <Grid className="bigGrid">
             {this.state.loggedIn ? <QuestionnairePage {...props}/> : <Redirect to='/login' /> }
             </Grid>
           }/>
-          <Route path="/">
+          <Route path="/recommended">
             <Grid className="bigGrid">
             <Recommended />
+            </Grid>
+          </Route>
+          <Route path="/">
+        		<Grid className="bigGrid">
+            <Explore />
+            <DisplayEvents eventIds={[1,2,3, 4, 5, 6, 7, 8, 9]} />
             </Grid>
           </Route>
         </Switch>

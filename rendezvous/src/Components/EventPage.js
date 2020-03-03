@@ -104,8 +104,10 @@ class EventPage extends React.Component {
 	onClickButton = () => {
 		if(this.state.userRegistered){
 			this.unregisterForEvent()
+			this.setState({userRegistered : false})
 		} else {
 			this.registerForEvent()
+			this.setState({userRegistered : true})
 		}
 	}
 
