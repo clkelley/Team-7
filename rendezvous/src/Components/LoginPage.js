@@ -30,7 +30,7 @@ class LoginPage extends React.Component {
 		}
   }
 
-handleSubmit(event) {
+handleSubmit = (event) => {
     event.preventDefault();
     const { email, password } = event.target.elements;
 		Firebase.auth().signInWithEmailAndPassword(email.value, password.value)
@@ -41,7 +41,8 @@ handleSubmit(event) {
 			var errorCode = error.code;
 			var errorMessage = error.message;
 			console.log(error.message)
-		});
+      this.setState({errorMessage:error.message});
+		}.bind(this));
 	}
 
   render() {
