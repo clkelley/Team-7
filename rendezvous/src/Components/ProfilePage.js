@@ -30,9 +30,26 @@ class Profile extends React.Component {
 			gender: "",
 			hometown: ""
 		};
-	this.fetchFromDatabase(1);
+
 
   }
+
+	componentDidMount(){
+		Firebase.auth().onAuthStateChanged(function(user) {
+			if (user) {
+        console.log(user)
+				this.setState({ userId: user.uid });
+        this.fetchFromDatabase();
+			} else {
+				this.setState({ user: null });
+			}
+
+			if (this.state.loading) {
+				this.setState({ loading: false });
+			}
+    }.bind(this));
+	 }
+
 
 	handleLogout(){
 		Firebase.auth().signOut()
@@ -46,9 +63,9 @@ class Profile extends React.Component {
 		});
 	}
 
-	fetchFromDatabase(userId){
-		db.collection("users").where("userId", "==", userId).get()
-		.then(querySnapshot => {
+	fetchFromDatabase(){
+		db.collection("users").doc(this.state.userId).get()
+		/*.then(querySnapshot => {
      		var data = querySnapshot.docs.map(doc => doc.data());
      		this.setState({name: data[0]['name']});
      		this.setState({fact1: data[0]['fact1']});
@@ -61,7 +78,26 @@ class Profile extends React.Component {
      		this.setState({ageGroup: data[0]['age']});
    		var url = data[0]['photo'];
      		this.setState({photo: url});
-		});
+		});*/
+		.then( function(doc){
+      if(doc.exists){
+				let data = doc.data();
+				this.setState({name: data['name']});
+     		this.setState({fact1: data['fact1']});
+     		this.setState({fact2: data['fact2']});
+     		this.setState({fact3: data['fact3']});
+     		this.setState({fact4: data['fact4']});
+     		this.setState({fact5: data['fact5']});
+     		this.setState({gender: data['gender']});
+     		this.setState({hometown: data['hometown']});
+     		this.setState({ageGroup: data['ageGroup']});
+        console.log(doc.data())
+      } else {
+        console.log("doc didn't exist") // NEED TO FIX THIS UP
+      }
+    }.bind(this)).catch(function(error) {
+      console.log("Error getting document:", error);
+    });
 	}
 
   render() {

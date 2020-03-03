@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 import { Card, CardActionArea, CardActions, CardContent, CardMedia,
-                                 Button, Typography, IconButton, Grid, TextField, MenuItem } from '@material-ui/core';
+                                 Button, Typography, IconButton, Grid, TextField, MenuItem, Select, InputLabel, FormControl } from '@material-ui/core';
 import { BookmarkBorder, Bookmark, Room } from '@material-ui/icons'
 import Firebase from 'firebase'
 import { db } from '../firebase';
@@ -18,6 +18,8 @@ class EditProfile extends React.Component {
   constructor(props) {
         super(props);
                 this.state = {
+
+									responses: {
                         name: "...",
                         fact1: "",
                         fact2: "",
@@ -27,43 +29,122 @@ class EditProfile extends React.Component {
                         ageGroup: "",
                         gender: "",
                         hometown: ""
-                };
+                }};
   }
 
-        handleLogout(){
-                Firebase.auth().signOut()
-                .then(() => {
-                                return window.location.href='/login';
-                })
-                .catch(function(error) {
-                        var errorCode = error.code;
-                        var errorMessage = error.message;
-                        console.log(error.message)
-                });
-        }
+componentDidMount(){
+	Firebase.auth().onAuthStateChanged(function(user) {
+		if (user) {
+			console.log(user)
+			this.setState({ userId: user.uid });
+			this.retrieveProfile()
+		} else {
+			this.setState({ user: null });
+		}
+
+		if (this.state.loading) {
+			this.setState({ loading: false });
+		}
+	}.bind(this));
+ }
+
+ retrieveProfile = () =>{
+
+ }
+
+
+	handleChange = (event) => {
+		this.setState({responses: {...this.state.responses, [event.target.name]: event.target.value}})
+	}
+
+	handleSubmit = (event) => {
+			console.log("about to send responses:")
+			console.log(this.state.responses);
+			this.updateFirebase();
+	}
+
+	updateFirebase = () => {
+			var doc_ref = db.collection("users").doc(this.state.userId);
+			doc_ref.set(this.state.responses, {merge:true}).then(() => {
+				console.log("props?");
+				console.log(this.props);
+				this.props.history.push("/profile");
+	})
+}
 
 
 render() {
-    return (
-                <div>
-                        <Grid>
-                                <TextField label="Name"/>
-                                <TextField label="Age"/>
-
-				<TextField id="select" label="Gender" value="Male">
-  					<MenuItem value="Male">Male</MenuItem>
-  					<MenuItem value="Female">Female</MenuItem>
-				</TextField>
-
-                                <TextField label="Hometown"/>
-                                <h3> Five facts about me... </h3>
-                                1. <TextField label=""/>
-                                2. <TextField label=""/>
-                                3. <TextField label=""/>
-                                4. <TextField label=""/>
-                                5. <TextField label=""/>
-                        </Grid>
-                </div>);
+	return (
+		<Grid container xs={12} spacing={2} alignItems="center">
+			<Grid container item xs={12} spacing={1}>
+				<Grid item>
+				<TextField label="Name" name="name" value={this.state.responses["name"]} onChange={this.handleChange}/>
+				</Grid>
+				<Grid item>
+				<FormControl>
+				<InputLabel id="demo-simple-select-label">Age</InputLabel>
+				<Select
+	          labelId="demo-simple-select-label-age"
+	          id="demo-simple-select-age"
+	          value={this.state.responses["ageGroup"]}
+	          onChange={this.handleChange}
+						name="ageGroup"
+	        >
+	          <MenuItem value={"20-30"}>20-30</MenuItem>
+	          <MenuItem value={"30-40"}>30-40</MenuItem>
+						<MenuItem value={"40-50"}>40-50</MenuItem>
+	          <MenuItem value={"50+"}>50+</MenuItem>
+	      </Select>
+				</FormControl>
+				</Grid>
+				<Grid item>
+				<TextField label="Hometown" name="hometown" onChange={this.handleChange} value={this.state.responses["hometown"]}/>
+				</Grid>
+				<Grid item>
+				<FormControl>
+				<InputLabel id="demo-simple-select-label">Gender</InputLabel>
+				<Select
+	          labelId="demo-simple-select-label"
+	          id="demo-simple-select"
+	          value={this.state.responses["gender"]}
+	          onChange={this.handleChange}
+						name="gender"
+	        >
+	          <MenuItem value={"Male"}>Male</MenuItem>
+	          <MenuItem value={"Female"}>Female</MenuItem>
+						<MenuItem value={"Non-binary"}>Non-binary</MenuItem>
+	          <MenuItem value={"Other"}>Other</MenuItem>
+	      </Select>
+				</FormControl>
+				</Grid>
+			</Grid>
+			<Grid item>
+			<Typography> Five facts about me... </Typography>
+			</Grid>
+			<Grid container item xs={12} spacing={1} alignItems="flex-start">
+				<Grid item xs={12}>
+					<TextField label="1" name="fact1" onChange={this.handleChange} value={this.state.responses["fact1"]}/>
+					</Grid>
+				<Grid item xs={12}>
+					<TextField label="2" name="fact2" onChange={this.handleChange} value={this.state.responses["fact2"]}/>
+					</Grid>
+					<Grid item xs={12}>
+					<TextField label="3" name="fact3" onChange={this.handleChange} value={this.state.responses["fact3"]}/>
+					</Grid>
+					<Grid item xs={12}>
+					<TextField label="4" name="fact4" onChange={this.handleChange} value={this.state.responses["fact4"]}/>
+					</Grid>
+					<Grid item xs={12}>
+					<TextField label="5" name="fact5" onChange={this.handleChange} value={this.state.responses["fact5"]}/>
+					</Grid>
+			</Grid>
+			<Grid item xs={12}>
+			<Button variant="contained" color="primary" onClick={this.handleSubmit}>
+				Submit
+			</Button>
+			</Grid>
+		</Grid>
+               );
   }
 }
 
