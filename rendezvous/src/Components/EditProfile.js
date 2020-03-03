@@ -18,9 +18,10 @@ class EditProfile extends React.Component {
   constructor(props) {
         super(props);
                 this.state = {
-
+									errorMessage: "",
+									firstTime: false,
 									responses: {
-                        name: "...",
+                        name: "",
                         fact1: "",
                         fact2: "",
                         fact3: "",
@@ -41,7 +42,6 @@ componentDidMount(){
 		} else {
 			this.setState({ user: null });
 		}
-
 		if (this.state.loading) {
 			this.setState({ loading: false });
 		}
@@ -49,8 +49,36 @@ componentDidMount(){
  }
 
  retrieveProfile = () =>{
+ 		var doc_ref_profile = db.collection("users").doc(this.state.userId);
+ 		doc_ref_profile.get().then(function(doc){
+ 			if(doc.exists){
+				let data = doc.data();
+				this.setState({
+					responses: {
+                        name: doc.get("name") || "",
+                        fact1: doc.get("fact1") || "",
+                        fact2: doc.get("fact2") || "",
+                        fact3: doc.get("fact3") || "",
+                        fact4: doc.get("fact4") || "",
+                        fact5: doc.get("fact5") || "",
+                        ageGroup: doc.get("ageGroup") || "",
+                        gender: doc.get("gender") || "",
+                        hometown: doc.get("hometown") || "",
+                }
 
- }
+				})
+ 				console.log(doc.data());
+
+				//todo: prefill profile
+ 			} else {
+ 				console.log("user profile doc didn't exist") // NEED TO FIX THIS UP
+				this.setState({firstTime: true})
+			}
+ 		}.bind(this)).catch(function(error) {
+ 			console.log("Error getting document:", error);
+ 		});
+ 		}
+
 
 
 	handleChange = (event) => {
@@ -60,7 +88,23 @@ componentDidMount(){
 	handleSubmit = (event) => {
 			console.log("about to send responses:")
 			console.log(this.state.responses);
-			this.updateFirebase();
+			if(this.checkAllFilled()){
+				this.updateFirebase();
+			} else {
+				this.setState({errorMessage:"Please complete your profile before submitting."});
+			}
+
+	}
+
+	checkAllFilled = () => {
+		for (const responseKey in this.state.responses) {
+			console.log(responseKey)
+			if (this.state.responses[responseKey] === ""){
+				console.log("missing:" + responseKey);
+				return false;
+			}
+		}
+		return true;
 	}
 
 	updateFirebase = () => {
@@ -69,8 +113,8 @@ componentDidMount(){
 				console.log("props?");
 				console.log(this.props);
 				this.props.history.push("/profile");
-	})
-}
+	});
+ }
 
 
 render() {
@@ -142,6 +186,9 @@ render() {
 			<Button variant="contained" color="primary" onClick={this.handleSubmit}>
 				Submit
 			</Button>
+			<Typography component="h4" color="error">
+				{this.state.errorMessage}
+			</Typography>
 			</Grid>
 		</Grid>
                );

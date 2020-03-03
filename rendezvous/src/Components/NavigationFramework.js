@@ -226,7 +226,6 @@ class NavigationFramework extends React.Component {
         {topbar}
         <div>
         <Switch>
-
           <Route path="/events/:eventId" component={EventPage}>
           </Route>
           <Route path="/signup">

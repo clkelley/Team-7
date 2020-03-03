@@ -94,6 +94,7 @@ class Profile extends React.Component {
         console.log(doc.data())
       } else {
         console.log("doc didn't exist") // NEED TO FIX THIS UP
+				return window.location.href='/editprofile';
       }
     }.bind(this)).catch(function(error) {
       console.log("Error getting document:", error);
