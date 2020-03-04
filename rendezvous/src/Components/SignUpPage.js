@@ -23,7 +23,7 @@ class SignUpPage extends React.Component {
 		this.state = {
 			email: "",
 			password: "",
-      errorMessage: "test",
+      errorMessage: "",
 		}
   }
 
@@ -34,7 +34,7 @@ class SignUpPage extends React.Component {
     const { email, password } = event.target.elements;
 		Firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
 		.then(() => {
-				return window.location.href='/';
+				return window.location.href='/editprofile';
 		})
 		.catch(function(error) {
 			var errorCode = error.code;
