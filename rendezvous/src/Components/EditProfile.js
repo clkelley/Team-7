@@ -18,9 +18,10 @@ class EditProfile extends React.Component {
   constructor(props) {
         super(props);
                 this.state = {
-
+									errorMessage: "",
+									firstTime: false,
 									responses: {
-                        name: "...",
+                        name: "",
                         fact1: "",
                         fact2: "",
                         fact3: "",
@@ -30,27 +31,55 @@ class EditProfile extends React.Component {
                         gender: "",
                         hometown: ""
                 }};
+				Firebase.auth().onAuthStateChanged(function(user) {
+					if (user) {
+						console.log(user)
+						this.setState({ userId: user.uid });
+						this.retrieveProfile()
+					} else {
+						this.setState({ user: null });
+					}
+					if (this.state.loading) {
+						this.setState({ loading: false });
+					}
+				}.bind(this));
   }
 
 componentDidMount(){
-	Firebase.auth().onAuthStateChanged(function(user) {
-		if (user) {
-			console.log(user)
-			this.setState({ userId: user.uid });
-			this.retrieveProfile()
-		} else {
-			this.setState({ user: null });
-		}
 
-		if (this.state.loading) {
-			this.setState({ loading: false });
-		}
-	}.bind(this));
  }
 
  retrieveProfile = () =>{
+ 		var doc_ref_profile = db.collection("users").doc(this.state.userId);
+ 		doc_ref_profile.get().then(function(doc){
+ 			if(doc.exists){
+				let data = doc.data();
+				this.setState({
+					responses: {
+                        name: doc.get("name") || "",
+                        fact1: doc.get("fact1") || "",
+                        fact2: doc.get("fact2") || "",
+                        fact3: doc.get("fact3") || "",
+                        fact4: doc.get("fact4") || "",
+                        fact5: doc.get("fact5") || "",
+                        ageGroup: doc.get("ageGroup") || "",
+                        gender: doc.get("gender") || "",
+                        hometown: doc.get("hometown") || "",
+                }
 
- }
+				})
+ 				console.log(doc.data());
+
+				//todo: prefill profile
+ 			} else {
+ 				console.log("user profile doc didn't exist") // NEED TO FIX THIS UP
+				this.setState({firstTime: true})
+			}
+ 		}.bind(this)).catch(function(error) {
+ 			console.log("Error getting document:", error);
+ 		});
+ 		}
+
 
 
 	handleChange = (event) => {
@@ -60,7 +89,23 @@ componentDidMount(){
 	handleSubmit = (event) => {
 			console.log("about to send responses:")
 			console.log(this.state.responses);
-			this.updateFirebase();
+			if(this.checkAllFilled()){
+				this.updateFirebase();
+			} else {
+				this.setState({errorMessage:"Please complete your profile before submitting."});
+			}
+
+	}
+
+	checkAllFilled = () => {
+		for (const responseKey in this.state.responses) {
+			console.log(responseKey)
+			if (this.state.responses[responseKey] === ""){
+				console.log("missing:" + responseKey);
+				return false;
+			}
+		}
+		return true;
 	}
 
 	updateFirebase = () => {
@@ -69,13 +114,16 @@ componentDidMount(){
 				console.log("props?");
 				console.log(this.props);
 				this.props.history.push("/profile");
-	})
-}
+	});
+ }
 
 
 render() {
 	return (
 		<Grid container xs={12} spacing={2} alignItems="center">
+			{this.state.firstTime && <Typography component="h4" color="primary">
+				Please complete your profile to setup your account!
+			</Typography>}
 			<Grid container item xs={12} spacing={1}>
 				<Grid item>
 				<TextField label="Name" name="name" value={this.state.responses["name"]} onChange={this.handleChange}/>
@@ -142,6 +190,9 @@ render() {
 			<Button variant="contained" color="primary" onClick={this.handleSubmit}>
 				Submit
 			</Button>
+			<Typography component="h4" color="error">
+				{this.state.errorMessage}
+			</Typography>
 			</Grid>
 		</Grid>
                );

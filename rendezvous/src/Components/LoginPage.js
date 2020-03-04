@@ -26,14 +26,14 @@ class LoginPage extends React.Component {
 		this.state = {
 			email: "",
 			password: "",
-      errorMessage:"test",
+      errorMessage:"",
 		}
   }
 
 handleSubmit = (event) => {
     event.preventDefault();
-    const { email, password } = event.target.elements;
-		Firebase.auth().signInWithEmailAndPassword(email.value, password.value)
+    //const { email, password } = event.target.elements;
+		Firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
 		.then(() => {
 				return window.location.href='/myevents';
 		})
@@ -44,6 +44,12 @@ handleSubmit = (event) => {
       this.setState({errorMessage:error.message});
 		}.bind(this));
 	}
+
+  onChange = (event) => {
+    let newState = {};
+    newState[event.target.name] = event.target.value;
+    this.setState(newState);
+  }
 
   render() {
     /*return (
@@ -72,7 +78,6 @@ handleSubmit = (event) => {
       <Typography component="h1" variant="h5">
         Sign In
       </Typography>
-      <form noValidate onSubmit={this.handleSubmit}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <TextField
@@ -83,6 +88,7 @@ handleSubmit = (event) => {
               label="Email Address"
               name="email"
               autoComplete="email"
+              onChange={this.onChange}
             />
           </Grid>
           <Grid item xs={12}>
@@ -95,6 +101,7 @@ handleSubmit = (event) => {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={this.onChange}
             />
           </Grid>
         </Grid>
@@ -103,6 +110,7 @@ handleSubmit = (event) => {
           fullWidth
           variant="contained"
           color="primary"
+          onClick={this.handleSubmit}
         >
           Sign In
         </Button>
@@ -113,7 +121,6 @@ handleSubmit = (event) => {
             </Link>
           </Grid>
         </Grid>
-      </form>
       <Typography component="h4" color="error">
         {this.state.errorMessage}
       </Typography>
