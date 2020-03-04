@@ -92,6 +92,7 @@ class Profile extends React.Component {
      		this.setState({hometown: data['hometown']});
      		this.setState({ageGroup: data['ageGroup']});
         console.log(doc.data())
+				this.checkQuestionnaireFilled()
       } else {
         console.log("doc didn't exist") // NEED TO FIX THIS UP
 				return window.location.href='/editprofile';
@@ -99,6 +100,18 @@ class Profile extends React.Component {
     }.bind(this)).catch(function(error) {
       console.log("Error getting document:", error);
     });
+	}
+
+	checkQuestionnaireFilled(){
+		var doc_ref = db.collection("user_questionaire").doc(this.state.userId);
+		doc_ref.get().then((doc) => {
+			if(doc.exists){
+					console.log("questionnaire completed successfully")
+			} else {
+					console.log("doc didn't exist") // NEED TO FIX THIS UP
+					return window.location.href='/questionnaire';
+			}
+		});
 	}
 
   render() {

@@ -22,6 +22,7 @@ import LoginPage from './LoginPage'
 import DisplayEvents from './DisplayEvents'
 import SignUpPage from './SignUpPage'
 import Firebase from 'firebase'
+import { db } from '../firebase';
 import MyEvents from './MyEvents'
 import Recommended from './Recommended'
 import QuestionnairePage from './QuestionnairePage'
@@ -77,17 +78,51 @@ function checkPathnameValue(location) {
 class NavigationFramework extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { width: 0, height: 0, loggedIn : false, isLoading: true};
+    this.state = {
+      width: 0,
+      height: 0,
+      loggedIn : false,
+      isLoading: true};
 
     Firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-      this.setState({loggedIn:true, isLoading: false});
+      this.setState({loggedIn:true, isLoading: false, userId: user.uid});
     } else {
       // No user is signed in.
       this.setState({loggedIn:false, isLoading: false});
     }
   }.bind(this));
   }
+
+  // checkCompleteProfileAndQuestionnaire = () => {
+  //   db.collection("users").doc(this.state.userId).get()
+  //   .then( function(doc){
+  //     if(doc.exists){
+  //       //profile complete
+  //       this.checkQuestionnaireFilled();
+  //     } else {
+  //       this.setState({profileComplete: false})
+  //       console.log("doc didn't exist") // NEED TO FIX THIS UP
+  //     }
+  //   }.bind(this)).catch(function(error) {
+  //     this.setState({profileComplete: false})
+  //   }.bind(this));
+  // }
+  //
+  // checkQuestionnaireFilled(){
+  //   var doc_ref = db.collection("user_questionaire").doc(this.state.userId);
+	// 	doc_ref.get().then((doc) => {
+	// 		if(doc.exists){
+	// 				console.log("questionnaire completed successfully")
+	// 		} else {
+	// 				console.log("doc didn't exist") // NEED TO FIX THIS UP
+  //         this.setState({questionnaireComplete: false})
+	// 		}
+	// 	}).catch(function(error) {
+  //     console.log("Error getting document:", error);
+  //     this.setState({questionnaireComplete: false})
+  //   }.bind(this));
+  // }
 
   updateDimensions = () => {
     this.setState({ width: window.innerWidth, height: window.innerHeight });
@@ -228,6 +263,17 @@ class NavigationFramework extends React.Component {
         {topbar}
         <div>
         <Switch>
+        <Route path="/editprofile" render={(props) =>
+         <Grid className="bigGrid">
+         <EditProfile {...props}/>
+            {/*this.state.loggedIn ? <EditProfile /> : <Redirect to='/login' /> */}
+         </Grid>
+          }/>
+       <Route path="/questionnaire" render={(props) =>
+         <Grid className="bigGrid">
+         {this.state.loggedIn ? <QuestionnairePage {...props}/> : <Redirect to='/login' /> }
+         </Grid>
+       }/>
           <Route path="/events/:eventId" component={EventPage}>
           </Route>
           <Route path="/signup">
@@ -242,17 +288,7 @@ class NavigationFramework extends React.Component {
           <Route path="/profile">
             {this.state.loggedIn ? <Profile /> : <Redirect to='/login' /> }
           </Route>
-	         <Route path="/editprofile" render={(props) =>
-            <Grid className="bigGrid">
-            <EditProfile {...props}/>
-            {/*this.state.loggedIn ? <EditProfile /> : <Redirect to='/login' /> */}
-            </Grid>
-          }/>
-          <Route path="/questionnaire" render={(props) =>
-            <Grid className="bigGrid">
-            {this.state.loggedIn ? <QuestionnairePage {...props}/> : <Redirect to='/login' /> }
-            </Grid>
-          }/>
+
           <Route path="/recommended">
             <Grid className="bigGrid">
             <Recommended />

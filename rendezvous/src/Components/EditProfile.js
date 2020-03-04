@@ -121,6 +121,9 @@ componentDidMount(){
 render() {
 	return (
 		<Grid container xs={12} spacing={2} alignItems="center">
+			{this.state.firstTime && <Typography component="h4" color="primary">
+				Please complete your profile to setup your account!
+			</Typography>}
 			<Grid container item xs={12} spacing={1}>
 				<Grid item>
 				<TextField label="Name" name="name" value={this.state.responses["name"]} onChange={this.handleChange}/>

@@ -48,7 +48,7 @@ const SingleQuestionRange = (props) => {
 						{questionText}
 					</Typography>
 					<FormControl component="fieldset">
-					<RadioGroup onChange={props.handleChange} name={props.questionKey} row >
+					<RadioGroup onChange={props.handleChange} name={props.questionKey} value={props.value} row >
 						{radioButtons}
 					</RadioGroup>
 					</FormControl>
@@ -79,8 +79,9 @@ class QuestionnairePage extends React.Component {
 	super(props);
 
 	this.state = {
-		errorMessage: "test",
-		responses: {}
+		errorMessage: "",
+		responses: {},
+		firstTime: false,
 	}
 
 	console.log("constructor props?");
@@ -93,6 +94,7 @@ class QuestionnairePage extends React.Component {
         console.log(user)
 				this.setState({ userId: user.uid });
         this.retrieveQuestions()
+				this.retrieveAnswers()
 			} else {
 				this.setState({ user: null });
 			}
@@ -133,6 +135,50 @@ class QuestionnairePage extends React.Component {
      });
 
    }
+
+	 retrieveAnswers(){
+		 var doc_ref = db.collection("user_questionaire").doc(this.state.userId);
+ 		doc_ref.get().then((doc) => {
+ 			if(doc.exists){
+ 					console.log("questionnaire completed successfully")
+					this.setState({responses : doc.data()})
+ 			} else {
+ 					console.log("doc didn't exist") // NEED TO FIX THIS UP
+ 			}
+ 		});
+//
+// 		value={this.state.responses["name"]}
+//
+// 		var doc_ref_profile = db.collection("users").doc(this.state.userId);
+//  		doc_ref_profile.get().then(function(doc){
+//  			if(doc.exists){
+// 				let data = doc.data();
+// 				this.setState({
+// 					responses: {
+//                         name: doc.get("name") || "",
+//                         fact1: doc.get("fact1") || "",
+//                         fact2: doc.get("fact2") || "",
+//                         fact3: doc.get("fact3") || "",
+//                         fact4: doc.get("fact4") || "",
+//                         fact5: doc.get("fact5") || "",
+//                         ageGroup: doc.get("ageGroup") || "",
+//                         gender: doc.get("gender") || "",
+//                         hometown: doc.get("hometown") || "",
+//                 }
+//
+// 				})
+//  				console.log(doc.data());
+//
+// 				//todo: prefill profile
+//  			} else {
+//  				console.log("user profile doc didn't exist") // NEED TO FIX THIS UP
+// 				this.setState({firstTime: true})
+// 			}
+//  		}.bind(this)).catch(function(error) {
+//  			console.log("Error getting document:", error);
+//  		});
+//  		}
+	 }
 
 
 
@@ -205,7 +251,8 @@ class QuestionnairePage extends React.Component {
 				return <SingleQuestionRange handleChange={this.handleChange}
 														 questionKey={questionKey}
 														 key={questionKey}
-														 questionProperties={this.state.questionnaire[questionKey]}/>
+														 questionProperties={this.state.questionnaire[questionKey]}
+														 value={this.state.responses[questionKey] || ""}/>
 			});
 			// questionCards = this.state.questionnaire.map(function(question) {
 	  	// 	return (
@@ -220,6 +267,9 @@ class QuestionnairePage extends React.Component {
 		<div>
 			<Grid container spacing={1} style={{ padding: 100}}>
 				<Grid item xs={12}>
+				{this.state.firstTime && <Typography component="h4" color="primary">
+					Please complete your profile to setup your account!
+				</Typography>}
 				<Typography variant="h1">
 					About You
 				</Typography>
