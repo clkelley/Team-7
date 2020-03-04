@@ -28,6 +28,20 @@ class MyEventsPage extends React.Component {
       past_events:[]
 		}
 
+    Firebase.auth().onAuthStateChanged(function(user) {
+			if (user) {
+        console.log(user)
+				this.setState({ userId: user.uid });
+        this.search()
+			} else {
+				this.setState({ user: null });
+			}
+
+			if (this.state.loading) {
+				this.setState({ loading: false });
+			}
+    }.bind(this));
+
     this.componentDidMount = this.componentDidMount.bind(this)
     // var user = Firebase.auth().currentUser
     // console.log("come on dawg")
@@ -41,19 +55,7 @@ class MyEventsPage extends React.Component {
   }
 
   componentDidMount(){
-		Firebase.auth().onAuthStateChanged(function(user) {
-			if (user) {
-        console.log(user)
-				this.setState({ userId: user.uid });
-        this.search()
-			} else {
-				this.setState({ user: null });
-			}
 
-			if (this.state.loading) {
-				this.setState({ loading: false });
-			}
-    }.bind(this));
 	 }
 
   search() {
@@ -80,7 +82,7 @@ class MyEventsPage extends React.Component {
       <div>
               <h1>Your Going Events</h1>
               <DisplayEvents eventIds={this.state.going_events} />
-              
+
       </div>
     );
     }
