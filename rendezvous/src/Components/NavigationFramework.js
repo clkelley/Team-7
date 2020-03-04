@@ -77,14 +77,14 @@ function checkPathnameValue(location) {
 class NavigationFramework extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { width: 0, height: 0, loggedIn : false };
+    this.state = { width: 0, height: 0, loggedIn : false, isLoading: true};
 
     Firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-      this.setState({loggedIn:true});
+      this.setState({loggedIn:true, isLoading: false});
     } else {
       // No user is signed in.
-      this.setState({loggedIn:false});
+      this.setState({loggedIn:false, isLoading: false});
     }
   }.bind(this));
   }
@@ -218,7 +218,9 @@ class NavigationFramework extends React.Component {
       topbar = this.DesktopAppBar();
     }
 
-
+    if(this.state.isLoading){
+      return <div></div>;
+    }
 
     return (
       <Router>

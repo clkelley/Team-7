@@ -31,21 +31,22 @@ class EditProfile extends React.Component {
                         gender: "",
                         hometown: ""
                 }};
+				Firebase.auth().onAuthStateChanged(function(user) {
+					if (user) {
+						console.log(user)
+						this.setState({ userId: user.uid });
+						this.retrieveProfile()
+					} else {
+						this.setState({ user: null });
+					}
+					if (this.state.loading) {
+						this.setState({ loading: false });
+					}
+				}.bind(this));
   }
 
 componentDidMount(){
-	Firebase.auth().onAuthStateChanged(function(user) {
-		if (user) {
-			console.log(user)
-			this.setState({ userId: user.uid });
-			this.retrieveProfile()
-		} else {
-			this.setState({ user: null });
-		}
-		if (this.state.loading) {
-			this.setState({ loading: false });
-		}
-	}.bind(this));
+
  }
 
  retrieveProfile = () =>{
