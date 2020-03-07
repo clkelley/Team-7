@@ -1,10 +1,10 @@
 import React from 'react';
-import '../App.css';
+import '../../App.css';
 import { Card, CardActionArea, CardActions, CardContent, CardMedia,
                                  Button, Typography, IconButton, Grid, TextField, MenuItem, Select, InputLabel, FormControl } from '@material-ui/core';
 import { BookmarkBorder, Bookmark, Room, PhotoCamera } from '@material-ui/icons'
 import Firebase from 'firebase'
-import { db } from '../firebase';
+import { db } from '../../firebase';
 import {
   BrowserRouter as Router,
   Switch,

@@ -13,11 +13,10 @@ import { AppBar, Card, CardActionArea, CardActions, CardContent, CardMedia,
 import { Menu, Search } from '@material-ui/icons'
 import mainLogo from '../media/rendezvous_logo_white.png';
 
-import SearchBar from './SearchBar'
-import ExplorePage from './ExplorePage'
+import ExplorePage from './Explore/ExplorePage'
 import EventCard from './EventCard'
 import EventPage from './EventPage'
-import Profile from './ProfilePage'
+import Profile from './profile/ProfilePage'
 import LoginPage from './LoginPage'
 import DisplayEvents from './DisplayEvents'
 import SignUpPage from './SignUpPage'
@@ -25,14 +24,14 @@ import Firebase from 'firebase'
 import { db } from '../firebase';
 import MyEvents from './MyEvents'
 import Recommended from './Recommended'
-import QuestionnairePage from './QuestionnairePage'
-import EditProfile from './EditProfile'
+import QuestionnairePage from './profile/QuestionnairePage'
+import EditProfile from './profile/EditProfile'
 
 
 function Explore() {
   return <div className="explorePage">
-        <ExplorePage />
-      </div>;
+    	<ExplorePage />
+	</div>;
 }
 
 function ExploreContent() {
@@ -70,10 +69,6 @@ function checkPathnameValue(location) {
     }
     return pathname;
 }
-
-
-
-
 
 class NavigationFramework extends React.Component {
   constructor(props) {
@@ -291,13 +286,12 @@ class NavigationFramework extends React.Component {
 
           <Route path="/recommended">
             <Grid className="bigGrid">
-            <Recommended />
+            	<Recommended />
             </Grid>
           </Route>
           <Route path="/">
-        		<Grid className="bigGrid">
-            <Explore />
-            <DisplayEvents eventIds={[1,2,3, 4, 5, 6, 7, 8, 9]} />
+        	<Grid className="bigGrid">
+            	<Explore />
             </Grid>
           </Route>
         </Switch>

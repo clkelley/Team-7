@@ -14,8 +14,8 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
 
 
 
-import SearchBar from './Components/SearchBar'
-import ExplorePage from './Components/ExplorePage'
+import SearchBar from './Components/Explore/SearchBar'
+import ExplorePage from './Components/Explore/ExplorePage'
 import EventCard from './Components/EventCard'
 import Faraz from './Components/Faraz'
 import NavigationFramework from './Components/NavigationFramework'

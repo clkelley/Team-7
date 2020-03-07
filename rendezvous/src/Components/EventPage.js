@@ -2,7 +2,7 @@ import React from 'react';
 import './EventCard.css';
 import '../App.css';
 import { Card, CardActionArea, CardActions, CardContent, CardMedia,
-				 Button, Typography, IconButton, Grid } from '@material-ui/core';
+				 Button, Typography, IconButton, Grid, Popover } from '@material-ui/core';
 import headerPhoto from './images/header_concert1.jpg';
 import headerPhoto2 from './images/header_concert2.jpg';
 import Firebase from 'firebase'
@@ -26,6 +26,7 @@ class EventPage extends React.Component {
 			photo: "",
 			eventId: eventId,
 			userRegistered: false,
+			open: false,
 		};
 		this.fetchFromDatabase(eventId);
 
@@ -146,6 +147,28 @@ class EventPage extends React.Component {
 	doc_ref_user.update(userIdMap);
 	}
 
+
+	handleTouchTap = (event) => {
+    	// This prevents ghost click.
+    	event.preventDefault();
+    	this.setState({
+      		open: true,
+      		anchorEl: event.currentTarget,
+    	});
+  	};
+
+  	handleRequestClose = () => {
+    	this.setState({
+      		open: false,
+    	});
+  	};
+
+
+
+
+
+
+
   render() {
 		//carousel
 		//text
@@ -196,6 +219,25 @@ class EventPage extends React.Component {
 					San Francisco
 				</h2>
 
+
+				<Grid container direction="row" justify="center" alignItems="center">
+				<Button
+				variant="contained"
+				color="primary"
+            	onClick={this.handleTouchTap}
+            	>
+            		Hello
+            	</Button>
+          		<Popover
+            	open={this.state.open}
+            	anchorEl={this.state.anchorEl}
+            	anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
+            	targetOrigin={{horizontal: 'left', vertical: 'top'}}
+            	onRequestClose={this.handleRequestClose}
+          		>
+            		hello
+          		</Popover>
+          		</Grid>
 				</Grid>
 				</Grid>
 			</Grid>
