@@ -1,15 +1,8 @@
 import React from 'react';
-import './EventCard.css';
 import '../App.css';
 import './LoginPage.css'
 
-import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import Firebase from 'firebase'
-
-import { AppBar, Card, CardActionArea, CardActions, CardContent, CardMedia,
-  Drawer, Tabs, Tab, Toolbar, Typography, IconButton, Grid, List, ListItem, ListItemText } from '@material-ui/core';
-
-import EventCard from './EventCard'
 
 import DisplayEvents from './DisplayEvents'
 import { db } from '../firebase';
@@ -24,24 +17,15 @@ class RecommendedPage extends React.Component {
 			userId: "",
 			matches: {},
       recommended_events: [],
+      loading: true
 		}
 
     this.componentDidMount = this.componentDidMount.bind(this)
-    // var user = Firebase.auth().currentUser
-    // console.log("come on dawg")
-    // console.log(user)
-    // if (user != null){
-    //   this.setState({userId: user.uid});
-    //   this.search()
-    // } else {
-    //   // DO SOMETHING HERE
-    // }
   }
 
   componentDidMount(){
 		Firebase.auth().onAuthStateChanged(function(user) {
 			if (user) {
-        console.log(user)
 				this.setState({ userId: user.uid });
         this.search()
 			} else {
@@ -60,9 +44,8 @@ class RecommendedPage extends React.Component {
       if(doc.exists){
         this.setState({matches: doc.data()})
         this.setState({recommended_events: doc.data().get('recommended_events')})
-        console.log(doc.data())
       } else {
-        console.log("doc didn't exist") // NEED TO FIX THIS UP
+        console.log("doc didn't exist") // TODO
       }
     }.bind(this)).catch(function(error) {
       console.log("Error getting document:", error);
@@ -73,9 +56,8 @@ class RecommendedPage extends React.Component {
   render() {
     return (
       <div>
-              <h1>Recommended For You</h1>
-              <DisplayEvents eventIds={this.state.recommended_events} />
-
+          <h1>Recommended For You</h1>
+          <DisplayEvents eventIds={this.state.recommended_events} />
       </div>
     );
     }

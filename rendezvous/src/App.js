@@ -1,30 +1,12 @@
 import React, { Fragment } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-import { AppBar, Card, CardActionArea, CardActions, CardContent, CardMedia,
-  Drawer, Tabs, Tab, Toolbar, Button, Typography, IconButton, Grid } from '@material-ui/core';
-import { MenuIcon, SearchIcon } from '@material-ui/icons/Menu';
+
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
-
-
-
-import SearchBar from './Components/Explore/SearchBar'
-import ExplorePage from './Components/Explore/ExplorePage'
-import EventCard from './Components/EventCard'
-import Faraz from './Components/Faraz'
 import NavigationFramework from './Components/NavigationFramework'
-import LoginPage from './Components/LoginPage'
 
-/*https://stackoverflow.com/questions/41638688/material-uis-tabs-integration-with-react-router-4*/
-/*https://reacttraining.com/react-router/web/guides/quick-start*/
-/*https://medium.com/dailyjs/how-to-create-a-navigation-bar-with-react-router-styled-components-and-infrastructure-components-e24bee8d31bb*/
-
+// muiTheme -> specifies the color of the components, darkness of the surfaces, etc.
+// here we set our primary and secondary color
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -36,28 +18,6 @@ const theme = createMuiTheme({
   },
 
 });
-
-
-function Home() {
-  return <h1>Home</h1>;
-}
-
-function Explore() {
-  return <div>
-  			<ExplorePage/>
-  		</div>;
-}
-
-function MyEvents() {
-	return <h1>My Events</h1>;
-}
-
-function Users() {
-  return <div>
-          <Faraz/>
-	</div>;
-
-}
 
 function App() {
   return (

@@ -15,12 +15,11 @@ class DisplayEvents extends React.Component {
 
   render() {
   	let eventArray = this.props.eventIds;
-	let displayCards = eventArray.map(function(eventId) {
+		let displayCards = eventArray.map(function(eventId) {
   		return (
   			<EventCard eventId={eventId} key={eventId}/>
   		);
   	});
-
 
   	return(
   		<Grid container spacing={3}>

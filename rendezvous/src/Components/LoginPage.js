@@ -15,7 +15,6 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-// import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import Firebase from 'firebase'
 
 class LoginPage extends React.Component {
@@ -32,7 +31,6 @@ class LoginPage extends React.Component {
 
 handleSubmit = (event) => {
     event.preventDefault();
-    //const { email, password } = event.target.elements;
 		Firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
 		.then(() => {
 				return window.location.href='/myevents';
@@ -52,81 +50,60 @@ handleSubmit = (event) => {
   }
 
   render() {
-    /*return (
-			<div>
-			<input
-				name="email"
-				value={this.state.email}
-				onChange={(e) => {this.setState({email: e.target.value})}}
-				type="text"
-				placeholder="Email Address"
-			/>
-			<input
-				name="password"
-				value={this.state.password}
-				onChange={(e) => {this.setState({password: e.target.value})}}
-				type="password"
-				placeholder="Password"
-			/>
-			<button onClick={(e) => this.handleSubmit(e)}>
-							Login
-			</button>
-	    </div>
-	);*/
-  return (
-    <Container component="main" maxWidth="xs">
-      <Typography component="h1" variant="h5">
-        Sign In
-      </Typography>
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <TextField
-              variant="outlined"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              onChange={this.onChange}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              variant="outlined"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              onChange={this.onChange}
-            />
-          </Grid>
-        </Grid>
-        <Button
-          type="submit"
-          fullWidth
-          variant="contained"
-          color="primary"
-          onClick={this.handleSubmit}
-        >
+    return (
+      <Container component="main" maxWidth="xs">
+        <Typography component="h1" variant="h5">
           Sign In
-        </Button>
-        <Grid container justify="flex-end">
-          <Grid item>
-            <Link href="/signup" variant="body2">
-              Don't have an account yet? Sign up
-            </Link>
+        </Typography>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                onChange={this.onChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                onChange={this.onChange}
+              />
+            </Grid>
           </Grid>
-        </Grid>
-      <Typography component="h4" color="error">
-        {this.state.errorMessage}
-      </Typography>
-      </Container>
-  )
-  }
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            onClick={this.handleSubmit}
+          >
+            Sign In
+          </Button>
+          <Grid container justify="flex-end">
+            <Grid item>
+              <Link href="/signup" variant="body2">
+                Don't have an account yet? Sign up
+              </Link>
+            </Grid>
+          </Grid>
+        <Typography component="h4" color="error">
+          {this.state.errorMessage}
+        </Typography>
+        </Container>
+    )
+    }
 }
 
 export default LoginPage;

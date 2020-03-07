@@ -2,9 +2,6 @@ import React from 'react';
 import './EventCard.css';
 import { Card, CardActionArea, CardActions, CardContent, CardMedia,
 				 Button, Typography, IconButton, Grid } from '@material-ui/core';
-import stockPhoto1 from '../media/eventPhotos/wine_tasting.jpg';
-import stockPhoto2 from '../media/eventPhotos/beer_tasting.jpg';
-import stockPhoto3 from '../media/eventPhotos/food_festival.jpg';
 import Firebase from 'firebase'
 import { db } from '../firebase';
 import {

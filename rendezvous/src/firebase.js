@@ -1,13 +1,17 @@
 
-// src/firebase.js
+/*
+* Firebase.js
+*
+* Connects React project with Firebase project. firebaseConfig value is
+* from the FirebaseConsole for the project.
+* SHOULD NOT BE UPDATED UNLESS SWITCHING FIREBASE
+*/
 
-// Firebase App (the core Firebase SDK) is always required and must be listed first
 import * as firebase from 'firebase/app';
 
-// Add the Firebase products that you want to use
+// firestore is the database
 import 'firebase/firestore';
 
-// TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
   apiKey: "AIzaSyB2r1XiyZR8OtUMgMnMtQFCm8-6gIf_prg",
     authDomain: "cs194w-62f48.firebaseapp.com",

@@ -8,54 +8,23 @@ import {
   Link,
   Redirect
 } from "react-router-dom";
-import { AppBar, Card, CardActionArea, CardActions, CardContent, CardMedia,
-  Drawer, Tabs, Tab, Toolbar, Button, Typography, IconButton, Grid, List, ListItem, ListItemText } from '@material-ui/core';
-import { Menu, Search } from '@material-ui/icons'
+import { AppBar, Drawer, Tabs, Tab, Toolbar, Button, IconButton, Grid, List, ListItem, ListItemText } from '@material-ui/core';
+import { Menu} from '@material-ui/icons'
 import mainLogo from '../media/rendezvous_logo_white.png';
 
 import ExplorePage from './Explore/ExplorePage'
-import EventCard from './EventCard'
 import EventPage from './EventPage'
 import Profile from './profile/ProfilePage'
 import LoginPage from './LoginPage'
 import DisplayEvents from './DisplayEvents'
 import SignUpPage from './SignUpPage'
 import Firebase from 'firebase'
-import { db } from '../firebase';
 import MyEvents from './MyEvents'
 import Recommended from './Recommended'
 import QuestionnairePage from './profile/QuestionnairePage'
 import EditProfile from './profile/EditProfile'
 
 
-function Explore() {
-  return <div className="explorePage">
-    	<ExplorePage />
-	</div>;
-}
-
-function ExploreContent() {
-  return <div className="exploreContent">
-    	<h2>Happening on Saturday, February 22nd</h2>
-          <DisplayEvents eventIds={[9,6,8]} />
-          <h2>Food and Drinks</h2>
-          <DisplayEvents eventIds={[1,4,2]} />
-          <h2>Free Events</h2>
-          <DisplayEvents eventIds={[7,5,3]} />
-  </div>;
-}
-
-function myEvents() {
-  return <div className="myEventsPage">
-        <MyEvents />
-      </div>;
-}
-
-function Users() {
-  return <div>
-          <h1>Users</h1>
-         </div>;
-}
 function checkPathnameValue(location) {
     const { pathname } = location;
     switch (pathname) {
@@ -79,49 +48,21 @@ class NavigationFramework extends React.Component {
       loggedIn : false,
       isLoading: true};
 
+
+    // Sets an observer on the auth event -- ensures that we don't get the user in an intermediate stage
     Firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      this.setState({loggedIn:true, isLoading: false, userId: user.uid});
-    } else {
-      // No user is signed in.
-      this.setState({loggedIn:false, isLoading: false});
-    }
-  }.bind(this));
+      if (user) {
+        this.setState({loggedIn:true, isLoading: false, userId: user.uid});
+      } else {
+        // No user is signed in.
+        this.setState({loggedIn:false, isLoading: false});
+      }
+    }.bind(this));
   }
 
-  // checkCompleteProfileAndQuestionnaire = () => {
-  //   db.collection("users").doc(this.state.userId).get()
-  //   .then( function(doc){
-  //     if(doc.exists){
-  //       //profile complete
-  //       this.checkQuestionnaireFilled();
-  //     } else {
-  //       this.setState({profileComplete: false})
-  //       console.log("doc didn't exist") // NEED TO FIX THIS UP
-  //     }
-  //   }.bind(this)).catch(function(error) {
-  //     this.setState({profileComplete: false})
-  //   }.bind(this));
-  // }
-  //
-  // checkQuestionnaireFilled(){
-  //   var doc_ref = db.collection("user_questionaire").doc(this.state.userId);
-	// 	doc_ref.get().then((doc) => {
-	// 		if(doc.exists){
-	// 				console.log("questionnaire completed successfully")
-	// 		} else {
-	// 				console.log("doc didn't exist") // NEED TO FIX THIS UP
-  //         this.setState({questionnaireComplete: false})
-	// 		}
-	// 	}).catch(function(error) {
-  //     console.log("Error getting document:", error);
-  //     this.setState({questionnaireComplete: false})
-  //   }.bind(this));
-  // }
 
   updateDimensions = () => {
     this.setState({ width: window.innerWidth, height: window.innerHeight });
-    console.log("width:"+ window.innerWidth + "height:" + window.innerHeight);
   };
 
   componentDidMount() {
@@ -140,16 +81,19 @@ class NavigationFramework extends React.Component {
     this.setState({[side]: open });
   };
 
-  eventCardClicked(eventID){
-
-  }
 
   DesktopAppBar(){
+    var label = "Log In"
+    var value = "/login"
     if (this.state.loggedIn){
-      return <AppBar>
-        <Toolbar className="toolbar">
-          <img src={mainLogo} className="mainLogo" />
-          <Route
+      label = "Profile"
+      value = "/profile"
+    }
+
+    return <AppBar>
+      <Toolbar className="toolbar">
+        <img src={mainLogo} className="mainLogo" />
+        <Route
             path="/"
             render={({location}) => (
               <Fragment>
@@ -157,86 +101,50 @@ class NavigationFramework extends React.Component {
                   <Tab label="Recommended" value="/recommended" component={Link} to='/recommended'/>
                   <Tab label="Explore" value="/" component={Link} to='/' />
                   <Tab label="My Events" value="/myevents" component={Link} to='/myevents' />
-                  <Tab label="Profile" value="/profile" component={Link} to='/profile' />
+                  <Tab label={label} value={value} component={Link} to={value} />
                 </Tabs>
               </Fragment>
             )}
           />
-        </Toolbar>
-      </AppBar>;
-    } else {
-      return <AppBar>
-        <Toolbar className="toolbar">
-          <img src={mainLogo} className="mainLogo" />
-          <Route
-            path="/"
-            render={({location}) => (
-                <Fragment>
-                    <Tabs value={checkPathnameValue(location.pathname)} className="tabs" indicatorColor="primary">
-                    <Tab label="Explore" value="/" component={Link} to='/'/>
-                    <Tab label="Log In" value="/login" component={Link} to='/login' />
-                    </Tabs>
-                </Fragment>
-              )}
-            />
-          </Toolbar>
-        </AppBar>;
-    }
-
+      </Toolbar>
+    </AppBar>;
   }
 
   MobileAppBar(){
+    var label = "Log In"
+    var value = "/login"
     if (this.state.loggedIn){
-    return <div>
-    <AppBar>
-      <Toolbar className="toolbar">
-        <IconButton onClick={this.toggleDrawer('left', true)}>
-          <Menu style={{ color:'#ffffff' }}/>
-        </IconButton>
-        <img src={mainLogo} className="mainLogo" />
-      </Toolbar>
-    </AppBar>
-    <Drawer open={this.state.left} onClose={this.toggleDrawer('left', false)}>
-    <List>
-      <ListItem button component={Link} to='/recommended'>
-        <ListItemText primary="Recommended"/>
-      </ListItem>
-      <ListItem button component={Link} to='/'>
-        <ListItemText primary="Explore"/>
-      </ListItem>
-      <ListItem button component={Link} to='/myevents'>
-        <ListItemText primary="My Events"/>
-      </ListItem>
-      <ListItem button component={Link} to='/profile'>
-        <ListItemText primary="Profile"/>
-      </ListItem>
-    </List>
-    </Drawer>
-    </div> }
-    else {
-      return <div>
-      <AppBar>
-        <Toolbar className="toolbar">
-          <IconButton onClick={this.toggleDrawer('left', true)}>
-            <Menu style={{ color:'#ffffff' }}/>
-          </IconButton>
-          <img src={mainLogo} className="mainLogo" />
-        </Toolbar>
-      </AppBar>
-      <Drawer open={this.state.left} onClose={this.toggleDrawer('left', false)}>
-      <List>
-        <ListItem button component={Link} to='/'>
-          <ListItemText primary="Explore"/>
-        </ListItem>
-        <ListItem button component={Link} to='/login'>
-          <ListItemText primary="Log In"/>
-        </ListItem>
-      </List>
-      </Drawer>
-      </div>
+      label = "Profile"
+      value = "/profile"
     }
-  }
 
+    return <div>
+        <AppBar>
+          <Toolbar className="toolbar">
+            <IconButton onClick={this.toggleDrawer('left', true)}>
+              <Menu style={{ color:'#ffffff' }}/>
+            </IconButton>
+            <img src={mainLogo} className="mainLogo" />
+          </Toolbar>
+        </AppBar>
+        <Drawer open={this.state.left} onClose={this.toggleDrawer('left', false)}>
+        <List>
+          <ListItem button component={Link} to='/recommended'>
+            <ListItemText primary="Recommended"/>
+          </ListItem>
+          <ListItem button component={Link} to='/'>
+            <ListItemText primary="Explore"/>
+          </ListItem>
+          <ListItem button component={Link} to='/myevents'>
+            <ListItemText primary="My Events"/>
+          </ListItem>
+          <ListItem button component={Link} to={value}>
+            <ListItemText primary={label}/>
+          </ListItem>
+        </List>
+        </Drawer>
+        </div>
+  }
 
   render() {
     let topbar;
@@ -260,13 +168,12 @@ class NavigationFramework extends React.Component {
         <Switch>
         <Route path="/editprofile" render={(props) =>
          <Grid className="bigGrid">
-         <EditProfile {...props}/>
-            {/*this.state.loggedIn ? <EditProfile /> : <Redirect to='/login' /> */}
+           <EditProfile {...props}/>
          </Grid>
           }/>
        <Route path="/questionnaire" render={(props) =>
          <Grid className="bigGrid">
-         {this.state.loggedIn ? <QuestionnairePage {...props}/> : <Redirect to='/login' /> }
+          {this.state.loggedIn ? <QuestionnairePage {...props}/> : <Redirect to='/login' /> }
          </Grid>
        }/>
           <Route path="/events/:eventId" component={EventPage}>
@@ -291,7 +198,7 @@ class NavigationFramework extends React.Component {
           </Route>
           <Route path="/">
         	<Grid className="bigGrid">
-            	<Explore />
+            	<ExplorePage />
             </Grid>
           </Route>
         </Switch>
