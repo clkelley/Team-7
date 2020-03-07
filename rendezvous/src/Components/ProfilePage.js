@@ -19,7 +19,7 @@ class Profile extends React.Component {
   constructor(props) {
 	super(props);
 		this.state = {
-			photo: require('./images/StartScreen_elRyan_639361.jpg'),
+			photo: "",
 			name: "...",
 			fact1: "",
 			fact2: "",
@@ -91,6 +91,7 @@ class Profile extends React.Component {
      		this.setState({gender: data['gender']});
      		this.setState({hometown: data['hometown']});
      		this.setState({ageGroup: data['ageGroup']});
+     		this.setState({photo: data['photo']})
         console.log(doc.data())
 				this.checkQuestionnaireFilled()
       } else {
@@ -115,6 +116,7 @@ class Profile extends React.Component {
 	}
 
   render() {
+  	console.log("photo:"+this.state.photo);
     return (
 		<div>
 			<Grid container spacing={1} style={{ padding: 100}}>

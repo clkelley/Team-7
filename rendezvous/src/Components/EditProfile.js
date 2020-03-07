@@ -2,7 +2,7 @@ import React from 'react';
 import '../App.css';
 import { Card, CardActionArea, CardActions, CardContent, CardMedia,
                                  Button, Typography, IconButton, Grid, TextField, MenuItem, Select, InputLabel, FormControl } from '@material-ui/core';
-import { BookmarkBorder, Bookmark, Room } from '@material-ui/icons'
+import { BookmarkBorder, Bookmark, Room, PhotoCamera } from '@material-ui/icons'
 import Firebase from 'firebase'
 import { db } from '../firebase';
 import {
@@ -56,6 +56,7 @@ componentDidMount(){
 				let data = doc.data();
 				this.setState({
 					responses: {
+						photo: doc.get("photo") || "",
                         name: doc.get("name") || "",
                         fact1: doc.get("fact1") || "",
                         fact2: doc.get("fact2") || "",
@@ -169,6 +170,14 @@ render() {
 			<Grid item>
 			<Typography> Five facts about me... </Typography>
 			</Grid>
+			<Grid container direction="row" justify="left" alignItems="center">
+      <input accept="image/*" type="file" onChange={this.handleChange} value={this.state.responses["photo"]}/>
+      <label htmlFor="icon-button-file">
+        <IconButton color="primary" aria-label="upload picture" component="span">
+          <PhotoCamera />
+        </IconButton>
+      </label>
+      </Grid>
 			<Grid container item xs={12} spacing={1} alignItems="flex-start">
 				<Grid item xs={12}>
 					<TextField label="1" name="fact1" onChange={this.handleChange} value={this.state.responses["fact1"]}/>
