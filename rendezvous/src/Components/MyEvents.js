@@ -66,7 +66,11 @@ class MyEventsPage extends React.Component {
     return (
       <div>
           <h1>Your Going Events</h1>
-          <DisplayEvents eventIds={this.state.going_events} /> // TODO ADD THE OTHER TYPES OF EVENTS}
+          <DisplayEvents eventIds={this.state.going_events} />
+          <h1>Your Planned Events</h1>
+          <DisplayEvents eventIds={this.state.planned_events} />
+          <h1>Your Went Events</h1>
+          <DisplayEvents eventIds={this.state.went_events} /> 
 
       </div>
     );

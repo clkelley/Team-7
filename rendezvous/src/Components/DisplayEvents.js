@@ -15,6 +15,9 @@ class DisplayEvents extends React.Component {
 
   render() {
   	let eventArray = this.props.eventIds;
+		if (eventArray == undefined){
+			eventArray = []
+		}
 		let displayCards = eventArray.map(function(eventId) {
   		return (
   			<EventCard eventId={eventId} key={eventId}/>
