@@ -28,7 +28,8 @@ class EventPage extends React.Component {
 			open: false,
 			location: "loading...",
 			price: "loading...",
-			loading: true
+			loading: true,
+			numSold: 0
 		};
 		this.fetchFromDatabase(eventId);
   }
@@ -73,6 +74,7 @@ class EventPage extends React.Component {
      		this.setState({eventName: data[0]['event_name']});
 				this.setState({location: data[0]['location']});
 				this.setState({price: data[0]['price']});
+				this.setState({numSold: data[0]['num_sold']});
 				if (eventId === 2) this.setState({photo: require('../media/eventPhotos/beer_tasting.jpg')});
 				else if (eventId === 3) this.setState({photo: require('../media/eventPhotos/yoga.jpg')});
 				else if (eventId === 4) this.setState({photo: require('../media/eventPhotos/food_festival.jpg')});
@@ -112,6 +114,11 @@ class EventPage extends React.Component {
 		userIdMap[this.state.userId] = true;
 		doc_ref_event.set(userIdMap, {merge:true});
 
+		//update event num going
+		var ref = db.collection("event_data").doc(this.state.eventId.toString())
+		ref.update({'num_sold' : (parseInt(this.state.numSold) + 1).toString()})
+
+
 	}
 
 	unregisterForEvent = () => {
@@ -122,10 +129,20 @@ class EventPage extends React.Component {
 		});
 
 		//update event visitors
+
+		// NEED TO FIX DELETING CAUSE IT DOESNT WORK
+
 		var doc_ref_event = db.collection("event_visitors").doc(String(this.state.eventId));
-		let userIdMap = {}
-		userIdMap[this.state.userId] = false
-		doc_ref_user.update(userIdMap);
+		// let userIdMap = {}
+		var field_val = this.state.userId.toString()
+		// userIdMap.this.state.userId
+		doc_ref_event.update({field_val: Firebase.firestore.FieldValue.delete()})
+		// doc_ref_event.field_val.delete()
+		// doc_ref_user.update(userIdMap);
+
+		//update event num going
+		var ref = db.collection("event_data").doc(this.state.eventId.toString())
+		ref.update({'num_sold' : (parseInt(this.state.numSold) - 1).toString()})
 	}
 
 
