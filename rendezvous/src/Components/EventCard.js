@@ -41,8 +41,6 @@ class EventCard extends React.Component {
    			else if (eventId === 9) this.setState({photo: require('../media/eventPhotos/cruise.jpg')});
    			else if (eventId === 1) this.setState({photo: require('../media/eventPhotos/wine_tasting.jpg')});
    		});
-
-		console.log("hey bro")
 	}
 
   render() {

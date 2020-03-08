@@ -26,6 +26,8 @@ class EventPage extends React.Component {
 			eventId: eventId,
 			userRegistered: false,
 			open: false,
+			location: "loading...",
+			price: "loading...",
 			loading: true
 		};
 		this.fetchFromDatabase(eventId);
@@ -69,6 +71,8 @@ class EventPage extends React.Component {
      		this.setState({date: data[0]['date']});
      		this.setState({shortDescription: data[0]['short_description']});
      		this.setState({eventName: data[0]['event_name']});
+				this.setState({location: data[0]['location']});
+				this.setState({price: data[0]['price']});
 				if (eventId === 2) this.setState({photo: require('../media/eventPhotos/beer_tasting.jpg')});
 				else if (eventId === 3) this.setState({photo: require('../media/eventPhotos/yoga.jpg')});
 				else if (eventId === 4) this.setState({photo: require('../media/eventPhotos/food_festival.jpg')});
@@ -171,13 +175,13 @@ class EventPage extends React.Component {
 				<Button variant="contained" color="primary" onClick={this.onClickButton}>
 					{this.state.userRegistered ? "Cancel Tickets" : "Buy Tickets"}
 				</Button>
-				<h1>$12-$20</h1>
+				<h1>{this.state.price}</h1>
 				<Grid container direction="row" justify="center" alignItems="center">
 				<IconButton>
 					<Room />
 				</IconButton>
 				<h2>
-					San Francisco
+					{this.state.location}
 				</h2>
 
 
