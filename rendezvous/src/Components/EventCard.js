@@ -15,10 +15,11 @@ class EventCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+			loading: true,
       date: this.fetchFromDatabase(this.props.eventId),
       eventName: this.fetchFromDatabase(this.props.eventId),
       shortDescription: this.fetchFromDatabase(this.props.eventId),
-      photo: require('../media/eventPhotos/wine_tasting.jpg'),
+      photo: require('../media/eventPhotos/wine_tasting.jpg')
     };
   }
 
@@ -29,6 +30,7 @@ class EventCard extends React.Component {
      		this.setState({date: data[0]['date']});
      		this.setState({shortDescription: data[0]['short_description']});
      		this.setState({eventName: data[0]['event_name']});
+				this.setState({loading: false})
      		if (eventId === 2) this.setState({photo: require('../media/eventPhotos/beer_tasting.jpg')});
      		else if (eventId === 3) this.setState({photo: require('../media/eventPhotos/yoga.jpg')});
    			else if (eventId === 4) this.setState({photo: require('../media/eventPhotos/food_festival.jpg')});
@@ -42,6 +44,9 @@ class EventCard extends React.Component {
 	}
 
   render() {
+		if (this.state.loading){
+			return <div/>
+		}
     return (
       <Grid item xs={12} sm={6} md={4}>
     	<Card>
@@ -63,7 +68,7 @@ class EventCard extends React.Component {
     	</Card>
     </Grid>
     );
-  }
+	}
 }
 
 export default EventCard;
