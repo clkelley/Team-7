@@ -10,6 +10,14 @@ import { db } from '../firebase';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import { BookmarkBorder, Bookmark, Room } from '@material-ui/icons'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+
 
 
 
@@ -208,16 +216,33 @@ class EventPage extends React.Component {
 				color="primary"
             	onClick={this.handleTouchTap}
             	>
-            		Hello
+            		Matches
             	</Button>
           		<Popover
             	open={this.state.open}
+            	data-placement="top"
             	anchorEl={this.state.anchorEl}
             	anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
             	targetOrigin={{horizontal: 'left', vertical: 'top'}}
-            	onRequestClose={this.handleRequestClose}
+            	onClose={this.handleRequestClose}
           		>
-            		hello
+            		<Card>
+      					<CardActionArea component={Link} to={"/events/"+this.props.eventId}>
+       						<CardMedia
+          					component="img"
+          					height="140"
+          					src={this.state.photo}
+        					/>
+        					<CardContent>
+          						<h2 className="eventTitle">
+           		 					{this.state.eventName}
+          						</h2>
+          						<p className="shortDescription">
+            						{this.state.shortDescription} <b className="eventDate">• {this.state.date}</b>
+          						</p>
+        					</CardContent>
+      					</CardActionArea>
+    				</Card>
           		</Popover>
           		</Grid>
 				</Grid>

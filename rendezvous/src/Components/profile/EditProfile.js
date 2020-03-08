@@ -12,6 +12,7 @@ import {
   Link,
   Redirect,
 } from "react-router-dom";
+import UploadPhoto from "./UploadPhoto"
 
 class EditProfile extends React.Component {
 
@@ -48,6 +49,8 @@ class EditProfile extends React.Component {
 componentDidMount(){
 
  }
+
+
 
  retrieveProfile = () =>{
  		var doc_ref_profile = db.collection("users").doc(this.state.userId);
@@ -118,10 +121,14 @@ componentDidMount(){
 	});
  }
 
+	photoUploadedCallback = (photo_url) => {
+		this.setState({responses: {...this.state.responses, photo: photo_url}})
+	}
+
 
 render() {
 	return (
-		<Grid container xs={12} spacing={2} alignItems="center">
+		<Grid container spacing={2} alignItems="center">
 			{this.state.firstTime && <Typography component="h4" color="primary">
 				Please complete your profile to setup your account!
 			</Typography>}
@@ -166,18 +173,13 @@ render() {
 	      </Select>
 				</FormControl>
 				</Grid>
+				<Grid item>
+	      	<UploadPhoto photo_callback={this.photoUploadedCallback} currentPhoto={this.state.responses["photo"]}/>
+	      </Grid>
 			</Grid>
 			<Grid item>
 			<Typography> Five facts about me... </Typography>
 			</Grid>
-			<Grid container direction="row" justify="left" alignItems="center">
-      <input accept="image/*" type="file" onChange={this.handleChange} value={this.state.responses["photo"]}/>
-      <label htmlFor="icon-button-file">
-        <IconButton color="primary" aria-label="upload picture" component="span">
-          <PhotoCamera />
-        </IconButton>
-      </label>
-      </Grid>
 			<Grid container item xs={12} spacing={1} alignItems="flex-start">
 				<Grid item xs={12}>
 					<TextField label="1" name="fact1" onChange={this.handleChange} value={this.state.responses["fact1"]}/>
