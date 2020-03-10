@@ -9,16 +9,14 @@ import Firebase from 'firebase'
 import { db } from '../firebase';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-import { BookmarkBorder, Bookmark, Room } from '@material-ui/icons'
+import { BookmarkBorder, Bookmark, Room, NavigateNext } from '@material-ui/icons'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
-
-
-
+import MatchCard from './MatchCard'
 
 
 class EventPage extends React.Component {
@@ -38,7 +36,6 @@ class EventPage extends React.Component {
 			price: "loading...",
 			loading: true,
 			numSold: 0,
-			match_photo: require('../media/ryan.jpeg')
 		};
 		this.fetchFromDatabase(eventId);
   }
@@ -64,6 +61,9 @@ class EventPage extends React.Component {
 			if(doc.exists){
 				let registeredForEvent = doc.get("going_events").includes(this.state.eventId);
 				this.setState({userRegistered: registeredForEvent});
+				if(registeredForEvent){
+					this.fetchMatches();
+				}
 			} else {
 				console.log("user events doc didn't exist")
 			}
@@ -72,6 +72,49 @@ class EventPage extends React.Component {
 			console.log("Error getting document:", error);
 		});
 		}
+
+	fetchMatches = () => {
+		console.log("fetch from database eventid" + this.state.eventId);
+		db.collection("event_matches").doc(String(this.state.eventId)).get()
+		.then(function(doc){
+				if(doc.exists){
+					const data = doc.data();
+					console.log("match data:");
+					//console.log(data);
+					for(var groupId in Object.keys(data)){
+						var group = data[groupId];
+						//console.log(group);
+						if(group.includes(this.state.userId)){
+							//groupId is the match group
+							group.splice(group.indexOf(this.state.userId), 1);
+						 	this.setState({matchGroup: group, matchIndex: 0})
+							console.log(group);
+						}
+					}
+				} else {
+					console.log("can't find match data");
+				}
+
+     		// this.setState({date: data[0]['date']});
+     		// this.setState({shortDescription: data[0]['short_description']});
+     		// this.setState({eventName: data[0]['event_name']});
+				// this.setState({location: data[0]['location']});
+				// this.setState({price: data[0]['price']});
+				// this.setState({numSold: data[0]['num_sold']});
+				// if (eventId === 2) this.setState({photo: require('../media/eventPhotos/beer_tasting.jpg')});
+				// else if (eventId === 3) this.setState({photo: require('../media/eventPhotos/yoga.jpg')});
+				// else if (eventId === 4) this.setState({photo: require('../media/eventPhotos/food_festival.jpg')});
+				// else if (eventId === 5) this.setState({photo: require('../media/eventPhotos/comedy.jpg')});
+				// else if (eventId === 6) this.setState({photo: require('../media/eventPhotos/concert.jpg')});
+				// else if (eventId === 7) this.setState({photo: require('../media/eventPhotos/hike.jpg')});
+				// else if (eventId === 8) this.setState({photo: require('../media/eventPhotos/food.jpg')});
+				// else if (eventId === 9) this.setState({photo: require('../media/eventPhotos/cruise.jpg')});
+				// else if (eventId === 1) this.setState({photo: require('../media/eventPhotos/wine_tasting.jpg')});
+   		}.bind(this)).catch(function(error) {
+				console.log("Error getting document:", error);
+			});
+	}
+
 
 	fetchFromDatabase(eventId){
 		console.log("fetch from database eventid" + eventId);
@@ -172,6 +215,12 @@ class EventPage extends React.Component {
     	});
   	};
 
+		nextMatch = () => {
+			var nextIndex = (this.state.matchIndex + 1) % (this.state.matchGroup.length);
+			console.log(nextIndex);
+			this.setState({matchIndex : nextIndex})
+		}
+
 
   render() {
 		let top_image;
@@ -211,7 +260,6 @@ class EventPage extends React.Component {
 				<h2>
 					{this.state.location}
 				</h2>
-		
 
 
 
@@ -221,7 +269,8 @@ class EventPage extends React.Component {
 
 
 
-          		<Grid container direction="row" justify="center" alignItems="center">
+
+          		{this.state.matchGroup && <Grid container direction="row" justify="center" alignItems="center">
 				<Button
 				variant="contained"
 				color="primary"
@@ -230,49 +279,19 @@ class EventPage extends React.Component {
             	>
             		Matches
             	</Button>
-
-          			<Popover
-            		open={this.state.open}
-            		anchorEl={this.state.anchorEl}
-            		anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
-            		targetOrigin={{horizontal: 'left', vertical: 'top'}}
-            		onClose={this.handleRequestClose}
-          			>  						
-            		
-          		
-            		<Card>
-      					<CardActionArea component={Link} to={"/events/"+this.props.eventId}>
-       						<CardMedia
-          					component="img"
-          					height="200"
-          					width="200"
-
-          					src={this.state.match_photo}
-        					/>
-        					<CardContent>
-          						<h2 className="eventTitle">
-           		 					Ryan G.
-          						</h2>
-          						<h3>
-          							Surf
-          						</h3>
-          						<h3>
-          							Ski
-          						</h3>
-          						<h3>
-          							Play soccer
-          						</h3>
-          						<h3>
-          							Actor
-          						</h3>
-          						<h3>
-          							Happy
-          						</h3>
-        					</CardContent>
-      					</CardActionArea>
-    				</Card>
-    				</Popover>
-          		</Grid>
+							<Popover
+							open={this.state.open}
+							onClose={this.handleRequestClose}
+							anchorEl={this.state.anchorEl}
+							>
+							<Grid container alignItems="flex-start">
+							<MatchCard userId={this.state.matchGroup[this.state.matchIndex]}/>
+							<IconButton onClick={this.nextMatch}>
+								< NavigateNext />
+							</IconButton>
+							</Grid>
+							</Popover>
+          		</Grid>}
 
 
 
