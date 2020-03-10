@@ -33,8 +33,7 @@ class DatePopup extends React.Component {
 		let monthStr = monthNum.toString();
 		let str = monthStr+"."+ dateStr+"."+yrStr;
 		let newArr = this.state.filters;
-		newArr.push(str);
-		console.log(newArr);
+		if(newArr.indexOf(str) === -1)newArr.push(str);
 		this.setState({filters: newArr, selectedDate: date}, this.props.changeDate(this.state.filters));
 	}
 
@@ -43,7 +42,7 @@ class DatePopup extends React.Component {
 		return (
 			<Grid container spacing={2} className="dateGrid">
 					<Grid item xs={8}>
-						<DatePicker id="filterDatePicker" selected={selected} onChange={this.onChange}/> 
+						<DatePicker open="true" id="filterDatePicker" selected={selected} onChange={this.onChange}/> 
 						<br /> <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 					</ Grid>
 					<Grid item xs={4}>

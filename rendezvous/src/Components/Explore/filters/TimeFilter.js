@@ -31,7 +31,7 @@ class TimePopup extends React.Component {
 	let listitems = times.map(function(time,index) {
 		let checked = this.state.fils[index];
   		return (
-  			<ListItem> <ListItemIcon><Checkbox checked={checked} onChange={toggle} value={index}/> </ ListItemIcon> <ListItemText> {time} </ListItemText></ListItem>
+  			<ListItem key={time}> <ListItemIcon><Checkbox checked={checked} onChange={toggle} value={index}/> </ ListItemIcon> <ListItemText> {time} </ListItemText></ListItem>
   		);
   	}.bind(this));
 		return (

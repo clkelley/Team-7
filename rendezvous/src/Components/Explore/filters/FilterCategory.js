@@ -17,11 +17,12 @@ class FilterCategory extends React.Component {
       locFilters: "Palo Alto, Ca",
       timeFilters: [false, false, false],
       costFilters: [false, false, false, false],
+      timeOptions: ["morning", "afternoon", "evening"],
+	  costOptions : ["free", "under $20", "$20-$50", "$50+"],
+	  catOptions : ["exercise", "music", "entertainment", "sports", "food", "drinks", "leisure"],
       anchor: null,
       popup_open: false,
       curFil: null,
-      filtersOn : false,
-      
     };
     
     this.openPopup = event => this.openPopup2(event);
@@ -38,19 +39,16 @@ class FilterCategory extends React.Component {
   	
   	for(let i=0;i<this.props.eventArray.length;i++) returnArr.push(this.props.eventArray[i]);
   	
-  	let times = ["morning", "afternoon", "evening"];
   	let timeEvents = [];
-  	let costs = ["free", "under $20", "$20-$50", "$50+"];
   	let costEvents = [];
-  	let cats = ["exercise", "music", "entertainment", "sports", "food", "drinks", "leisure"];
   	let catEvents = [];
   	let dateEvents = [];
   	
   	//if the date filter has been set, filter the collection down
   	if((this.state.timeFilters.indexOf(true) != -1) & (this.state.timeFilters.indexOf(false) !== -1)) {
-  		for (let i = 0; i < times.length; i++) {
+  		for (let i = 0; i < this.state.timeOptions.length; i++) {
   			if(this.state.timeFilters[i] === true) {
-  				events.where("time", "==", times[i]).get().then( snapshot => {
+  				events.where("time", "==", this.state.timeOptions[i]).get().then( snapshot => {
   					if(!snapshot.empty) snapshot.forEach (doc => {
   						let eid = doc.data().eventId;
   						timeEvents.push(eid);
@@ -62,9 +60,9 @@ class FilterCategory extends React.Component {
   	}
   	
   	if((this.state.catFilters.indexOf(true) != -1) & (this.state.catFilters.indexOf(false) !== -1)) {
-  		for (let i = 0; i < cats.length; i++) {
+  		for (let i = 0; i < this.state.catOptions.length; i++) {
   			if(this.state.catFilters[i] === true) {
-  				events.where("category", "==", cats[i]).get().then( snapshot => {
+  				events.where("category", "==", this.state.catOptions[i]).get().then( snapshot => {
   					if(!snapshot.empty) snapshot.forEach (doc => {
   						let eid = doc.data().eventId;
   						catEvents.push(eid);
@@ -77,9 +75,9 @@ class FilterCategory extends React.Component {
   	
 
   	if((this.state.costFilters.indexOf(true) != -1) & (this.state.costFilters.indexOf(false) !== -1)) {
-  		for (let i = 0; i < costs.length; i++) {
+  		for (let i = 0; i < this.state.costOptions.length; i++) {
   			if(this.state.costFilters[i] === true) {
-  				events.where("cost", "==", costs[i]).get().then( snapshot => {
+  				events.where("cost", "==", this.state.costOptions[i]).get().then( snapshot => {
   					if(!snapshot.empty) snapshot.forEach (doc => {
   						let eid = doc.data().eventId;
   						costEvents.push(eid);
@@ -127,8 +125,40 @@ class FilterCategory extends React.Component {
     	console.info('You clicked the delete icon.');
   	};
   	
+	let dateItems = <div /> ;
+	if(this.state.dateFilters.length > 0) dateItems = this.state.dateFilters.map(function(date,index) {
+
+  		return (
+  			<Chip variant="outlined" label={date} className="filter" onDelete={handleDelete} />
+  		);
+  	}.bind(this));
+  	
+  	let timeItems = <div /> ;
+	if(this.state.timeFilters.length > 0) timeItems = this.state.timeFilters.map(function(time,index) {
+  		if(time===true)return (
+  			<Chip variant="outlined" label={this.state.timeOptions[index]} className="filter" onDelete={handleDelete} />
+  		);
+  		else return;
+  	}.bind(this));
+  	
+  	let costItems = <div /> ;
+	if(this.state.costFilters.length > 0) costItems = this.state.costFilters.map(function(cost,index) {
+  		if(cost===true)return (
+  			<Chip variant="outlined" label={this.state.costOptions[index]} className="filter" onDelete={handleDelete} />
+  		);
+  		else return;
+  	}.bind(this));
+  	
+  	let catItems = <div /> ;
+	if(this.state.catFilters.length > 0) catItems = this.state.catFilters.map(function(cat,index) {
+  		if(cat===true)return (
+  			<Chip variant="outlined" label={this.state.catOptions[index]} className="filter" onDelete={handleDelete} />
+  		);
+  		else return;
+  	}.bind(this));
 
     return (
+
       <Grid container spacing={1} direction="column">
       <Grid container item xs={12} spacing={2} className="filterCategories">
         <Chip variant="outlined" label="Dates" className="dateChip" onClick={this.openPopup} id="dateChip"></Chip>
@@ -146,9 +176,10 @@ class FilterCategory extends React.Component {
         </div>
       </ Popover>
       <Grid container item xs={12} spacing={2} className="filterCategories2">
-        <Chip variant="outlined" label="2/22" className="filter" onDelete={handleDelete}></Chip>
-        <Chip variant="outlined" label="2/23" className="filter" onDelete={handleDelete}></Chip>
-        <Chip variant="outlined" label="Palo Alto, Ca" className="filter" onDelete={handleDelete}></Chip>
+        {dateItems}
+        {timeItems}
+        {catItems}
+        {costItems}
       </Grid>
       </Grid>
     );
