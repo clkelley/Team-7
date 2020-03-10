@@ -4,10 +4,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import Grid from '@material-ui/core/Grid';
 import {Chip, Popover, List, ListItem, Checkbox, ListItemIcon, ListItemText, TextField} from '@material-ui/core';
 
-
-
-
-
 class CostPopup extends React.Component {
 	constructor(props) {
 		super(props);

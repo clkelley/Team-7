@@ -20,6 +20,7 @@ class FilterCategory extends React.Component {
       anchor: null,
       popup_open: false,
       curFil: null,
+      filtersOn : false,
       
     };
     
@@ -27,7 +28,6 @@ class FilterCategory extends React.Component {
     this.closePopup = event => this.closePopup2(event);
     
     this.updateFilters = this.updateFilters.bind(this);
-    
     this.getSearchArray = this.getSearchArray.bind(this);
 
   }
@@ -44,7 +44,7 @@ class FilterCategory extends React.Component {
   	let costEvents = [];
   	let cats = ["exercise", "music", "entertainment", "sports", "food", "drinks", "leisure"];
   	let catEvents = [];
-  	let filtersOn = false;
+  	let dateEvents = [];
   	
   	//if the date filter has been set, filter the collection down
   	if((this.state.timeFilters.indexOf(true) != -1) & (this.state.timeFilters.indexOf(false) !== -1)) {
@@ -58,13 +58,7 @@ class FilterCategory extends React.Component {
   				});
   			}
   		}
-  		if(!filtersOn)returnArr = timeEvents;
-  		else {
-  			filtersOn = true;
-  			returnArr.forEach(value => {
-  				if(timeEvents.indexOf(value) === -1) delete returnArr[returnArr.indexOf(value)];
-  			});
-  		}
+  		returnArr = timeEvents;
   	}
   	
   	if((this.state.catFilters.indexOf(true) != -1) & (this.state.catFilters.indexOf(false) !== -1)) {
@@ -78,13 +72,7 @@ class FilterCategory extends React.Component {
   				});
   			}
   		}
-  		if(!filtersOn)returnArr = catEvents;
-  		else {
-  			filtersOn = true;
-  			returnArr.forEach(value => {
-  				if(catEvents.indexOf(value) === -1) delete returnArr[returnArr.indexOf(value)];
-  			});
-  		}
+  		returnArr = catEvents;
   	}
   	
 
@@ -99,14 +87,19 @@ class FilterCategory extends React.Component {
   				});
   			}
   		}
-  		
-  		if(!filtersOn) returnArr = costEvents;
-  		else {	
-  			filtersOn = true;
-  			returnArr.forEach(value => {
-  				if(costEvents.indexOf(value) === -1) delete returnArr[returnArr.indexOf(value)];
+  		returnArr = costEvents;
+  	}
+  	
+  	if(this.state.dateFilters.length > 0) {
+		this.state.dateFilters.forEach(date => {
+			events.where("date", "==", date).get().then( snapshot => {
+  				if(!snapshot.empty) snapshot.forEach (doc => {
+  					let eid = doc.data().eventId;
+  					dateEvents.push(eid);
+  				});
   			});
-  		}
+		});
+		returnArr = dateEvents;
   	}
   	
   	this.props.callback(returnArr);
@@ -116,7 +109,7 @@ class FilterCategory extends React.Component {
   	if(filterToUpdate === "time") this.setState({timeFilters: dataFromChild, }, () => this.getSearchArray("time"));
   	else if (filterToUpdate === "cost") this.setState({costFilters: dataFromChild, }, () => this.getSearchArray("cost"));
   	else if (filterToUpdate === "cat") this.setState({catFilters: dataFromChild, }, () => this.getSearchArray("cat"));
-  	else if (filterToUpdate === "date") this.setState({dateFilters: dataFromChild, }, () => console.log('after:' + this.state.dateFilters));
+  	else if (filterToUpdate === "date") this.setState({dateFilters: dataFromChild, }, () => this.getSearchArray("date"));
   	else console.log("error: need to pass a filter to be updated");
   }
   

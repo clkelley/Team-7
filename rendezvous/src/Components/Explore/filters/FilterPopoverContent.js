@@ -22,12 +22,14 @@ class FilterPopoverContent extends React.Component {
     	timeFils: this.props.filterArr.timeFilters,
     	costFils: this.props.filterArr.costFilters,
     	catFils: this.props.filterArr.catFilters,
+    	dateFils: this.props.filterArr.dateFilters,
     	
     };
     
     this.changeTime = this.changeTime.bind(this);
     this.changeCost = this.changeCost.bind(this);
     this.changeCat = this.changeCat.bind(this);
+    this.changeDate = this.changeDate.bind(this);
 
   }
   
@@ -43,13 +45,17 @@ class FilterPopoverContent extends React.Component {
   	this.setState({catFils: dataFromChild}, this.props.updateFilters(this.state.catFils, "cat"));
   }
   
+  changeDate(dataFromChild) {
+  	this.setState({dateFils: dataFromChild}, this.props.updateFilters(this.state.dateFils, "date"));
+  }
+  
   render() {
   	
   	if(this.state.active === "catChip")return<CatPopup curFils={this.state.catFils} changeCat={this.changeCat}/>;
   	else if(this.state.active === "timeChip")return<TimePopup curFils={this.state.timeFils} changeTime={this.changeTime}/>;
   	else if(this.state.active === "costChip")return<CostPopup curFils={this.state.costFils} changeCost={this.changeCost}/>;
   	else if(this.state.active === "locChip")return<LocationPopup />;
-  	else if(this.state.active === "dateChip")return<DatePopup />;
+  	else if(this.state.active === "dateChip")return<DatePopup curFils={this.state.dateFils} changeDate={this.changeDate}/>;
   	else return <div> no filter selected </ div>;
   
   
