@@ -2,7 +2,7 @@ import React from 'react';
 import './EventCard.css';
 import '../App.css';
 import { Card, CardActionArea, CardActions, CardContent, CardMedia,
-				 Button, Typography, IconButton, Grid, Popover } from '@material-ui/core';
+				 Button, Typography, IconButton, Grid, Popover, Menu, MenuItem } from '@material-ui/core';
 import headerPhoto from './images/header_concert1.jpg';
 import headerPhoto2 from './images/header_concert2.jpg';
 import Firebase from 'firebase'
@@ -38,7 +38,7 @@ class EventPage extends React.Component {
 			price: "loading...",
 			loading: true,
 			numSold: 0,
-			match_photo: require('../media/IMG_9141.jpg')
+			match_photo: require('../media/ryan.jpeg')
 		};
 		this.fetchFromDatabase(eventId);
   }
@@ -94,6 +94,7 @@ class EventPage extends React.Component {
 				else if (eventId === 9) this.setState({photo: require('../media/eventPhotos/cruise.jpg')});
 				else if (eventId === 1) this.setState({photo: require('../media/eventPhotos/wine_tasting.jpg')});
    		});
+
 
 
 	}
@@ -210,25 +211,35 @@ class EventPage extends React.Component {
 				<h2>
 					{this.state.location}
 				</h2>
+		
 
 
-				<Grid container direction="row" justify="center" alignItems="center">
+
+
+
+
+
+
+
+          		<Grid container direction="row" justify="center" alignItems="center">
 				<Button
 				variant="contained"
 				color="primary"
             	onClick={this.handleTouchTap}
+
             	>
             		Matches
             	</Button>
-          		<Popover
-            	open={this.state.open}
-            	data-placement="top"
-            	anchorEl={this.state.anchorEl}
-            	anchorPosition = {400, 400}
-            	anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
-            	targetOrigin={{horizontal: 'left', vertical: 'top'}}
-            	onClose={this.handleRequestClose}
-          		>
+
+          			<Popover
+            		open={this.state.open}
+            		anchorEl={this.state.anchorEl}
+            		anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
+            		targetOrigin={{horizontal: 'left', vertical: 'top'}}
+            		onClose={this.handleRequestClose}
+          			>  						
+            		
+          		
             		<Card>
       					<CardActionArea component={Link} to={"/events/"+this.props.eventId}>
        						<CardMedia
@@ -240,28 +251,31 @@ class EventPage extends React.Component {
         					/>
         					<CardContent>
           						<h2 className="eventTitle">
-           		 					Talal R.
+           		 					Ryan G.
           						</h2>
           						<h3>
-          							Likes long walks on the beach
+          							Surf
           						</h3>
           						<h3>
-          							Charming
+          							Ski
           						</h3>
           						<h3>
-          							Courageous
+          							Play soccer
           						</h3>
           						<h3>
-          							Hungry
+          							Actor
           						</h3>
           						<h3>
-          							happy
+          							Happy
           						</h3>
         					</CardContent>
       					</CardActionArea>
     				</Card>
-          		</Popover>
+    				</Popover>
           		</Grid>
+
+
+
 				</Grid>
 				</Grid>
 			</Grid>
