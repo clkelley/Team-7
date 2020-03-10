@@ -37,7 +37,8 @@ class EventPage extends React.Component {
 			location: "loading...",
 			price: "loading...",
 			loading: true,
-			numSold: 0
+			numSold: 0,
+			match_photo: require('../media/IMG_9141.jpg')
 		};
 		this.fetchFromDatabase(eventId);
   }
@@ -93,6 +94,7 @@ class EventPage extends React.Component {
 				else if (eventId === 9) this.setState({photo: require('../media/eventPhotos/cruise.jpg')});
 				else if (eventId === 1) this.setState({photo: require('../media/eventPhotos/wine_tasting.jpg')});
    		});
+
 
 	}
 
@@ -222,6 +224,7 @@ class EventPage extends React.Component {
             	open={this.state.open}
             	data-placement="top"
             	anchorEl={this.state.anchorEl}
+            	anchorPosition = {400, 400}
             	anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
             	targetOrigin={{horizontal: 'left', vertical: 'top'}}
             	onClose={this.handleRequestClose}
@@ -230,16 +233,30 @@ class EventPage extends React.Component {
       					<CardActionArea component={Link} to={"/events/"+this.props.eventId}>
        						<CardMedia
           					component="img"
-          					height="140"
-          					src={this.state.photo}
+          					height="200"
+          					width="200"
+
+          					src={this.state.match_photo}
         					/>
         					<CardContent>
           						<h2 className="eventTitle">
-           		 					{this.state.eventName}
+           		 					Talal R.
           						</h2>
-          						<p className="shortDescription">
-            						{this.state.shortDescription} <b className="eventDate">• {this.state.date}</b>
-          						</p>
+          						<h3>
+          							Likes long walks on the beach
+          						</h3>
+          						<h3>
+          							Charming
+          						</h3>
+          						<h3>
+          							Courageous
+          						</h3>
+          						<h3>
+          							Hungry
+          						</h3>
+          						<h3>
+          							happy
+          						</h3>
         					</CardContent>
       					</CardActionArea>
     				</Card>
