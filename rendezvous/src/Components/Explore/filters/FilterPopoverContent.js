@@ -27,6 +27,7 @@ class FilterPopoverContent extends React.Component {
     
     this.changeTime = this.changeTime.bind(this);
     this.changeCost = this.changeCost.bind(this);
+    this.changeCat = this.changeCat.bind(this);
 
   }
   
@@ -38,9 +39,13 @@ class FilterPopoverContent extends React.Component {
   	this.setState({costFils: dataFromChild}, this.props.updateFilters(this.state.costFils, "cost"));
   }
   
+  changeCat(dataFromChild) {
+  	this.setState({catFils: dataFromChild}, this.props.updateFilters(this.state.catFils, "cat"));
+  }
+  
   render() {
   	
-  	if(this.state.active === "catChip")return<CatPopup />;
+  	if(this.state.active === "catChip")return<CatPopup curFils={this.state.catFils} changeCat={this.changeCat}/>;
   	else if(this.state.active === "timeChip")return<TimePopup curFils={this.state.timeFils} changeTime={this.changeTime}/>;
   	else if(this.state.active === "costChip")return<CostPopup curFils={this.state.costFils} changeCost={this.changeCost}/>;
   	else if(this.state.active === "locChip")return<LocationPopup />;
