@@ -23,7 +23,7 @@ class CatPopup extends React.Component {
 	
 	render () {
 	
-	let cats = ["exercise", "music", "entertainment", "sports", "food", "drinks", "leisure"];
+	let cats = ["exercise", "music", "entertainment", "sports", "food", "drinks", "leisure", "culture"];
 	let toggle = this.onChange;
 	
 	let listitems = cats.map(function(cat, index) {

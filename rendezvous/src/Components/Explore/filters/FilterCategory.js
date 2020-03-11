@@ -13,13 +13,13 @@ class FilterCategory extends React.Component {
     super(props);
     this.state = {
       dateFilters: [],
-      catFilters: [false, false, false, false, false, false, false],
+      catFilters: [false, false, false, false, false, false, false, false],
       locFilters: "Palo Alto, Ca",
       timeFilters: [false, false, false],
       costFilters: [false, false, false, false],
       timeOptions: ["morning", "afternoon", "evening"],
 	  costOptions : ["free", "under $20", "$20-$50", "$50+"],
-	  catOptions : ["exercise", "music", "entertainment", "sports", "food", "drinks", "leisure"],
+	  catOptions : ["exercise", "music", "entertainment", "sports", "food", "drinks", "leisure", "culture"],
       anchor: null,
       popup_open: false,
       curFil: null,
@@ -27,10 +27,16 @@ class FilterCategory extends React.Component {
     
     this.openPopup = event => this.openPopup2(event);
     this.closePopup = event => this.closePopup2(event);
+    this.handleDelete = event => this.handleDelete2(event);
+    this.deleteDate = date => () => this.deleteDate2(date);
     
     this.updateFilters = this.updateFilters.bind(this);
     this.getSearchArray = this.getSearchArray.bind(this);
 
+  }
+  
+  handleDelete2 (event) {
+  	console.log(event.target.value);
   }
   
   getSearchArray(str) {
@@ -120,23 +126,23 @@ class FilterCategory extends React.Component {
   }
 
   render() {
-
-  	const handleDelete = () => {
-    	console.info('You clicked the delete icon.');
+/*
+  	const handleDelete = (event) => {
+    	console.log(event.target.value);
   	};
-  	
+  	*/
 	let dateItems = <div /> ;
 	if(this.state.dateFilters.length > 0) dateItems = this.state.dateFilters.map(function(date,index) {
 
   		return (
-  			<Chip variant="outlined" label={date} className="filter" onDelete={handleDelete} />
+  			<Chip variant="outlined" label={date} value="datefilter" onDelete={this.handleDelete} />
   		);
   	}.bind(this));
   	
   	let timeItems = <div /> ;
 	if(this.state.timeFilters.length > 0) timeItems = this.state.timeFilters.map(function(time,index) {
   		if(time===true)return (
-  			<Chip variant="outlined" label={this.state.timeOptions[index]} className="filter" onDelete={handleDelete} />
+  			<Chip variant="outlined" label={this.state.timeOptions[index]} value="timefilter" onDelete={this.handleDelete} />
   		);
   		else return;
   	}.bind(this));
@@ -144,7 +150,7 @@ class FilterCategory extends React.Component {
   	let costItems = <div /> ;
 	if(this.state.costFilters.length > 0) costItems = this.state.costFilters.map(function(cost,index) {
   		if(cost===true)return (
-  			<Chip variant="outlined" label={this.state.costOptions[index]} className="filter" onDelete={handleDelete} />
+  			<Chip variant="outlined" label={this.state.costOptions[index]} value="costfilter" onDelete={this.handleDelete} />
   		);
   		else return;
   	}.bind(this));
@@ -152,7 +158,7 @@ class FilterCategory extends React.Component {
   	let catItems = <div /> ;
 	if(this.state.catFilters.length > 0) catItems = this.state.catFilters.map(function(cat,index) {
   		if(cat===true)return (
-  			<Chip variant="outlined" label={this.state.catOptions[index]} className="filter" onDelete={handleDelete} />
+  			<Chip variant="outlined" label={this.state.catOptions[index]} value="catfilter" onDelete={this.handleDelete} />
   		);
   		else return;
   	}.bind(this));

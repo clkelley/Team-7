@@ -33,7 +33,8 @@ class DatePopup extends React.Component {
 		let monthStr = monthNum.toString();
 		let str = monthStr+"."+ dateStr+"."+yrStr;
 		let newArr = this.state.filters;
-		if(newArr.indexOf(str) === -1)newArr.push(str);
+		if(newArr.indexOf(str) === -1)newArr.push(str); 
+		else newArr.splice(newArr.indexOf(str),1); console.log (newArr);
 		this.setState({filters: newArr, selectedDate: date}, this.props.changeDate(this.state.filters));
 	}
 
