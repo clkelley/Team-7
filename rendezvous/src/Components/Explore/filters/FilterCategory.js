@@ -27,16 +27,42 @@ class FilterCategory extends React.Component {
     
     this.openPopup = event => this.openPopup2(event);
     this.closePopup = event => this.closePopup2(event);
-    this.handleDelete = event => this.handleDelete2(event);
+    this.deleteCat = index => () => this.deleteCat2(index);
     this.deleteDate = date => () => this.deleteDate2(date);
+    this.deleteTime = index => () => this.deleteTime2(index);
+    this.deleteCost = index => () => this.deleteCost2(index);
     
     this.updateFilters = this.updateFilters.bind(this);
     this.getSearchArray = this.getSearchArray.bind(this);
 
   }
   
-  handleDelete2 (event) {
-  	console.log(event.target.value);
+  deleteDate2(date) {
+  	let arr = this.state.dateFilters;
+  	arr.splice(arr.indexOf(date), 1);
+  	this.setState({dateFilters: arr});
+  	console.log(this.state.dateFilters);
+  }
+  
+  deleteTime2(index) {
+  	let arr = [];
+  	this.state.timeFilters.forEach(time => {arr.push(time)});
+  	arr[index] = false;
+  	this.setState({timeFilters: arr});
+  }
+  
+  deleteCat2(index) {
+  	let arr = [];
+  	this.state.catFilters.forEach(cat => {arr.push(cat)});
+  	arr[index] = false;
+  	this.setState({catFilters: arr});
+  }
+  
+  deleteCost2(index) {
+  	let arr = [];
+  	this.state.costFilters.forEach(cost => {arr.push(cost)});
+  	arr[index] = false;
+  	this.setState({costFilters: arr});
   }
   
   getSearchArray(str) {
@@ -135,14 +161,14 @@ class FilterCategory extends React.Component {
 	if(this.state.dateFilters.length > 0) dateItems = this.state.dateFilters.map(function(date,index) {
 
   		return (
-  			<Chip variant="outlined" label={date} value="datefilter" onDelete={this.handleDelete} />
+  			<Chip variant="outlined" label={date} onDelete={this.deleteDate(date)} />
   		);
   	}.bind(this));
   	
   	let timeItems = <div /> ;
 	if(this.state.timeFilters.length > 0) timeItems = this.state.timeFilters.map(function(time,index) {
   		if(time===true)return (
-  			<Chip variant="outlined" label={this.state.timeOptions[index]} value="timefilter" onDelete={this.handleDelete} />
+  			<Chip variant="outlined" label={this.state.timeOptions[index]} onDelete={this.deleteTime(index)} />
   		);
   		else return;
   	}.bind(this));
@@ -150,7 +176,7 @@ class FilterCategory extends React.Component {
   	let costItems = <div /> ;
 	if(this.state.costFilters.length > 0) costItems = this.state.costFilters.map(function(cost,index) {
   		if(cost===true)return (
-  			<Chip variant="outlined" label={this.state.costOptions[index]} value="costfilter" onDelete={this.handleDelete} />
+  			<Chip variant="outlined" label={this.state.costOptions[index]} onDelete={this.deleteCost(index)} />
   		);
   		else return;
   	}.bind(this));
@@ -158,7 +184,7 @@ class FilterCategory extends React.Component {
   	let catItems = <div /> ;
 	if(this.state.catFilters.length > 0) catItems = this.state.catFilters.map(function(cat,index) {
   		if(cat===true)return (
-  			<Chip variant="outlined" label={this.state.catOptions[index]} value="catfilter" onDelete={this.handleDelete} />
+  			<Chip variant="outlined" label={this.state.catOptions[index]} onDelete={this.deleteCat(index)} />
   		);
   		else return;
   	}.bind(this));
