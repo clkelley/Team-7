@@ -83,37 +83,18 @@ class EventPage extends React.Component {
 		.then(function(doc){
 				if(doc.exists){
 					const data = doc.data();
-					console.log("match data:");
-					//console.log(data);
 					for(var groupId in Object.keys(data)){
 						var group = data[groupId];
-						//console.log(group);
 						if(group.includes(this.state.userId)){
 							//groupId is the match group
 							group.splice(group.indexOf(this.state.userId), 1);
 						 	this.setState({matchGroup: group, matchIndex: 0})
-							console.log(group);
 						}
 					}
 				} else {
 					console.log("can't find match data");
 				}
 
-     		// this.setState({date: data[0]['date']});
-     		// this.setState({shortDescription: data[0]['short_description']});
-     		// this.setState({eventName: data[0]['event_name']});
-				// this.setState({location: data[0]['location']});
-				// this.setState({price: data[0]['price']});
-				// this.setState({numSold: data[0]['num_sold']});
-				// if (eventId === 2) this.setState({photo: require('../media/eventPhotos/beer_tasting.jpg')});
-				// else if (eventId === 3) this.setState({photo: require('../media/eventPhotos/yoga.jpg')});
-				// else if (eventId === 4) this.setState({photo: require('../media/eventPhotos/food_festival.jpg')});
-				// else if (eventId === 5) this.setState({photo: require('../media/eventPhotos/comedy.jpg')});
-				// else if (eventId === 6) this.setState({photo: require('../media/eventPhotos/concert.jpg')});
-				// else if (eventId === 7) this.setState({photo: require('../media/eventPhotos/hike.jpg')});
-				// else if (eventId === 8) this.setState({photo: require('../media/eventPhotos/food.jpg')});
-				// else if (eventId === 9) this.setState({photo: require('../media/eventPhotos/cruise.jpg')});
-				// else if (eventId === 1) this.setState({photo: require('../media/eventPhotos/wine_tasting.jpg')});
    		}.bind(this)).catch(function(error) {
 				console.log("Error getting document:", error);
 			});
@@ -276,16 +257,14 @@ class EventPage extends React.Component {
 
 
 
-          		{this.state.matchGroup && <Grid container direction="row" justify="center" alignItems="center">
+        {this.state.matchGroup && <Grid container direction="row" justify="center" alignItems="center">
 				<Button
 				variant="contained"
 				color="primary"
-            	onClick={this.handleTouchTap}
-
-            	>
+        onClick={this.handleTouchTap}>
             		Matches
-            	</Button>
-							<Popover
+        </Button>
+				<Popover
 							open={this.state.open}
 							onClose={this.handleRequestClose}
 							anchorEl={this.state.anchorEl}
@@ -296,11 +275,8 @@ class EventPage extends React.Component {
 								< NavigateNext />
 							</IconButton>
 							</Grid>
-							</Popover>
-          		</Grid>}
-
-
-
+				</Popover>
+        </Grid>}
 				</Grid>
 				</Grid>
 			</Grid>

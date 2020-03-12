@@ -60,7 +60,7 @@ class MatchCard extends React.Component {
 					component="img"
 					height="200"
 					width="200"
-					src={this.state.photo || this.state.match_photo}
+					src={this.state.photo}
 				/>
 				<CardContent>
 						<h2 className="eventTitle">
