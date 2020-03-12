@@ -220,7 +220,6 @@ class EventPage extends React.Component {
 
 		nextMatch = () => {
 			var nextIndex = (this.state.matchIndex + 1) % (this.state.matchGroup.length);
-			console.log(nextIndex);
 			this.setState({matchIndex : nextIndex})
 		}
 
@@ -266,7 +265,7 @@ class EventPage extends React.Component {
 				<Button variant="contained" color="primary" onClick={this.onClickButton} disabled={this.state.capacity_reached && !this.state.userRegistered}>
 					{button_label}
 				</Button>
-				<h1>{this.state.price}</h1>
+				<h1>Price: {this.state.price}</h1>
 				<Grid container direction="row" justify="center" alignItems="center">
 				<IconButton>
 					<Room />
@@ -274,13 +273,6 @@ class EventPage extends React.Component {
 				<h2>
 					{this.state.location}
 				</h2>
-
-
-
-
-
-
-
 
 
 

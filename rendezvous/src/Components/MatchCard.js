@@ -20,19 +20,20 @@ class MatchCard extends React.Component {
   }
 
 	componentDidMount(){
-		this.downloadProfile();
+		this.downloadProfile(this.state.userId)
 	}
 
 	componentDidUpdate(prevProps){
 		if(prevProps.userId !== this.props.userId){
 			this.setState({userId: this.props.userId});
-			this.downloadProfile();
+			// FOR SOME REASON, STATE DOESN't UPDATE SO PASSED PROP AS PARAMETER
+			this.downloadProfile(this.props.userId);
 		}
 
 	}
 
-	downloadProfile = () => {
-		db.collection("users").doc(this.state.userId).get()
+	downloadProfile = (x) => {
+		db.collection("users").doc(x).get()
 		.then( function(doc){
       if(doc.exists){
 				let data = doc.data();
@@ -43,7 +44,6 @@ class MatchCard extends React.Component {
      		this.setState({fact4: data['fact4']});
      		this.setState({fact5: data['fact5']});
      		this.setState({photo: data['photo']})
-        console.log(doc.data())
       } else {
         console.log("doc didn't exist") // NEED TO FIX THIS UP
       }
