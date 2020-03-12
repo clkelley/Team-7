@@ -24,58 +24,58 @@ class FilterCategory extends React.Component {
       popup_open: false,
       curFil: null,
     };
-    
+
     this.openPopup = event => this.openPopup2(event);
     this.closePopup = event => this.closePopup2(event);
     this.deleteCat = index => () => this.deleteCat2(index);
     this.deleteDate = date => () => this.deleteDate2(date);
     this.deleteTime = index => () => this.deleteTime2(index);
     this.deleteCost = index => () => this.deleteCost2(index);
-    
+
     this.updateFilters = this.updateFilters.bind(this);
     this.getSearchArray = this.getSearchArray.bind(this);
 
   }
-  
+
   deleteDate2(date) {
   	let arr = this.state.dateFilters;
   	arr.splice(arr.indexOf(date), 1);
   	this.setState({dateFilters: arr});
   	console.log(this.state.dateFilters);
   }
-  
+
   deleteTime2(index) {
   	let arr = [];
   	this.state.timeFilters.forEach(time => {arr.push(time)});
   	arr[index] = false;
   	this.setState({timeFilters: arr});
   }
-  
+
   deleteCat2(index) {
   	let arr = [];
   	this.state.catFilters.forEach(cat => {arr.push(cat)});
   	arr[index] = false;
   	this.setState({catFilters: arr});
   }
-  
+
   deleteCost2(index) {
   	let arr = [];
   	this.state.costFilters.forEach(cost => {arr.push(cost)});
   	arr[index] = false;
   	this.setState({costFilters: arr});
   }
-  
+
   getSearchArray(str) {
   	let events = db.collection("event_data");
   	let returnArr = [];
-  	
+
   	for(let i=0;i<this.props.eventArray.length;i++) returnArr.push(this.props.eventArray[i]);
-  	
+
   	let timeEvents = [];
   	let costEvents = [];
   	let catEvents = [];
   	let dateEvents = [];
-  	
+
   	//if the date filter has been set, filter the collection down
   	if((this.state.timeFilters.indexOf(true) != -1) & (this.state.timeFilters.indexOf(false) !== -1)) {
   		for (let i = 0; i < this.state.timeOptions.length; i++) {
@@ -90,7 +90,7 @@ class FilterCategory extends React.Component {
   		}
   		returnArr = timeEvents;
   	}
-  	
+
   	if((this.state.catFilters.indexOf(true) != -1) & (this.state.catFilters.indexOf(false) !== -1)) {
   		for (let i = 0; i < this.state.catOptions.length; i++) {
   			if(this.state.catFilters[i] === true) {
@@ -104,7 +104,7 @@ class FilterCategory extends React.Component {
   		}
   		returnArr = catEvents;
   	}
-  	
+
 
   	if((this.state.costFilters.indexOf(true) != -1) & (this.state.costFilters.indexOf(false) !== -1)) {
   		for (let i = 0; i < this.state.costOptions.length; i++) {
@@ -119,7 +119,7 @@ class FilterCategory extends React.Component {
   		}
   		returnArr = costEvents;
   	}
-  	
+
   	if(this.state.dateFilters.length > 0) {
 		this.state.dateFilters.forEach(date => {
 			events.where("date", "==", date).get().then( snapshot => {
@@ -131,10 +131,10 @@ class FilterCategory extends React.Component {
 		});
 		returnArr = dateEvents;
   	}
-  	
+
   	this.props.callback(returnArr);
   }
-  
+
   updateFilters (dataFromChild, filterToUpdate) {
   	if(filterToUpdate === "time") this.setState({timeFilters: dataFromChild, }, () => this.getSearchArray("time"));
   	else if (filterToUpdate === "cost") this.setState({costFilters: dataFromChild, }, () => this.getSearchArray("cost"));
@@ -142,11 +142,11 @@ class FilterCategory extends React.Component {
   	else if (filterToUpdate === "date") this.setState({dateFilters: dataFromChild, }, () => this.getSearchArray("date"));
   	else console.log("error: need to pass a filter to be updated");
   }
-  
+
   openPopup2(event) {
   	this.setState({anchor : event.currentTarget, popup_open:true, curFil:event.currentTarget.id});
   }
-  
+
   closePopup2 (event) {
   	this.setState({anchor: null, popup_open: false});
   }
@@ -164,7 +164,7 @@ class FilterCategory extends React.Component {
   			<Chip variant="outlined" label={date} onDelete={this.deleteDate(date)} />
   		);
   	}.bind(this));
-  	
+
   	let timeItems = <div /> ;
 	if(this.state.timeFilters.length > 0) timeItems = this.state.timeFilters.map(function(time,index) {
   		if(time===true)return (
@@ -172,7 +172,7 @@ class FilterCategory extends React.Component {
   		);
   		else return;
   	}.bind(this));
-  	
+
   	let costItems = <div /> ;
 	if(this.state.costFilters.length > 0) costItems = this.state.costFilters.map(function(cost,index) {
   		if(cost===true)return (
@@ -180,7 +180,7 @@ class FilterCategory extends React.Component {
   		);
   		else return;
   	}.bind(this));
-  	
+
   	let catItems = <div /> ;
 	if(this.state.catFilters.length > 0) catItems = this.state.catFilters.map(function(cat,index) {
   		if(cat===true)return (

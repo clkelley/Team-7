@@ -36,8 +36,10 @@ class EventPage extends React.Component {
 			price: "loading...",
 			loading: true,
 			numSold: 0,
+			max_capacity: 0,
+			capacity_reached: false,
 		};
-		this.fetchFromDatabase(eventId);
+		// this.fetchFromDatabase(eventId);
   }
 
 	componentDidMount(){
@@ -50,6 +52,8 @@ class EventPage extends React.Component {
 			}
 			this.setState({ loading: false });
     }.bind(this));
+
+		this.fetchFromDatabase(this.state.eventId);
 	}
 
 	/*
@@ -127,6 +131,10 @@ class EventPage extends React.Component {
 				this.setState({location: data[0]['location']});
 				this.setState({price: data[0]['price']});
 				this.setState({numSold: data[0]['num_sold']});
+				this.setState({max_capacity: data[0]['max_capacity']});
+				if (this.state.numSold >= this.state.max_capacity){
+					this.setState({capacity_reached: true});
+				}
 				if (eventId === 2) this.setState({photo: require('../media/eventPhotos/beer_tasting.jpg')});
 				else if (eventId === 3) this.setState({photo: require('../media/eventPhotos/yoga.jpg')});
 				else if (eventId === 4) this.setState({photo: require('../media/eventPhotos/food_festival.jpg')});
@@ -169,6 +177,7 @@ class EventPage extends React.Component {
 		doc_ref_event.set(userIdMap, {merge:true});
 
 		//update event num going
+		this.setState({numSold: this.state.numSold + 1});
 		var ref = db.collection("event_data").doc(this.state.eventId.toString())
 		ref.update({'num_sold' : (parseInt(this.state.numSold) + 1).toString()})
 
@@ -182,21 +191,15 @@ class EventPage extends React.Component {
 			going_events: Firebase.firestore.FieldValue.arrayRemove(this.state.eventId)
 		});
 
-		//update event visitors
-
-		// NEED TO FIX DELETING CAUSE IT DOESNT WORK
-
 		var doc_ref_event = db.collection("event_visitors").doc(String(this.state.eventId));
-		// let userIdMap = {}
-		var field_val = this.state.userId.toString()
-		// userIdMap.this.state.userId
-		doc_ref_event.update({field_val: Firebase.firestore.FieldValue.delete()})
-		// doc_ref_event.field_val.delete()
-		// doc_ref_user.update(userIdMap);
 
-		//update event num going
+		var dict = {}
+		dict[this.state.userId] = Firebase.firestore.FieldValue.delete()
+		doc_ref_event.update(dict)
+
 		var ref = db.collection("event_data").doc(this.state.eventId.toString())
 		ref.update({'num_sold' : (parseInt(this.state.numSold) - 1).toString()})
+		this.setState({numSold: this.state.numSold - 1});
 	}
 
 
@@ -229,6 +232,17 @@ class EventPage extends React.Component {
 		} else {
 			top_image = <div></div>
 		}
+
+		let button_label = '';
+
+		if (this.state.userRegistered){
+			button_label = 'Cancel Ticket'
+		}
+		else if(this.state.capacity_reached){
+			button_label = 'Out of Tickets'
+		} else {
+			button_label = 'Buy Ticket'
+		}
     return (
 		<div>
 			{top_image}
@@ -249,8 +263,8 @@ class EventPage extends React.Component {
 				</Grid>
 				<Grid xs={4} justify="center">
 				<h1>{this.state.date || "Loading..."}</h1>
-				<Button variant="contained" color="primary" onClick={this.onClickButton}>
-					{this.state.userRegistered ? "Cancel Tickets" : "Buy Tickets"}
+				<Button variant="contained" color="primary" onClick={this.onClickButton} disabled={this.state.capacity_reached && !this.state.userRegistered}>
+					{button_label}
 				</Button>
 				<h1>{this.state.price}</h1>
 				<Grid container direction="row" justify="center" alignItems="center">
