@@ -95,6 +95,7 @@ componentDidMount(){
 			console.log(this.state.responses);
 			if(this.checkAllFilled()){
 				this.updateFirebase();
+				this.generateRandomRecommendations();
 			} else {
 				this.setState({errorMessage:"Please complete your profile before submitting."});
 			}
@@ -119,6 +120,16 @@ componentDidMount(){
 				console.log(this.props);
 				this.props.history.push("/profile");
 	});
+ }
+
+ generateRandomRecommendations = () => {
+	 //random number generator from 0-19
+	 var doc_ref_user = db.collection("user_events").doc(this.state.userId);
+	 const recommended_events = [];
+	 recommended_events.push(Math.floor((Math.random() * 20)));
+	 recommended_events.push(Math.floor((Math.random() * 20)));
+	 recommended_events.push(Math.floor((Math.random() * 20)));
+	 doc_ref_user.set({recommended_events: recommended_events}, {merge:true});
  }
 
 	photoUploadedCallback = (photo_url) => {

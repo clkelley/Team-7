@@ -42,8 +42,10 @@ class RecommendedPage extends React.Component {
     var doc_ref = db.collection("user_events").doc(this.state.userId);
     doc_ref.get().then( function(doc){
       if(doc.exists){
-        this.setState({matches: doc.data()})
-        this.setState({recommended_events: doc.data().get('recommended_events')})
+        var data = doc.data()
+        console.log(data);
+        //this.setState({matches: doc.data()})
+        this.setState({recommended_events: data['recommended_events']})
       } else {
         console.log("doc didn't exist") // TODO
       }

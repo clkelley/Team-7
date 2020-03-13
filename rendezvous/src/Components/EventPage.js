@@ -9,7 +9,7 @@ import Firebase from 'firebase'
 import { db } from '../firebase';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-import { BookmarkBorder, Bookmark, Room, NavigateNext } from '@material-ui/icons'
+import { BookmarkBorder, Bookmark, Room, NavigateNext, Close } from '@material-ui/icons'
 import {
   BrowserRouter as Router,
   Switch,
@@ -280,11 +280,16 @@ class EventPage extends React.Component {
 							onClose={this.handleRequestClose}
 							anchorEl={this.state.anchorEl}
 							>
-							<Grid container alignItems="flex-start">
-							<MatchCard userId={this.state.matchGroup[this.state.matchIndex]}/>
+							<Grid container column alignItems="flex-start">
+							<Grid container row alignItems="stretch" justify="space-between">
 							<IconButton onClick={this.nextMatch}>
 								< NavigateNext />
 							</IconButton>
+							<IconButton onClick={this.handleRequestClose}>
+								< Close />
+							</IconButton>
+							</Grid>
+							<MatchCard userId={this.state.matchGroup[this.state.matchIndex]}/>
 							</Grid>
 				</Popover>
         </Grid>}

@@ -54,7 +54,7 @@ class MatchCard extends React.Component {
 
   render() {
     return (
-
+			<Grid item xs={12}>
 			<Card>
 				<CardMedia
 					component="img"
@@ -82,7 +82,8 @@ class MatchCard extends React.Component {
 							{this.state.fact5 || "Loading..."}
 						</h3>
 				</CardContent>
-	</Card>
+				</Card>
+				</Grid>
 
     );
 	}
