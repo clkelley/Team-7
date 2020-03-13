@@ -28,6 +28,7 @@ class EventPage extends React.Component {
 			date: "loading...",
 			eventName: "loading...",
 			shortDescription: "loading...",
+			longDescription: "loading...",
 			photo: "",
 			eventId: eventId,
 			userRegistered: false,
@@ -122,6 +123,7 @@ class EventPage extends React.Component {
      		var data = querySnapshot.docs.map(doc => doc.data());
      		this.setState({date: data[0]['date']});
      		this.setState({shortDescription: data[0]['short_description']});
+				this.setState({shortDescription: data[0]['long_description']});
      		this.setState({eventName: data[0]['event_name']});
 				this.setState({location: data[0]['location']});
 				this.setState({price: data[0]['price']});
@@ -130,15 +132,7 @@ class EventPage extends React.Component {
 				if (this.state.numSold >= this.state.max_capacity){
 					this.setState({capacity_reached: true});
 				}
-				if (eventId === 2) this.setState({photo: require('../media/eventPhotos/beer_tasting.jpg')});
-				else if (eventId === 3) this.setState({photo: require('../media/eventPhotos/yoga.jpg')});
-				else if (eventId === 4) this.setState({photo: require('../media/eventPhotos/food_festival.jpg')});
-				else if (eventId === 5) this.setState({photo: require('../media/eventPhotos/comedy.jpg')});
-				else if (eventId === 6) this.setState({photo: require('../media/eventPhotos/concert.jpg')});
-				else if (eventId === 7) this.setState({photo: require('../media/eventPhotos/hike.jpg')});
-				else if (eventId === 8) this.setState({photo: require('../media/eventPhotos/food.jpg')});
-				else if (eventId === 9) this.setState({photo: require('../media/eventPhotos/cruise.jpg')});
-				else if (eventId === 1) this.setState({photo: require('../media/eventPhotos/wine_tasting.jpg')});
+				this.setState({photo: data[0]['photo']})
    		});
 
 
@@ -263,7 +257,7 @@ class EventPage extends React.Component {
 				<Button variant="contained" color="primary" onClick={this.onClickButton} disabled={this.state.capacity_reached && !this.state.userRegistered || !this.state.user_questionaire}>
 					{button_label}
 				</Button>
-				<h1>Price: {this.state.price}</h1>
+				<h1>Price: ${this.state.price}</h1>
 				<Grid container direction="row" justify="center" alignItems="center">
 				<IconButton>
 					<Room />

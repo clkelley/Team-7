@@ -12,15 +12,15 @@ import { Grid } from '@material-ui/core';
 class ExplorePage extends React.Component {
   constructor(props) {
     super(props);
-    
+
     let initialArr = [];
-    let totalNumEvents = 10;
+    let totalNumEvents = 20;
     for (let i =0; i<totalNumEvents; i++) initialArr.push(i);
 
     this.state = {
 		searchTerm: "",
 		allEvents: initialArr,
-		filteredEvents: [0,1, 2, 3, 4, 5, 6, 7, 8, 9,10],
+		filteredEvents: initialArr,
 		matches: initialArr
     };
 
@@ -28,15 +28,15 @@ class ExplorePage extends React.Component {
     this.setSearchKey = this.setSearchKey.bind(this);
     this.setFilters = this.setFilters.bind(this);
   }
-  
+
   setFilters(dataFromChild) {
   	this.setState({filteredEvents: dataFromChild});
   }
-  
+
   setSearchKey(str) {
   	this.setState({searchTerm: str});
   }
-  
+
   searchEvents() {
 	let m = [];
 	this.state.filteredEvents.forEach(eventIdNum => m.push(eventIdNum));
@@ -47,7 +47,7 @@ class ExplorePage extends React.Component {
 				name = ev.data().event_name;
 				if(!name.includes(this.state.searchTerm)) delete m[m.indexOf(ev.data().eventId)];
 				this.setState({matches: m});
-			}	
+			}
 		});
 	}
   }

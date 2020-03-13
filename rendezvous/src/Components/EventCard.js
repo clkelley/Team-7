@@ -30,16 +30,8 @@ class EventCard extends React.Component {
      		this.setState({date: data[0]['date']});
      		this.setState({shortDescription: data[0]['short_description']});
      		this.setState({eventName: data[0]['event_name']});
+				this.setState({photo: data[0]['photo'][0]})
 				this.setState({loading: false})
-     		if (eventId === 2) this.setState({photo: require('../media/eventPhotos/beer_tasting.jpg')});
-     		else if (eventId === 3) this.setState({photo: require('../media/eventPhotos/yoga.jpg')});
-   			else if (eventId === 4) this.setState({photo: require('../media/eventPhotos/food_festival.jpg')});
-   			else if (eventId === 5) this.setState({photo: require('../media/eventPhotos/comedy.jpg')});
-   			else if (eventId === 6) this.setState({photo: require('../media/eventPhotos/concert.jpg')});
-   			else if (eventId === 7) this.setState({photo: require('../media/eventPhotos/hike.jpg')});
-   			else if (eventId === 8) this.setState({photo: require('../media/eventPhotos/food.jpg')});
-   			else if (eventId === 9) this.setState({photo: require('../media/eventPhotos/cruise.jpg')});
-   			else if (eventId === 1) this.setState({photo: require('../media/eventPhotos/wine_tasting.jpg')});
    		});
 	}
 
