@@ -38,6 +38,7 @@ class EventPage extends React.Component {
 			numSold: 0,
 			max_capacity: 0,
 			capacity_reached: false,
+			user_questionaire: false,
 		};
 		// this.fetchFromDatabase(eventId);
   }
@@ -47,6 +48,7 @@ class EventPage extends React.Component {
 			if (user) {
 				this.setState({ userId: user.uid });
 				this.fetchUserRegistered()
+				this.fetchUserQuestionaire()
 			} else {
 				this.setState({ userId: null });
 			}
@@ -54,6 +56,18 @@ class EventPage extends React.Component {
     }.bind(this));
 
 		this.fetchFromDatabase(this.state.eventId);
+	}
+
+
+	fetchUserQuestionaire = () => {
+		var doc_ref = db.collection("user_questionaire").doc(this.state.userId);
+		doc_ref.get().then((doc) => {
+			if(doc.exists){
+					this.setState({user_questionaire: true})
+			} else {
+					this.setState({user_questionaire: false})
+			}
+		});
 	}
 
 	/*
@@ -223,6 +237,9 @@ class EventPage extends React.Component {
 		} else {
 			button_label = 'Buy Ticket'
 		}
+		if( ! this.state.user_questionaire){
+			button_label = 'Fill Out User Questionaire'
+		}
     return (
 		<div>
 			{top_image}
@@ -243,7 +260,7 @@ class EventPage extends React.Component {
 				</Grid>
 				<Grid xs={4} justify="center">
 				<h1>{this.state.date || "Loading..."}</h1>
-				<Button variant="contained" color="primary" onClick={this.onClickButton} disabled={this.state.capacity_reached && !this.state.userRegistered}>
+				<Button variant="contained" color="primary" onClick={this.onClickButton} disabled={this.state.capacity_reached && !this.state.userRegistered || !this.state.user_questionaire}>
 					{button_label}
 				</Button>
 				<h1>Price: {this.state.price}</h1>
