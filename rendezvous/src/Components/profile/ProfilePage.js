@@ -54,7 +54,8 @@ class Profile extends React.Component {
 	handleLogout(){
 		Firebase.auth().signOut()
 		.then(() => {
-				return window.location.href='/login';
+				//return window.location.href='/login';
+				this.props.history.push("/login");
 		})
 		.catch(function(error) {
 			var errorCode = error.code;
@@ -96,7 +97,8 @@ class Profile extends React.Component {
 				this.checkQuestionnaireFilled()
       } else {
         console.log("doc didn't exist") // NEED TO FIX THIS UP
-				return window.location.href='/editprofile';
+				this.props.history.push("/editprofile");
+				//return window.location.href='/editprofile';
       }
     }.bind(this)).catch(function(error) {
       console.log("Error getting document:", error);
@@ -110,7 +112,8 @@ class Profile extends React.Component {
 					console.log("questionnaire completed successfully")
 			} else {
 					console.log("doc didn't exist") // NEED TO FIX THIS UP
-					return window.location.href='/questionnaire';
+					this.props.history.push("/questionnaire");
+					//return window.location.href='/questionnaire';
 			}
 		});
 	}

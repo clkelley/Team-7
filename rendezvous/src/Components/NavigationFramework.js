@@ -187,10 +187,11 @@ class NavigationFramework extends React.Component {
           <Route path="/myevents">
             {this.state.loggedIn ? <Grid className="bigGrid"><MyEvents /></Grid> : <Redirect to='/login' /> }
           </Route>
-          <Route path="/profile">
-            {this.state.loggedIn ? <Profile /> : <Redirect to='/login' /> }
-          </Route>
-
+          <Route path="/profile" render={(props) =>
+            <Grid className="bigGrid">
+            {this.state.loggedIn ? <Profile {...props}/> : <Redirect to='/login' /> }
+            </Grid>
+          }/>
           <Route path="/recommended">
             <Grid className="bigGrid">
             	<Recommended />
